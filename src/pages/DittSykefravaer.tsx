@@ -1,4 +1,6 @@
 import React from "react";
+import { Knapp } from "nav-frontend-knapper";
+import { useHistory } from "react-router-dom";
 
 import Brodsmuler, { Brodsmule } from "../components/brodsmuler/brodsmuler";
 
@@ -7,26 +9,21 @@ const brodsmuler: Brodsmule[] = [
     tittel: "Ditt sykefravaer",
     sti: "/",
     erKlikkbar: true
-  },
-  {
-    tittel: "Sykmeldinger",
-    sti: "/sykmeldinger",
-    erKlikkbar: true
-  },
-  {
-    tittel: "Sykmelding",
-    sti: "/sykmeldinger/:id",
-    erKlikkbar: false
   }
 ];
 
-const Test = () => {
+const DittSykefravaer = () => {
+  const history = useHistory();
+
   return (
     <div className="limit">
       <Brodsmuler brodsmuler={brodsmuler} />
       Ditt sykefravaer
+      <Knapp onClick={() => history.push("/sykmeldinger/")}>
+        Dine sykmeldinger
+      </Knapp>
     </div>
   );
 };
 
-export default Test;
+export default DittSykefravaer;

@@ -5,7 +5,13 @@ import "./basic.less";
 
 import useAppStore from "./store/useAppStore";
 import DataFetcher from "./components/DataFetcher";
-import Test from "./pages/Test";
+import DittSykefravaer from "./pages/DittSykefravaer";
+import DineSykmeldinger from "./pages/DineSykmeldinger";
+import Sykmelding from "./pages/Sykmelding";
+import Soknad from "./pages/Soknad";
+import BeslutningFraNav from "./pages/BeslutningFraNav";
+import SykmeldingOversikt from "./pages/SykmeldingOversikt";
+import Inntektsmelding from "./pages/Inntektsmelding";
 
 const App = () => {
   return (
@@ -13,7 +19,25 @@ const App = () => {
       <DataFetcher>
         <BrowserRouter>
           <Switch>
-            <Route exact path="/" component={Test} />
+            <Route exact path="/" component={DittSykefravaer} />
+            <Route exact path="/sykmeldinger/" component={DineSykmeldinger} />
+            <Route
+              exact
+              path="/sykmeldinger/:id/"
+              component={SykmeldingOversikt}
+            />
+            <Route
+              exact
+              path="/sykmeldinger/:id/inntektsmelding/"
+              component={Inntektsmelding}
+            />
+            <Route exact path="/sykmeldinger/:id/vis/" component={Sykmelding} />
+            <Route exact path="/sykmeldinger/:id/soknad/" component={Soknad} />
+            <Route
+              exact
+              path="/sykmeldinger/:id/beslutning/"
+              component={BeslutningFraNav}
+            />
           </Switch>
         </BrowserRouter>
       </DataFetcher>
