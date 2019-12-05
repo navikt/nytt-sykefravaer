@@ -86,8 +86,12 @@ const Sykmeldingkategori = ({ tittel, children }: SykmeldingkategoriProps) => {
       <Element>{tittel}</Element>
       <hr />
       {Array.isArray(children)
-        ? children.map(child => (
-            <div className="sykmelding" style={{ marginBottom: "1rem" }}>
+        ? children.map((child, index) => (
+            <div
+              key={index}
+              className="sykmelding"
+              style={{ marginBottom: "1rem" }}
+            >
               {child}
             </div>
           ))

@@ -6,14 +6,12 @@ import { LenkepanelBase } from "nav-frontend-lenkepanel";
 import { Undertittel, Element, Sidetittel } from "nav-frontend-typografi";
 import Veilederpanel from "nav-frontend-veilederpanel";
 import PanelBase from "nav-frontend-paneler";
-import Stegindikator from "nav-frontend-stegindikator";
 
 import "./sykmeldingOversikt.less";
 
 import book from "../svg/book.svg";
 import bjorn from "../svg/bjorn.svg";
 import useAppStore from "../store/useAppStore";
-import StegindikatorSteg from "nav-frontend-stegindikator/lib/stegindikator-steg";
 
 const getBrodsmuler = (id: string) => {
   return [
