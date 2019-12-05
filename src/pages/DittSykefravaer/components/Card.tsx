@@ -20,10 +20,10 @@ const Card = ({ tittel, tekst, lenke }: CardProps) => {
           alt="lenkeillustrasjon"
         />
       </div>
-      <div className="card__content">
+      <article className="card__content">
         <h4 className="card__content-title">{tittel}</h4>
         <section>{tekst}</section>
-      </div>
+      </article>
     </Link>
   );
 };
