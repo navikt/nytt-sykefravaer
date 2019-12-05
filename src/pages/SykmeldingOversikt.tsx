@@ -3,7 +3,12 @@ import { useHistory, useParams, Link } from "react-router-dom";
 
 import Brodsmuler from "../components/brodsmuler/brodsmuler";
 import { LenkepanelBase } from "nav-frontend-lenkepanel";
-import { Undertittel, Element, Sidetittel } from "nav-frontend-typografi";
+import {
+  Undertittel,
+  Element,
+  Sidetittel,
+  Normaltekst
+} from "nav-frontend-typografi";
 import Veilederpanel from "nav-frontend-veilederpanel";
 import PanelBase from "nav-frontend-paneler";
 
@@ -12,6 +17,7 @@ import "./sykmeldingOversikt.less";
 import book from "../svg/book.svg";
 import bjorn from "../svg/bjorn.svg";
 import useAppStore from "../store/useAppStore";
+import { Knapp } from "nav-frontend-knapper";
 
 const getBrodsmuler = (id: string) => {
   return [
@@ -67,13 +73,27 @@ const SykmeldingOversikt = () => {
       </Undertittel>
       <div style={{ marginBottom: "3rem" }}>
         <Veilederpanel type={"plakat"} svg={bjorn}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, nisi
-          officia? Suscipit vero consectetur itaque perspiciatis optio, sint
-          obcaecati unde ipsa ad facere debitis in quae fuga tenetur laboriosam
-          exercitationem?
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              textAlign: "center"
+            }}
+          >
+            <Normaltekst style={{ marginBottom: "1rem" }}>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur,
+              nisi officia? Suscipit vero consectetur itaque perspiciatis optio,
+              sint obcaecati unde ipsa ad facere debitis in quae fuga tenetur
+              laboriosam exercitationem?
+            </Normaltekst>
+            <Knapp>Til sykmeldingen</Knapp>
+          </div>
         </Veilederpanel>
       </div>
-      <Kategori tittel={"Status"}><p>Stegindikator</p></Kategori>
+      <Kategori tittel={"Status"}>
+        <p>Stegindikator</p>
+      </Kategori>
       <Kategori tittel={"Dokumenter"}>
         <Lenkepanel
           innhold={"Inntektsmelding"}
