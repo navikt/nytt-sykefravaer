@@ -1,18 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import konsultasjon from "../../svg/konsultasjon.svg";
 import bjorn from "../../svg/bjorn.svg";
 
 import Brodsmuler, { Brodsmule } from "../../components/brodsmuler/brodsmuler";
-import { Sidetittel, Normaltekst, Systemtittel } from "nav-frontend-typografi";
+import { Sidetittel, Systemtittel } from "nav-frontend-typografi";
 import Veileder from "../../components/veileder/Veileder";
-import { LenkepanelBase } from "nav-frontend-lenkepanel";
 import Card from "./components/Card";
 import RelatertInfo from "./components/RelatertInfo";
 import CardContainer from "./components/CardContainer";
 
 import "./DittSykefravaer.less";
+import LenkepanelWrapper from "./components/LenkepanelWrapper";
 
 const brodsmuler: Brodsmule[] = [
   {
@@ -52,24 +51,13 @@ const DittSykefravaer = () => {
           }
         />
 
-        <LenkepanelBase
-          border
-          href=""
-          linkCreator={linkProps => <Link {...linkProps} to="/sykmeldinger/" />}
-        >
-          <div style={{ display: "flex", padding: "0.5rem" }}>
-            <img src={bjorn} width={90} alt="Bjørn" />
-            <div style={{ marginLeft: "1rem" }}>
-              <Systemtittel className="lenkepanel__heading">
-                Dine sykmeldinger
-              </Systemtittel>
-              <p>
-                Oversikt over dokumenter, status og beslutning for dine
-                sykeperioder.
-              </p>
-            </div>
-          </div>
-        </LenkepanelBase>
+        <LenkepanelWrapper
+          lenke="/sykmeldinger/"
+          tittel="Dine sykmeldinger"
+          tekst="Oversikt over dokumenter, status og beslutning for dine
+                sykeperioder."
+          svg={bjorn}
+        />
 
         <CardContainer>
           <Card
