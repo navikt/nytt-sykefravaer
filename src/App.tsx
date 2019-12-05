@@ -5,13 +5,14 @@ import "./basic.less";
 
 import useAppStore from "./store/useAppStore";
 import DataFetcher from "./components/DataFetcher";
-import DittSykefravaer from "./pages/DittSykefravaer";
+import DittSykefravaer from "./pages/DittSykefravaer/DittSykefravaer";
 import DineSykmeldinger from "./pages/DineSykmeldinger";
 import Sykmelding from "./pages/Sykmelding";
 import Soknad from "./pages/Soknad";
 import BeslutningFraNav from "./pages/BeslutningFraNav";
 import SykmeldingOversikt from "./pages/SykmeldingOversikt";
 import Inntektsmelding from "./pages/Inntektsmelding";
+import TidslinjeSide from "./pages/TidslinjeSide/TidslinjeSide";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Switch>
             <Route exact path="/" component={DittSykefravaer} />
             <Route exact path="/sykmeldinger/" component={DineSykmeldinger} />
+            <Route exact path="/tidslinjen/" component={TidslinjeSide} />
             <Route
               exact
               path="/sykmeldinger/:id/"

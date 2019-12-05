@@ -2,13 +2,16 @@ import React from "react";
 import { Knapp } from "nav-frontend-knapper";
 import { useHistory, Link } from "react-router-dom";
 
-import konsultasjon from "../svg/konsultasjon.svg";
-import bjorn from "../svg/bjorn.svg";
+import konsultasjon from "../../svg/konsultasjon.svg";
+import bjorn from "../../svg/bjorn.svg";
 
-import Brodsmuler, { Brodsmule } from "../components/brodsmuler/brodsmuler";
+import Brodsmuler, { Brodsmule } from "../../components/brodsmuler/brodsmuler";
 import { Sidetittel, Normaltekst, Systemtittel } from "nav-frontend-typografi";
-import Veileder from "../components/veileder/Veileder";
+import Veileder from "../../components/veileder/Veileder";
 import { LenkepanelBase } from "nav-frontend-lenkepanel";
+import Card from "./components/Card";
+import RelatertInfo from "./components/RelatertInfo";
+import CardContainer from "./components/CardContainer";
 
 const brodsmuler: Brodsmule[] = [
   {
@@ -82,23 +85,26 @@ const DittSykefravaer = () => {
           </div>
         </LenkepanelBase>
 
-        <div style={{ display: "flex", padding: 0, marginBottom: "2rem" }}>
+        <CardContainer>
           <Card
             tittel="Informasjon om sykefravær"
             tekst="Få oversikt over hva som skjer under et sykefravær."
+            lenke="/tidslinjen/"
           />
           <Card
             tittel="Oppfølgingsplan med arbeidsgiver"
             tekst="Lag en oppfølgingsplan med arbeidsgiver."
+            lenke="www.nav.no"
           />
           <Card
             tittel="Din informasjon"
             tekst="Informasjon om arbeidsgiver, inntektsmelding (mer?)"
+            lenke="www.nav.no"
           />
-        </div>
+        </CardContainer>
 
         <div>
-          <div style={{ display: "flex" }}>
+          <div style={{ display: "flex", paddingBottom: "1rem" }}>
             <div style={{ flex: 1, marginTop: "0.3rem" }}>
               <hr />
             </div>
@@ -118,17 +124,7 @@ const DittSykefravaer = () => {
             </div>
           </div>
 
-          <div style={{ display: "flex", flexWrap: "wrap" }}>
-            <div>Digital sykmelding</div>
-            <div>Ofte stilte spørsmål</div>
-            <div>Opphold i utlandet</div>
-            <div>Begrepsforklaring</div>
-            <div>Syk i svangerskapsperioden</div>
-            <div>Regelverk</div>
-            <div>Annen informasjon</div>
-            <div>Overgang til AAP</div>
-            <div>Slik klager du</div>
-          </div>
+          <RelatertInfo />
         </div>
       </div>
     </>
@@ -136,36 +132,3 @@ const DittSykefravaer = () => {
 };
 
 export default DittSykefravaer;
-
-interface CardProps {
-  tittel: string;
-  tekst: string;
-}
-
-const Card = ({ tittel, tekst }: CardProps) => {
-  return (
-    <div
-      style={{
-        backgroundColor: "white",
-        margin: 5,
-        border: "1px solid #78706A",
-        borderRadius: 4,
-        height: "15rem",
-        maxHeight: "15rem",
-        overflow: "hidden"
-      }}
-    >
-      <div
-        style={{
-          height: "6rem",
-          borderBottom: "3px solid #87D5EE",
-          backgroundColor: "#C2EAF7"
-        }}
-      ></div>
-      <div style={{ padding: "1rem" }}>
-        <Systemtittel>{tittel}</Systemtittel>
-        <p>{tekst}</p>
-      </div>
-    </div>
-  );
-};
