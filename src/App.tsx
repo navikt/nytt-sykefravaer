@@ -12,6 +12,7 @@ import Soknad from "./pages/Soknad";
 import BeslutningFraNav from "./pages/BeslutningFraNav";
 import SykmeldingOversikt from "./pages/SykmeldingOversikt";
 import Inntektsmelding from "./pages/Inntektsmelding";
+import TidslinjeSide from "./pages/TidslinjeSide/TidslinjeSide";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Switch>
             <Route exact path="/" component={DittSykefravaer} />
             <Route exact path="/sykmeldinger/" component={DineSykmeldinger} />
+            <Route exact path="/tidslinjen/" component={TidslinjeSide} />
             <Route
               exact
               path="/sykmeldinger/:id/"

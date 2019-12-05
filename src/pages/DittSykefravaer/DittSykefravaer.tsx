@@ -89,14 +89,17 @@ const DittSykefravaer = () => {
           <Card
             tittel="Informasjon om sykefravær"
             tekst="Få oversikt over hva som skjer under et sykefravær."
+            lenke="/tidslinjen/"
           />
           <Card
             tittel="Oppfølgingsplan med arbeidsgiver"
             tekst="Lag en oppfølgingsplan med arbeidsgiver."
+            lenke="www.nav.no"
           />
           <Card
             tittel="Din informasjon"
             tekst="Informasjon om arbeidsgiver, inntektsmelding (mer?)"
+            lenke="www.nav.no"
           />
         </CardContainer>
 
