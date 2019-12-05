@@ -12,6 +12,8 @@ import Card from "./components/Card";
 import RelatertInfo from "./components/RelatertInfo";
 import CardContainer from "./components/CardContainer";
 
+import "./DittSykefravaer.less";
+
 const brodsmuler: Brodsmule[] = [
   {
     tittel: "Ditt sykefravaer",
@@ -23,25 +25,12 @@ const brodsmuler: Brodsmule[] = [
 const DittSykefravaer = () => {
   return (
     <>
-      <div
-        style={{
-          borderBottom: "5px solid #87D5EE",
-          backgroundColor: "#C2EAF7",
-          position: "relative",
-          marginBottom: "2rem"
-        }}
-      >
+      <div className="sykefravaer-header">
         <div className="limit-short">
           <Brodsmuler brodsmuler={brodsmuler} />
           <Sidetittel>Ditt sykefravær</Sidetittel>
           <img
-            style={{
-              position: "absolute",
-              right: "0.5rem",
-              left: "auto",
-              bottom: -5,
-              display: "block"
-            }}
+            className="sykefravaer-header__image"
             src={konsultasjon}
             alt="Konsultasjon"
           />
@@ -53,13 +42,12 @@ const DittSykefravaer = () => {
           kompakt
           innhold={
             <>
-              <Normaltekst>Velkommen til ditt sykefravær.</Normaltekst>
-              <br />
-              <Normaltekst>
+              <Systemtittel>Velkommen til ditt sykefravær.</Systemtittel>
+              <p>
                 Denne tjenesten gir deg en detaljert oversikt over
                 sykmeldingsperioden din. Her får du informasjon om hva som er
                 blitt gjort eller må gjøres før vi kan utbetale sykepenger.
-              </Normaltekst>
+              </p>
             </>
           }
         />
@@ -101,29 +89,7 @@ const DittSykefravaer = () => {
           />
         </CardContainer>
 
-        <div>
-          <div style={{ display: "flex", paddingBottom: "1rem" }}>
-            <div style={{ flex: 1, marginTop: "0.3rem" }}>
-              <hr />
-            </div>
-
-            <Systemtittel
-              style={{
-                flex: 0,
-                textAlign: "center",
-                whiteSpace: "nowrap",
-                padding: "0 1rem 0 1rem"
-              }}
-            >
-              Relatert informasjon
-            </Systemtittel>
-            <div style={{ flex: 1, marginTop: "0.3rem" }}>
-              <hr />
-            </div>
-          </div>
-
-          <RelatertInfo />
-        </div>
+        <RelatertInfo />
       </div>
     </>
   );
