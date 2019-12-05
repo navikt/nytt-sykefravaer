@@ -94,7 +94,7 @@ const DittSykefravaer = () => {
           <Card
             tittel="Oppfølgingsplan med arbeidsgiver"
             tekst="Lag en oppfølgingsplan med arbeidsgiver."
-            lenke="www.nav.no"
+            lenke="/oppfolgingsplan/oppfolgingsplaner"
           />
           <Card
             tittel="Din informasjon"

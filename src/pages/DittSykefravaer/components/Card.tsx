@@ -14,15 +14,15 @@ const Card = ({ tittel, tekst, lenke }: CardProps) => {
   const history = useHistory();
 
   return (
-    <button className="card" onClick={() => history.push(lenke)}>
+    <Link className="card" to={lenke}>
       <div className="card__header">
         <img src={bjorn} className="card__header-image" />
       </div>
       <div className="card__content">
-        <h3 style={{ margin: 0 }}>{tittel}</h3>
-        <p>{tekst}</p>
+        <h4 className="card__content-title">{tittel}</h4>
+        <section>{tekst}</section>
       </div>
-    </button>
+    </Link>
   );
 };
 
