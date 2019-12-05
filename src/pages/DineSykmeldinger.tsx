@@ -21,8 +21,6 @@ const brodsmuler: Brodsmule[] = [
 ];
 
 const DineSykmeldinger = () => {
-  const history = useHistory();
-
   return (
     <div className="limit">
       <Brodsmuler brodsmuler={brodsmuler} />

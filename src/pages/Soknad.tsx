@@ -1,8 +1,7 @@
 import React from "react";
-import { Knapp } from "nav-frontend-knapper";
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-import Brodsmuler, { Brodsmule } from "../components/brodsmuler/brodsmuler";
+import Brodsmuler from "../components/brodsmuler/brodsmuler";
 
 const getBrodsmuler = (id: string) => {
   return [
@@ -30,7 +29,6 @@ const getBrodsmuler = (id: string) => {
 };
 
 const Soknad = () => {
-  const history = useHistory();
   const { id } = useParams();
 
   if (!id) {

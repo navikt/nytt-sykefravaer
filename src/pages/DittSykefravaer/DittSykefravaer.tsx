@@ -1,6 +1,5 @@
 import React from "react";
-import { Knapp } from "nav-frontend-knapper";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import konsultasjon from "../../svg/konsultasjon.svg";
 import bjorn from "../../svg/bjorn.svg";
@@ -22,8 +21,6 @@ const brodsmuler: Brodsmule[] = [
 ];
 
 const DittSykefravaer = () => {
-  const history = useHistory();
-
   return (
     <>
       <div
@@ -46,6 +43,7 @@ const DittSykefravaer = () => {
               display: "block"
             }}
             src={konsultasjon}
+            alt="Konsultasjon"
           />
         </div>
       </div>
@@ -72,7 +70,7 @@ const DittSykefravaer = () => {
           linkCreator={linkProps => <Link {...linkProps} to="/sykmeldinger/" />}
         >
           <div style={{ display: "flex", padding: "0.5rem" }}>
-            <img src={bjorn} width={90} />
+            <img src={bjorn} width={90} alt="Bjørn" />
             <div style={{ marginLeft: "1rem" }}>
               <Systemtittel className="lenkepanel__heading">
                 Dine sykmeldinger
