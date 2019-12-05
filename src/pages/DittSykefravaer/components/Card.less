@@ -1,6 +1,8 @@
+@cardMargin: 5px;
+
 .card {
   background-color: white;
-  margin: 5px;
+  margin: @cardMargin;
   border: 1px solid #78706a;
   border-radius: 4px;
   height: 15rem;
@@ -46,6 +48,8 @@
   padding: 0;
   margin-bottom: 2rem;
   flex-wrap: wrap;
+  width: calc(100% + @cardMargin * 2);
+  margin-left: -@cardMargin;
 }
 
 .card__content-title {
