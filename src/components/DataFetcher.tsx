@@ -24,8 +24,11 @@ const DataFetcher = (props: { children: any }) => {
           if (hasData(fetchState)) {
             const { data } = fetchState;
             console.log(data);
+            const sykmeldingerParset = data.map(
+              sykmeldingDto => new SykmeldingData(sykmeldingDto)
+            );
             // const sykmelding = new Sykmelding(data.sykmelding);
-            // setSykmeldinger(sykmelding);
+            setSykmeldinger(sykmeldingerParset);
           }
         }
       );

@@ -1,4 +1,11 @@
 import FetchMock, { MiddlewareUtils } from "yet-another-fetch-mock";
+import {
+  nySykmeldingMock,
+  sendtSykmeldingMock,
+  avbruttSykmeldingMock,
+  avvistSykmeldingMock
+} from "../mock/data/sykmeldingMock";
+import { SykmeldingData } from "../types/sykmeldingDataTypes";
 
 const mock = FetchMock.configure({
   enableFallback: true,
@@ -7,5 +14,10 @@ const mock = FetchMock.configure({
     MiddlewareUtils.loggingMiddleware()
   )
 });
-
-mock.get("/syforest/sykmeldinger", { test: "test" });
+new SykmeldingData(nySykmeldingMock);
+mock.get("/syforest/sykmeldinger", [
+  nySykmeldingMock,
+  sendtSykmeldingMock,
+  avbruttSykmeldingMock,
+  avvistSykmeldingMock
+]);
