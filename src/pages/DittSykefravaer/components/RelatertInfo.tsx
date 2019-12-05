@@ -10,7 +10,7 @@ interface ItemProps {
 
 const LenkeElement = ({ tekst }: ItemProps) => {
   return (
-    <Lenke className="lenkeelement" href="">
+    <Lenke className="relatertinfo__lenkeelement" href="">
       {tekst}
     </Lenke>
   );
@@ -19,20 +19,14 @@ const LenkeElement = ({ tekst }: ItemProps) => {
 const RelatertInfo = () => {
   return (
     <>
-      <div className="relatertinfo-container">
+      <div className="relatertinfo-header">
         <hr className="relatertinfo__hr" />
         <Systemtittel className="relatertinfo__tittel">
           Relatert informasjon
         </Systemtittel>
         <hr className="relatertinfo__hr" />
       </div>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, 33%)",
-          gridAutoRows: "1fr"
-        }}
-      >
+      <div className="relatertinfo-container">
         <LenkeElement tekst="Digital sykmelding" />
         <LenkeElement tekst="Ofte stilte spørsmål" />
         <LenkeElement tekst="Opphold i utlandet" />
