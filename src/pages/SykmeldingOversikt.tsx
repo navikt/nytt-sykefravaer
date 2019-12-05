@@ -10,7 +10,8 @@ import {
   Normaltekst
 } from "nav-frontend-typografi";
 import Veilederpanel from "nav-frontend-veilederpanel";
-import PanelBase from "nav-frontend-paneler";
+import PanelBase, { Panel } from "nav-frontend-paneler";
+import Stegindikator from "nav-frontend-stegindikator";
 
 import "./sykmeldingOversikt.less";
 
@@ -18,6 +19,7 @@ import book from "../svg/book.svg";
 import bjorn from "../svg/bjorn.svg";
 import useAppStore from "../store/useAppStore";
 import { Knapp } from "nav-frontend-knapper";
+import StegindikatorSteg from "nav-frontend-stegindikator/lib/stegindikator-steg";
 
 const getBrodsmuler = (id: string) => {
   return [
@@ -52,7 +54,7 @@ const SykmeldingOversikt = () => {
   const aktuellSykmelding = sykmeldinger.find(
     sykmeldingDto => sykmeldingDto.sykmelding.id === id
   );
-
+  
   if (!aktuellSykmelding) {
     return <p>kunne ikke finne sykmelding</p>;
   }
@@ -92,7 +94,13 @@ const SykmeldingOversikt = () => {
         </Veilederpanel>
       </div>
       <Kategori tittel={"Status"}>
-        <p>Stegindikator</p>
+        <Panel border>
+          <Stegindikator visLabel>
+            <StegindikatorSteg label={"Sykmeldingen må bekreftes"} index={0} aktiv />
+            <StegindikatorSteg label={"hello"} index={1} />
+            <StegindikatorSteg label={"hello"} index={2} />
+          </Stegindikator>
+        </Panel>
       </Kategori>
       <Kategori tittel={"Dokumenter"}>
         <Lenkepanel
