@@ -26,15 +26,19 @@
   }
 }
 
+@headerHeight: 45%;
+
 .card__header {
-  height: 45%;
+  height: @headerHeight;
   border-bottom: 3px solid #87d5ee;
   background-color: #c2eaf7;
   text-align: center;
 }
 
 .card__content {
+  height: 100% - @headerHeight;
   margin: 1rem;
+  overflow: auto;
 }
 
 .card__header-image {
