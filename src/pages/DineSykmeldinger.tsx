@@ -21,6 +21,8 @@ const brodsmuler: Brodsmule[] = [
 ];
 
 const DineSykmeldinger = () => {
+  document.title = "Dine sykmeldinger - www.nav.no";
+
   return (
     <div className="limit">
       <Brodsmuler brodsmuler={brodsmuler} />

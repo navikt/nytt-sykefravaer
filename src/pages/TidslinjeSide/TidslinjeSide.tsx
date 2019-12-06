@@ -22,6 +22,8 @@ const brodsmuler: Brodsmule[] = [
 ];
 
 const TidslinjeSide = () => {
+  document.title = "Tidslinjen - www.nav.no";
+
   const [harArbeidsgiver, setHarArbeidsgiver] = useState(true);
 
   const radioEndring = (e: React.ChangeEvent<HTMLInputElement>): void => {

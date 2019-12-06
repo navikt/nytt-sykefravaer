@@ -22,6 +22,8 @@ const brodsmuler: Brodsmule[] = [
 ];
 
 const DittSykefravaer = () => {
+  document.title = "Ditt sykefravær - www.nav.no";
+
   return (
     <>
       <div className="sykefravaer-header">

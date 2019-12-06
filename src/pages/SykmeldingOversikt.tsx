@@ -25,6 +25,8 @@ const getBrodsmuler = (id: string) => {
 };
 
 const SykmeldingOversikt = () => {
+  document.title = "Sykmelding - www.nav.no";
+
   const history = useHistory();
   const { id } = useParams();
 
