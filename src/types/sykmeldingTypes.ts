@@ -1,5 +1,31 @@
 import dayjs from "dayjs";
 
+export enum StatusTyper {
+  NY = "ny",
+  AVVIST = "avvist",
+  AVBRUTT = "avbrutt",
+  SENDT = "sendt",
+  BEKREFTET = "bekreftet"
+}
+
+export class Status {
+  status: StatusTyper;
+  dato?: Date;
+  datoBekreftet?: Date;
+  sykmeldtFra?: string;
+  arbeidsgiver?: string;
+  organisasjonsnummer?: string;
+
+  constructor(data: any) {
+    this.status = data.status;
+    this.dato = data.dato;
+    this.datoBekreftet = data.datoBekreftet;
+    this.sykmeldtFra = data.sykmeldtFra;
+    this.arbeidsgiver = data.arbeidsgiver;
+    this.organisasjonsnummer = data.organisasjonsnummer;
+  }
+}
+
 export class MedisinskVurdering {
   hovedDiagnose?: Diagnose;
   biDiagnoser: Diagnose[];

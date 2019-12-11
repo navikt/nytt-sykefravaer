@@ -6,6 +6,8 @@ import Brodsmuler, { Brodsmule } from "../components/brodsmuler/brodsmuler";
 import Veileder from "../components/veileder/Veileder";
 import { LenkepanelBase } from "nav-frontend-lenkepanel";
 import book from "../svg/book.svg";
+import bjorn from "../svg/bjorn.svg";
+import useAppStore from "../store/useAppStore";
 
 const brodsmuler: Brodsmule[] = [
   {
@@ -23,6 +25,14 @@ const brodsmuler: Brodsmule[] = [
 const DineSykmeldinger = () => {
   document.title = "Dine sykmeldinger - www.nav.no";
 
+  const { sykmeldinger } = useAppStore();
+  console.log(sykmeldinger);
+
+  // TODO: Erstatt dette med en fornuftig visning for ingen sykmeldinger
+  if (!sykmeldinger) {
+    return <div>Ingen sykmeldinger</div>;
+  }
+
   return (
     <div className="limit">
       <Brodsmuler brodsmuler={brodsmuler} />
@@ -31,6 +41,7 @@ const DineSykmeldinger = () => {
       </Sidetittel>
       <div style={{ marginBottom: "3rem" }}>
         <Veileder
+          svg={bjorn}
           kompakt
           innhold={
             <p>
@@ -45,7 +56,7 @@ const DineSykmeldinger = () => {
       <div className="sykmelding-kategori"></div>
       <Sykmeldingkategori tittel={"Nye sykmeldinger"}>
         <SykmeldingLenkepanel
-          sykemldingId={"1"}
+          sykemldingId={sykmeldinger[0].sykmelding.id}
           syketilfelleStartdato={new Date("01-12-2019")}
           syketilfelleSluttdato={new Date("10-12-2019")}
         />
@@ -82,19 +93,14 @@ const Sykmeldingkategori = ({ tittel, children }: SykmeldingkategoriProps) => {
   return (
     <div style={{ marginBottom: "3rem" }}>
       <Element>{tittel}</Element>
-      <div
-        className="linje"
-        style={{
-          marginTop: "0.2rem",
-          marginBottom: "1rem",
-          height: "0.08rem",
-          width: "100%",
-          backgroundColor: "black"
-        }}
-      ></div>
+      <hr />
       {Array.isArray(children)
-        ? children.map(child => (
-            <div className="sykmelding" style={{ marginBottom: "1rem" }}>
+        ? children.map((child, index) => (
+            <div
+              key={index}
+              className="sykmelding"
+              style={{ marginBottom: "1rem" }}
+            >
               {child}
             </div>
           ))
