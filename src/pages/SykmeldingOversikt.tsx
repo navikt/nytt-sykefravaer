@@ -56,10 +56,13 @@ const SykmeldingOversikt = () => {
   const aktuellSykmelding = sykmeldinger.find(
     sykmeldingDto => sykmeldingDto.sykmelding.id === id
   );
-  
+
   if (!aktuellSykmelding) {
     return <p>kunne ikke finne sykmelding</p>;
   }
+
+  const { status, sykmelding } = aktuellSykmelding;
+  console.log(status, sykmelding);
 
   return (
     <div className="limit">
@@ -68,12 +71,8 @@ const SykmeldingOversikt = () => {
         Sykmelding
       </Sidetittel>
       <Undertittel style={{ textAlign: "center", marginBottom: "3rem" }}>
-        fra {aktuellSykmelding.sykmelding.perioder[0].fom} til{" "}
-        {
-          aktuellSykmelding.sykmelding.perioder[
-            aktuellSykmelding.sykmelding.perioder.length - 1
-          ].tom
-        }
+        fra {sykmelding.perioder[0].fom.toDateString()} til{" "}
+        {sykmelding.perioder[sykmelding.perioder.length - 1].tom.toDateString()}
       </Undertittel>
       <div style={{ marginBottom: "3rem" }}>
         <Veilederpanel type={"plakat"} svg={bjorn}>
@@ -98,7 +97,11 @@ const SykmeldingOversikt = () => {
       <Kategori tittel={"Status"}>
         <Panel border>
           <Stegindikator visLabel>
-            <StegindikatorSteg label={"Sykmeldingen må bekreftes"} index={0} aktiv />
+            <StegindikatorSteg
+              label={"Sykmeldingen må bekreftes"}
+              index={0}
+              aktiv
+            />
             <StegindikatorSteg label={"hello"} index={1} />
             <StegindikatorSteg label={"hello"} index={2} />
           </Stegindikator>

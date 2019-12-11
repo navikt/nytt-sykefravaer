@@ -10,6 +10,7 @@ import useFetch, {
 } from "../hooks/useFetch";
 import useAppStore from "../store/useAppStore";
 import { SykmeldingData } from "../types/sykmeldingDataTypes";
+import { Sykmelding, Status } from "../types/sykmeldingTypes";
 
 const DataFetcher = (props: { children: any }) => {
   const { setSykmeldinger } = useAppStore();
@@ -23,12 +24,12 @@ const DataFetcher = (props: { children: any }) => {
         (fetchState: FetchState<SykmeldingData[]>) => {
           if (hasData(fetchState)) {
             const { data } = fetchState;
-            console.log(data);
-            const sykmeldingerParset = data.map(
-              sykmeldingDto => new SykmeldingData(sykmeldingDto)
-            );
-            // const sykmelding = new Sykmelding(data.sykmelding);
-            setSykmeldinger(sykmeldingerParset);
+            const sykmeldinger = data.map(sykmeldingData => ({
+              status: new Status(sykmeldingData.status),
+              sykmelding: new Sykmelding(sykmeldingData.sykmelding)
+            }));
+            console.log(sykmeldinger);
+            setSykmeldinger(sykmeldinger);
           }
         }
       );
