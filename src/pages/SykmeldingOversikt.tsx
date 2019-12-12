@@ -44,7 +44,6 @@ const getBrodsmuler = (id: string) => {
 const SykmeldingOversikt = () => {
   document.title = "Sykmelding - www.nav.no";
 
-  const history = useHistory();
   const { id } = useParams();
   const { sykmeldinger } = useAppStore();
 
@@ -61,8 +60,7 @@ const SykmeldingOversikt = () => {
     return <p>kunne ikke finne sykmelding</p>;
   }
 
-  const { status, sykmelding } = aktuellSykmelding;
-  console.log(status, sykmelding);
+  const { sykmelding } = aktuellSykmelding;
 
   return (
     <div className="limit">

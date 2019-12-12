@@ -2,6 +2,11 @@ import React from "react";
 import { useParams } from "react-router-dom";
 
 import Brodsmuler from "../components/brodsmuler/brodsmuler";
+import useAppStore from "../store/useAppStore";
+
+import { Beslutning } from "../types/soknadTypes";
+import SoknadGodkjent from "../components/beslutninger/SoknadGodkjent";
+import SoknadAvvist from "../components/beslutninger/SoknadAvvist";
 
 const getBrodsmuler = (id: string) => {
   return [
@@ -30,19 +35,49 @@ const getBrodsmuler = (id: string) => {
 
 const BeslutningFraNav = () => {
   const { id } = useParams();
+  const { sykmeldinger, soknader } = useAppStore(); // todo: hent inn søknad
 
-  if (!id) {
+  if (!id || !sykmeldinger || !soknader) {
     return null;
   }
 
   const brodsmuler = getBrodsmuler(id);
 
-  return (
-    <div className="limit">
-      <Brodsmuler brodsmuler={brodsmuler} />
-      Beslutning fra NAV
-    </div>
+  const aktuellSykmelding = sykmeldinger.find(
+    sykmeldingDto => sykmeldingDto.sykmelding.id === id
   );
+  const akutellSoknad = soknader[0]; // todo: finne ut hvordan søknader passer inn i løpet
+
+  if (!aktuellSykmelding || !akutellSoknad) {
+    return <p>kunne ikke finne sykmelding eller søknad</p>;
+  }
+
+  const { beslutning } = akutellSoknad;
+
+  if (beslutning === Beslutning.GODKJENT) {
+    return (
+      <div className="limit">
+        <Brodsmuler brodsmuler={brodsmuler} />
+        <SoknadGodkjent
+          sykmeldingDto={aktuellSykmelding}
+          soknad={akutellSoknad}
+        />
+      </div>
+    );
+  }
+
+  if (beslutning === Beslutning.AVVIST) {
+    return (
+      <div className="limit">
+        <Brodsmuler brodsmuler={brodsmuler} />
+        <SoknadAvvist
+          sykmeldingDto={aktuellSykmelding}
+          soknad={akutellSoknad}
+        />
+      </div>
+    );
+  }
+  return null;
 };
 
 export default BeslutningFraNav;
