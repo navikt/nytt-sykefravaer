@@ -1,25 +1,28 @@
 export const getUrlTilDittSykefravaer = (): string => {
-    return '/';
+  return "/";
 };
 
 export const getUrlTilSykmeldinger = (): string => {
-    return '/sykmeldinger';
+  return "/sykmeldinger";
 };
 
 export const getUrlTilSykmelding = (sykmeldingId: string): string => {
-    return `/sykmeldinger/${sykmeldingId}/`;
+  return `/sykmeldinger/${sykmeldingId}/`;
 };
 
 export const getUrlTilTidslinje = (): string => {
-    return '/tidslinje';
-}
+  return "/tidslinje";
+};
 
 export const erHerokuApp = () => {
-    const url = window && window.location && window.location.href ? window.location.href : '';
+  const url =
+    window && window.location && window.location.href
+      ? window.location.href
+      : "";
 
-    return url.indexOf('herokuapp') > -1;
+  return url.indexOf("herokuapp") > -1;
 };
 
 export const getSykefravaerUrl = (): string => {
-    return erHerokuApp() ? 'https://sykefravaer.herokuapp.com' : '';
+  return erHerokuApp() ? "https://sykefravaer.herokuapp.com" : "";
 };
