@@ -1,20 +1,21 @@
 import React from "react";
-import { SykmeldingData } from "../../types/sykmeldingDataTypes";
-import { Soknad } from "../../types/soknadTypes";
+import { SykmeldingData } from "../../../types/sykmeldingDataTypes";
+import { Soknad } from "../../../types/soknadTypes";
 import { Sidetittel, Undertittel, Normaltekst } from "nav-frontend-typografi";
 import Veilederpanel from "nav-frontend-veilederpanel";
-import Kategori from "../../components/Kategori";
-import Lenkepanel from "../../components/Lenkepanel";
+import Kategori from "../../../components/Kategori";
+import Lenkepanel from "../../../components/Lenkepanel";
 
-import bjorn from "../../svg/bjorn.svg";
-import { Panel } from "nav-frontend-paneler";
+import bjorn from "../../../svg/bjorn.svg";
+import { useParams } from "react-router-dom";
 
-interface SoknadAvvistProps {
+interface SoknadGodkjentProps {
   sykmeldingDto: SykmeldingData;
   soknad: Soknad;
 }
 
-const SoknadAvvist = ({ sykmeldingDto, soknad }: SoknadAvvistProps) => {
+const SoknadGodkjent = ({ sykmeldingDto, soknad }: SoknadGodkjentProps) => {
+  const { id } = useParams();
   const { sykmelding } = sykmeldingDto;
 
   return (
@@ -37,7 +38,7 @@ const SoknadAvvist = ({ sykmeldingDto, soknad }: SoknadAvvistProps) => {
             }}
           >
             <Normaltekst style={{ marginBottom: "1rem" }}>
-              NAV har dessverre avslått din søknad om sykepenger
+              NAV har godkjent din søknad om sykepenger
             </Normaltekst>
           </div>
         </Veilederpanel>
@@ -49,8 +50,27 @@ const SoknadAvvist = ({ sykmeldingDto, soknad }: SoknadAvvistProps) => {
           Nostrum aut quos corrupti voluptatibus quod magnam nihil? Consectetur
           minus error maxime!
         </Normaltekst>
-        <Lenkepanel innhold={"Vilkår for rett til ytelsen"} lenkeTil={"#"} />
-        <Lenkepanel innhold={"Begrunnelse"} lenkeTil={"#"} />
+        <Lenkepanel
+          innhold={
+            <>
+              <h1>Utbetaling fra NAV</h1>
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Maiores laboriosam repudiandae magnam dolorum, laborum quam?
+                Perferendis, atque error ratione minus magnam aspernatur
+                recusandae doloribus nemo suscipit velit fugit autem nulla!
+              </p>
+              <h3>Vi har beregnet følgende for deg</h3>
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Laborum minus possimus sint inventore, corporis debitis delectus
+                expedita quae nobis provident magnam voluptatum quis, reiciendis
+                aspernatur nesciunt et, nisi obcaecati! Libero.
+              </p>
+            </>
+          }
+          lenkeTil={`/sykmeldinger/${id}/beslutning`}
+        />
       </Kategori>
       <Kategori tittel={"Dokumenter for beslutningsgrunnlag"}>
         <Lenkepanel innhold={"Inntektsmelding"} lenkeTil={"#"} />
@@ -59,18 +79,9 @@ const SoknadAvvist = ({ sykmeldingDto, soknad }: SoknadAvvistProps) => {
           innhold={"Søknader om sykepenger for periode"}
           lenkeTil={"#"}
         />
-        <Panel>
-          <Undertittel>Uenig? usikker?</Undertittel>
-          <Normaltekst>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
-            velit cum eos modi tempora adipisci necessitatibus similique quia
-            autem nam accusamus fugiat dicta vel rem, at commodi. Doloremque,
-            quo corrupti.
-          </Normaltekst>
-        </Panel>
       </Kategori>
     </div>
   );
 };
 
-export default SoknadAvvist;
+export default SoknadGodkjent;
