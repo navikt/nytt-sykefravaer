@@ -1,6 +1,7 @@
 import React from 'react';
 import Lenke from 'nav-frontend-lenker';
-import { Systemtittel } from 'nav-frontend-typografi';
+
+import OverskriftSkille from '../../../components/OverskriftSkille/OverskriftSkille';
 
 import './RelatertInfo.less';
 
@@ -19,11 +20,7 @@ const LenkeElement = ({ tekst }: ItemProps) => {
 const RelatertInfo = () => {
     return (
         <>
-            <div className="relatertinfo-header">
-                <hr className="relatertinfo__hr" />
-                <Systemtittel className="relatertinfo__tittel">Relatert informasjon</Systemtittel>
-                <hr className="relatertinfo__hr" />
-            </div>
+            <OverskriftSkille tekst="Relatert informasjon" />
             <div className="relatertinfo-container">
                 <LenkeElement tekst="Digital sykmelding" />
                 <LenkeElement tekst="Ofte stilte spørsmål" />
