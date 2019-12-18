@@ -21,14 +21,14 @@ const getBrodsmuler = (id: string) => {
             erKlikkbar: true,
         },
         {
-            tittel: 'Vis sykmelding',
-            sti: `/sykmeldinger/${id}/vis`,
+            tittel: 'Beslutning fra NAV',
+            sti: `/sykmeldinger/${id}/beslutning`,
             erKlikkbar: true,
         },
     ];
 };
 
-const Sykmelding = () => {
+const BeslutningFraNav = () => {
     const { id } = useParams();
 
     if (!id) {
@@ -40,9 +40,9 @@ const Sykmelding = () => {
     return (
         <div className="limit">
             <Brodsmuler brodsmuler={brodsmuler} />
-            Sykmelding
+            Beslutning fra NAV
         </div>
     );
 };
 
-export default Sykmelding;
+export default BeslutningFraNav;
