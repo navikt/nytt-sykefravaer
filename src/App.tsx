@@ -3,16 +3,16 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.less';
 import './basic.less';
 
-import useAppStore from './store/useAppStore';
-import DataFetcher from './components/DataFetcher';
-import DittSykefravaer from './pages/DittSykefravaer/DittSykefravaer';
-import DineSykmeldinger from './pages/DineSykmeldinger';
-import Sykmelding from './pages/Sykmelding';
-import Soknad from './pages/Soknad';
-import BeslutningFraNav from './pages/BeslutningFraNav';
-import SykmeldingOversikt from './pages/SykmeldingOversikt';
-import Inntektsmelding from './pages/Inntektsmelding';
-import TidslinjeSide from './pages/TidslinjeSide/TidslinjeSide';
+import useAppStore from "./store/useAppStore";
+import DataFetcher from "./components/DataFetcher";
+import DittSykefravaer from "./pages/DittSykefravaer/DittSykefravaer";
+import DineSykmeldinger from "./pages/DineSykmeldinger";
+import Sykmelding from "./pages/Sykmelding";
+import Soknad from "./pages/Soknad";
+import BeslutningFraNav from "./pages/BeslutningerFraNav/BeslutningFraNav";
+import SykmeldingOversikt from "./pages/SykmeldingOversikt";
+import Inntektsmelding from "./pages/Inntektsmelding";
+import TidslinjeSide from "./pages/TidslinjeSide/TidslinjeSide";
 
 const App = () => {
     return (
