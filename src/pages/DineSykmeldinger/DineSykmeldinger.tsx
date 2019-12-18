@@ -2,12 +2,12 @@ import React from 'react';
 import { useHistory, Link } from 'react-router-dom';
 
 import { Sidetittel, Element, Undertittel } from 'nav-frontend-typografi';
-import Brodsmuler, { Brodsmule } from '../components/brodsmuler/brodsmuler';
-import Veileder from '../components/veileder/Veileder';
+import Brodsmuler, { Brodsmule } from '../../components/brodsmuler/brodsmuler';
+import Veileder from '../../components/veileder/Veileder';
 import { LenkepanelBase } from 'nav-frontend-lenkepanel';
-import book from '../svg/book.svg';
-import bjorn from '../svg/bjorn.svg';
-import useAppStore from '../store/useAppStore';
+import book from '../../svg/book.svg';
+import bjorn from '../../svg/bjorn.svg';
+import useAppStore from '../../store/useAppStore';
 
 const brodsmuler: Brodsmule[] = [
     {

@@ -6,7 +6,7 @@ import './basic.less';
 import useAppStore from "./store/useAppStore";
 import DataFetcher from "./components/DataFetcher";
 import DittSykefravaer from "./pages/DittSykefravaer/DittSykefravaer";
-import DineSykmeldinger from "./pages/DineSykmeldinger";
+import DineSykmeldinger from "./pages/DineSykmeldinger/DineSykmeldinger";
 import Sykmelding from "./pages/Sykmelding";
 import Soknad from "./pages/Soknad";
 import BeslutningFraNav from "./pages/BeslutningerFraNav/BeslutningFraNav";

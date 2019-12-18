@@ -12,6 +12,7 @@ import CardContainer from './components/CardContainer';
 
 import './DittSykefravaer.less';
 import LenkepanelWrapper from './components/LenkepanelWrapper';
+import OverskriftSkille from '../../components/OverskriftSkille/OverskriftSkille';
 
 const brodsmuler: Brodsmule[] = [
     {
@@ -47,7 +48,7 @@ const DittSykefravaer = () => {
                         </>
                     }
                 />
-
+                <OverskriftSkille tekst="Aktuelt" />
                 <LenkepanelWrapper
                     lenke="/sykmeldinger/"
                     tittel="Dine sykmeldinger"
@@ -56,6 +57,7 @@ const DittSykefravaer = () => {
                     svg={bjorn}
                 />
 
+                <OverskriftSkille tekst="Informasjon og veiledning" />
                 <CardContainer>
                     <Card
                         tittel="Informasjon om sykefravær"
