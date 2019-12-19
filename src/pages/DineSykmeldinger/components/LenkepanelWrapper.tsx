@@ -35,8 +35,6 @@ const tilLesbarPeriodeMedGraderingOgArbeidsgiver = (
 };
 
 const LenkepanelWrapper = ({ lenke, tittel, perioder, arbeidsgiver, tekst, svg }: LenkepanelProps) => {
-    console.log(perioder);
-    
     return (
         <LenkepanelBase border href="" linkCreator={linkProps => <Link {...linkProps} to={lenke} />}>
             <div className="lenkepanelwrapper-container">
