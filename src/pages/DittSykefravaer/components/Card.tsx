@@ -17,7 +17,7 @@ const Card = ({ tittel, tekst, lenke }: CardProps) => {
                 <img src={bjorn} className="card__header-image" alt="lenkeillustrasjon" />
             </div>
             <article className="card__content">
-                <h4 className="card__content-title">{tittel}</h4>
+                <h3 className="card__content-title">{tittel}</h3>
                 <section>{tekst}</section>
             </article>
         </Link>
