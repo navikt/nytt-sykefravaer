@@ -1,54 +1,54 @@
-@import "../node_modules/nav-frontend-core/less/_variabler";
-@import "./basic";
+@import '../node_modules/nav-frontend-core/less/_variabler';
+@import './basic';
 
 html,
 body,
 #app-root {
-  height: 100%;
-  background-color: @navLysGra !important;
+    height: 100%;
+    background-color: @navLysGra !important;
 
-  .spinner {
-    display: block;
-    margin: 0 auto;
-  }
+    .spinner {
+        display: block;
+        margin: 0 auto;
+    }
 }
 
 .app {
-  min-height: 70vh;
+    min-height: 70vh;
 }
 
 .limit {
-  position: relative;
-  padding: 0 1rem 0;
+    position: relative;
+    padding: 0 1rem 0;
 }
 
 .limit-short {
-  &:extend(.limit);
+    &:extend(.limit);
 }
 
 .vekk {
-  line-height: 0;
-  color: transparent;
-  font-size: 0;
-  width: 0;
-  height: 0;
+    line-height: 0;
+    color: transparent;
+    font-size: 0;
+    width: 0;
+    height: 0;
 }
 
 a {
-  color: @navBla;
+    color: @navBla;
 }
 
 @media (min-width: @screen-sm) {
-  .limit {
-    width: @desktopLimitWidth;
-    margin: 0 auto;
-    padding: 1rem 1rem 4rem;
-  }
+    .limit {
+        width: @desktopLimitWidth;
+        margin: 0 auto;
+        padding: 1rem 1rem 4rem;
+    }
 
-  .limit-short {
-    &:extend(.limit);
-    width: @desktopLimitWidth;
-    margin: 0 auto;
-    padding: 1rem 1rem 2rem;
-  }
+    .limit-short {
+        &:extend(.limit);
+        width: @desktopLimitWidth;
+        margin: 0 auto;
+        padding: 1rem 1rem 2rem;
+    }
 }
