@@ -16,6 +16,7 @@ import useAppStore from '../store/useAppStore';
 import { Knapp } from 'nav-frontend-knapper';
 import StegindikatorSteg from 'nav-frontend-stegindikator/lib/stegindikator-steg';
 import Header from '../components/Header/Header';
+import UnderstreketOverskrift from '../components/UnderstreketOverskrift/UnderstreketOverskrift';
 
 const SIDETITTEL = 'Sykmelding';
 
@@ -120,8 +121,7 @@ interface KategoriProps {
 const Kategori = ({ tittel, children }: KategoriProps) => {
     return (
         <div style={{ marginBottom: '3rem' }}>
-            <Element>{tittel}</Element>
-            <hr />
+            <UnderstreketOverskrift tittel={tittel} />
             {Array.isArray(children)
                 ? children.map((child, index) => (
                       <div key={index} className="sykmelding" style={{ marginBottom: '1rem' }}>

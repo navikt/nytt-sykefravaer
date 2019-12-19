@@ -1,61 +1,61 @@
 @cardMargin: 5px;
 
 .card {
-  background-color: white;
-  margin: @cardMargin;
-  border: 1px solid #78706a;
-  border-radius: 4px;
-  height: 16rem;
-  max-height: 16rem;
-  overflow: hidden;
-  flex: 1;
-  padding: 0;
-  text-align: left;
-  color: inherit;
-  text-decoration: inherit;
-  min-width: 10rem;
+    background-color: white;
+    margin: @cardMargin;
+    border: 1px solid #78706a;
+    border-radius: 4px;
+    height: 16rem;
+    max-height: 16rem;
+    overflow: hidden;
+    flex: 1;
+    padding: 0;
+    text-align: left;
+    color: inherit;
+    text-decoration: inherit;
+    min-width: 10rem;
 }
 
 .card:hover {
-  border: 1px solid #0067c5;
-  box-shadow: #b7b1a9 0 2px 1px 0;
+    border: 1px solid #0067c5;
+    box-shadow: #b7b1a9 0 2px 1px 0;
 
-  .card__content-title {
-    text-decoration: underline;
-    color: #0067c5;
-  }
+    .card__content-title {
+        text-decoration: underline;
+        color: #0067c5;
+    }
 }
 
 @headerHeight: 40%;
 
 .card__header {
-  height: @headerHeight;
-  border-bottom: 3px solid #87d5ee;
-  background-color: #c2eaf7;
-  text-align: center;
+    height: @headerHeight;
+    border-bottom: 3px solid #87d5ee;
+    background-color: #c2eaf7;
+    text-align: center;
 }
 
 .card__content {
-  height: 100% - @headerHeight;
-  margin: 1rem;
-  overflow: auto;
+    height: 100% - @headerHeight;
+    margin: 1rem;
+    overflow: auto;
 }
 
 .card__header-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .card-container {
-  display: flex;
-  padding: 0;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-  width: calc(100% + @cardMargin * 2);
-  margin-left: -@cardMargin;
+    display: flex;
+    padding: 0;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    width: calc(100% + @cardMargin * 2);
+    margin-left: -@cardMargin;
 }
 
 .card__content-title {
-  margin: 0;
+    margin: 0;
 }
