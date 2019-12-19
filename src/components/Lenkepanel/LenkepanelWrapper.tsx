@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { Element, Undertekst, Undertittel } from 'nav-frontend-typografi';
 import { LenkepanelBase } from 'nav-frontend-lenkepanel';
 
-import './LenkepanelEnArbeidsgiver.less';
-import { Periode, Arbeidsgiver, Sykmelding } from '../../../types/sykmeldingTypes';
+import './LenkepanelWrapper.less';
+import { Periode, Arbeidsgiver, Sykmelding } from '../../types/sykmeldingTypes';
 import dayjs from 'dayjs';
 
 interface LenkepanelProps {
@@ -23,12 +23,12 @@ const tilLesbarPeriodeMedGraderingOgArbeidsgiver = (
     periodelengde: number,
 ): string => {
     const gradering = periode.gradert && periode.gradert.grad ? periode.gradert.grad : 100;
-    const arbeidsgiverNavn = arbeidsgiver.navn ? arbeidsgiver.navn : 'Ukjent selskap';
+    const arbeidsgiverNavn = arbeidsgiver.navn ? arbeidsgiver.navn : 'Ukjent arbeidsgiver';
 
     return arbeidsgiverNavn + ' • ' + gradering.toString() + '% i ' + periodelengde + ' dager';
 };
 
-const LenkepanelFlereArbeidsgivere = ({ lenke, tittel, sykmeldinger, tekst, svg }: LenkepanelProps) => {
+const LenkepanelWrapper = ({ lenke, tittel, sykmeldinger, tekst, svg }: LenkepanelProps) => {
     return (
         <LenkepanelBase border href="" linkCreator={linkProps => <Link {...linkProps} to={lenke} />}>
             <div className="lenkepanelwrapper-container">
@@ -65,4 +65,4 @@ const LenkepanelFlereArbeidsgivere = ({ lenke, tittel, sykmeldinger, tekst, svg 
     );
 };
 
-export default LenkepanelFlereArbeidsgivere;
+export default LenkepanelWrapper;
