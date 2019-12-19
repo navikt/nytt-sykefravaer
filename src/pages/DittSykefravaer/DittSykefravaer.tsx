@@ -5,7 +5,7 @@ import bjorn from '../../svg/bjorn.svg';
 
 import Brodsmuler, { Brodsmule } from '../../components/brodsmuler/brodsmuler';
 import { Sidetittel, Systemtittel } from 'nav-frontend-typografi';
-import Veileder from '../../components/veileder/Veileder';
+import Veileder, { StemningTypes } from '../../components/veileder/Veileder';
 import Card from './components/Card';
 import RelatertInfo from './components/RelatertInfo';
 import CardContainer from './components/CardContainer';
@@ -36,16 +36,15 @@ const DittSykefravaer = () => {
 
             <div className="limit">
                 <Veileder
-                    kompakt
                     innhold={
                         <>
                             <Systemtittel>Velkommen til ditt sykefravær.</Systemtittel>
-                            <p>
-                                Denne tjenesten gir deg en detaljert oversikt over sykmeldingsperioden din. Her får du
-                                informasjon om hva som er blitt gjort eller må gjøres før vi kan utbetale sykepenger.
-                            </p>
+                            <p>Denne teksten avhenger av hvilke sykemeldinger brukeren har/ikke har.</p>
                         </>
                     }
+                    stemning={StemningTypes.GLAD}
+                    onClick={() => {}}
+                    knappTekst="Demo knapp"
                 />
 
                 <LenkepanelWrapper
