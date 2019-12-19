@@ -9,6 +9,7 @@ import book from '../../svg/book.svg';
 import bjorn from '../../svg/bjorn.svg';
 import useAppStore from '../../store/useAppStore';
 import LenkepanelEnArbeidsgiver from './components/LenkepanelEnArbeidsgiver';
+import LenkepanelFlereArbeidsgivere from './components/LenkepanelFlereArbeidsgivere';
 
 const brodsmuler: Brodsmule[] = [
     {
@@ -66,6 +67,13 @@ const DineSykmeldinger = () => {
                     perioder={sykmeldinger[0].sykmelding.perioder}
                     arbeidsgiver={sykmeldinger[0].sykmelding.arbeidsgiver}
                     tekst="Sykmelding må bekreftes og sendes inn"
+                    svg={bjorn}
+                />
+                <LenkepanelFlereArbeidsgivere
+                    lenke="/sykmelding"
+                    tittel="Sykmelding"
+                    sykmeldinger={sykmeldinger.map(sykmeldingData => sykmeldingData.sykmelding)}
+                    tekst="Status tekst"
                     svg={bjorn}
                 />
                 <SykmeldingLenkepanel
