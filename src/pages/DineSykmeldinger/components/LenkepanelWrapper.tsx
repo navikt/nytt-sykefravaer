@@ -1,27 +1,58 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Systemtittel } from 'nav-frontend-typografi';
+import { Element, Undertekst, Undertittel } from 'nav-frontend-typografi';
 import { LenkepanelBase } from 'nav-frontend-lenkepanel';
 
 import './LenkepanelWrapper.less';
+import { Periode, Arbeidsgiver } from '../../../types/sykmeldingTypes';
+import dayjs from 'dayjs';
+
+interface PeriodeMedArbeidsgiver {
+    arbeidsgiver: string;
+    periode: Periode;
+}
 
 interface LenkepanelProps {
     lenke: string;
     tittel: string;
-    arbeidsgiver: string;
+    perioder: Periode[];
+    arbeidsgiver: Arbeidsgiver;
     tekst: string;
     svg: string;
 }
 
-const LenkepanelWrapper = ({ lenke, tittel, tekst, svg }: LenkepanelProps) => {
+const beregnPeriodelengde = (fom: Date, tom: Date): number => dayjs(tom).diff(dayjs(fom), 'day');
+const tilLesbarPeriodeMedGraderingOgArbeidsgiver = (
+    periode: Periode,
+    arbeidsgiver: Arbeidsgiver,
+    periodelengde: number,
+): string => {
+    const gradering = periode.gradert && periode.gradert.grad ? periode.gradert.grad : 100;
+    const arbeidsgiverNavn = arbeidsgiver.navn ? arbeidsgiver.navn : 'Ukjent selskap';
+
+    return arbeidsgiverNavn + ' • ' + gradering.toString() + '% i ' + periodelengde + ' dager';
+};
+
+const LenkepanelWrapper = ({ lenke, tittel, perioder, arbeidsgiver, tekst, svg }: LenkepanelProps) => {
+    console.log(perioder);
+    
     return (
         <LenkepanelBase border href="" linkCreator={linkProps => <Link {...linkProps} to={lenke} />}>
             <div className="lenkepanelwrapper-container">
-                <img src={svg} width={100} alt="Lenkepanelillustrasjon" />
+                <img src={svg} width={60} className="lenkepanelwrapper-bilde" alt="Lenkepanelillustrasjon" />
                 <div className="lenkepanelwrapper-tekst">
-                    <Systemtittel className="lenkepanel__heading">{tittel}</Systemtittel>
-                    <p>{tekst}</p>
+                    <Undertittel className="lenkepanel__heading">{tittel}</Undertittel>
+                    {perioder.map(periode => (
+                        <Undertekst>
+                            {tilLesbarPeriodeMedGraderingOgArbeidsgiver(
+                                periode,
+                                arbeidsgiver,
+                                beregnPeriodelengde(periode.fom, periode.tom),
+                            )}
+                        </Undertekst>
+                    ))}
+                    <Element className="lenkepanel__status">{tekst}</Element>
                 </div>
             </div>
         </LenkepanelBase>
