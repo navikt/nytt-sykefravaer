@@ -1,6 +1,6 @@
 export enum Beslutning {
     GODKJENT = 'GODKJENT',
-    AVVIST = 'AVVIST'
+    AVVIST = 'AVVIST',
 }
 
 export class Soknad {
