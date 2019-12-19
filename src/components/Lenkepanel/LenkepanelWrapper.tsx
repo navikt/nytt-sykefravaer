@@ -5,15 +5,19 @@ import { Element, Undertekst, Undertittel } from 'nav-frontend-typografi';
 import { LenkepanelBase } from 'nav-frontend-lenkepanel';
 
 import './LenkepanelWrapper.less';
-import { Periode, Arbeidsgiver, Sykmelding } from '../../types/sykmeldingTypes';
+import { Periode, Arbeidsgiver } from '../../types/sykmeldingTypes';
 import dayjs from 'dayjs';
+
+type Ikonbakgrunn = 'gul' | 'bla' | 'gra';
 
 interface LenkepanelProps {
     lenke: string;
     tittel: string;
-    sykmeldinger: Sykmelding | Sykmelding[];
-    tekst: string;
+    tekstGra: string;
+    tekstStatus?: string;
     svg: string;
+    ikonStor?: boolean;
+    ikonbakgrunn: Ikonbakgrunn;
 }
 
 const beregnPeriodelengde = (fom: Date, tom: Date): number => dayjs(tom).diff(dayjs(fom), 'day');
@@ -28,37 +32,20 @@ const tilLesbarPeriodeMedGraderingOgArbeidsgiver = (
     return arbeidsgiverNavn + ' • ' + gradering.toString() + '% i ' + periodelengde + ' dager';
 };
 
-const LenkepanelWrapper = ({ lenke, tittel, sykmeldinger, tekst, svg }: LenkepanelProps) => {
+const LenkepanelWrapper = ({ lenke, tittel, tekstGra, tekstStatus, svg, ikonStor = false, ikonbakgrunn }: LenkepanelProps) => {
     return (
         <LenkepanelBase border href="" linkCreator={linkProps => <Link {...linkProps} to={lenke} />}>
             <div className="lenkepanelwrapper-container">
-                <img src={svg} width={60} className="lenkepanelwrapper-bilde" alt="Lenkepanelillustrasjon" />
+                <img
+                    src={svg}
+                    width={ikonStor ? 100 : 60}
+                    className={`lenkepanelwrapper-ikon ikon--${ikonbakgrunn}`}
+                    alt="Lenkepanelillustrasjon"
+                />
                 <div className="lenkepanelwrapper-tekst">
                     <Undertittel className="lenkepanel__heading">{tittel}</Undertittel>
-                    {sykmeldinger instanceof Sykmelding
-                        ? sykmeldinger.perioder.map(periode => (
-                              <Undertekst>
-                                  {tilLesbarPeriodeMedGraderingOgArbeidsgiver(
-                                      periode,
-                                      sykmeldinger.arbeidsgiver,
-                                      beregnPeriodelengde(periode.fom, periode.tom),
-                                  )}
-                              </Undertekst>
-                          ))
-                        : sykmeldinger.map(sykmelding =>
-                              sykmelding.perioder.map(periode => (
-                                  <Undertekst>
-                                      {tilLesbarPeriodeMedGraderingOgArbeidsgiver(
-                                          periode,
-                                          sykmelding.arbeidsgiver,
-                                          beregnPeriodelengde(periode.fom, periode.tom),
-                                      )}
-                                  </Undertekst>
-                              )),
-                          )}
-
-                    {}
-                    <Element className="lenkepanel__status">{tekst}</Element>
+                    <Undertekst>{tekstGra}</Undertekst>
+                    <Element className="lenkepanel__status">{tekstStatus}</Element>
                 </div>
             </div>
         </LenkepanelBase>

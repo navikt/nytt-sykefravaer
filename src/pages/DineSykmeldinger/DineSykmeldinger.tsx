@@ -1,13 +1,14 @@
 import React from 'react';
-import { useHistory, Link } from 'react-router-dom';
 
-import { Sidetittel, Element, Undertittel } from 'nav-frontend-typografi';
+import { Sidetittel } from 'nav-frontend-typografi';
 import Brodsmuler, { Brodsmule } from '../../components/brodsmuler/brodsmuler';
 import Veileder from '../../components/veileder/Veileder';
-import { LenkepanelBase } from 'nav-frontend-lenkepanel';
+
 import book from '../../svg/book.svg';
 import bjorn from '../../svg/bjorn.svg';
 import useAppStore from '../../store/useAppStore';
+import Kategori from '../../components/Kategori';
+import LenkepanelWrapper from '../../components/Lenkepanel/LenkepanelWrapper';
 
 const brodsmuler: Brodsmule[] = [
     {
@@ -51,102 +52,28 @@ const DineSykmeldinger = () => {
                 />
             </div>
             <div className="sykmelding-kategori"></div>
-            <Sykmeldingkategori tittel={'Nye sykmeldinger'}>
-                <SykmeldingLenkepanel
-                    sykemldingId={sykmeldinger[0].sykmelding.id}
-                    syketilfelleStartdato={new Date('01-12-2019')}
-                    syketilfelleSluttdato={new Date('10-12-2019')}
+            <Kategori tittel={'Krever handling'}>
+                <LenkepanelWrapper
+                    lenke="/hello"
+                    tittel="sykmelding fra ... til .... 2019"
+                    tekstGra="grå tekst"
+                    tekstStatus="status i sykmeldingen"
+                    svg={bjorn}
+                    ikonbakgrunn="gul"
                 />
-            </Sykmeldingkategori>
-            <Sykmeldingkategori tittel={'Tidligere sykmeldinger'}>
-                <SykmeldingLenkepanel
-                    sykemldingId={'2'}
-                    syketilfelleStartdato={new Date('01-12-2019')}
-                    syketilfelleSluttdato={new Date('10-12-2019')}
+            </Kategori>
+            <Kategori tittel="Status">
+                <LenkepanelWrapper
+                    lenke="/hello"
+                    tittel="sykmelding fra ... til .... 2019"
+                    tekstGra="grå tekst"
+                    tekstStatus="status i sykmeldingen"
+                    svg={bjorn}
+                    ikonbakgrunn="gul"
                 />
-                <SykmeldingLenkepanel
-                    sykemldingId={'3'}
-                    syketilfelleStartdato={new Date('01-12-2019')}
-                    syketilfelleSluttdato={new Date('10-12-2019')}
-                />
-                <SykmeldingLenkepanel
-                    sykemldingId={'4'}
-                    syketilfelleStartdato={new Date('01-12-2019')}
-                    syketilfelleSluttdato={new Date('10-12-2019')}
-                />
-            </Sykmeldingkategori>
+            </Kategori>
         </div>
     );
 };
 
 export default DineSykmeldinger;
-
-interface SykmeldingkategoriProps {
-    tittel: string;
-    children: JSX.Element | JSX.Element[];
-}
-
-const Sykmeldingkategori = ({ tittel, children }: SykmeldingkategoriProps) => {
-    return (
-        <div style={{ marginBottom: '3rem' }}>
-            <Element>{tittel}</Element>
-            <hr />
-            {Array.isArray(children)
-                ? children.map((child, index) => (
-                      <div key={index} className="sykmelding" style={{ marginBottom: '1rem' }}>
-                          {child}
-                      </div>
-                  ))
-                : children}
-        </div>
-    );
-};
-
-// ---------------
-
-interface SykmeldingLenkepanelProps {
-    sykemldingId: string;
-    syketilfelleStartdato: Date;
-    syketilfelleSluttdato: Date;
-}
-
-const SykmeldingLenkepanel = ({
-    sykemldingId,
-    syketilfelleStartdato,
-    syketilfelleSluttdato,
-}: SykmeldingLenkepanelProps) => {
-    const history = useHistory();
-    return (
-        <LenkepanelBase
-            style={{ paddingTop: '0', paddingBottom: '0' }}
-            border
-            href=""
-            linkCreator={linkProps => <Link {...linkProps} to={`/sykmeldinger/${sykemldingId}`} />}
-            onClick={() => history.push(`/sykmeldinger/${sykemldingId}`)}
-        >
-            <div
-                style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                }}
-            >
-                <img
-                    src={book}
-                    alt="ikon"
-                    className="sykmelding-lenkepanel__ikon"
-                    style={{
-                        marginRight: '1rem',
-                        paddingTop: '1rem',
-                        paddingBottom: '1rem',
-                        paddingRight: '1rem',
-                        borderRight: '0.04rem solid black', //
-                    }}
-                />
-                <Undertittel className="sykmelding-lenkepanel__innhold">
-                    Sykmelding fra {syketilfelleStartdato.toLocaleDateString()} -{' '}
-                    {syketilfelleSluttdato.toLocaleDateString()}
-                </Undertittel>
-            </div>
-        </LenkepanelBase>
-    );
-};

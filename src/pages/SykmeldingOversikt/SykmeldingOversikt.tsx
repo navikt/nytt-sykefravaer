@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory, useParams, Link } from 'react-router-dom';
 
-import Brodsmuler from '../components/brodsmuler/brodsmuler';
+import Brodsmuler from '../../components/brodsmuler/brodsmuler';
 import { LenkepanelBase } from 'nav-frontend-lenkepanel';
 import { Undertittel, Element, Sidetittel, Normaltekst } from 'nav-frontend-typografi';
 import Veilederpanel from 'nav-frontend-veilederpanel';
@@ -10,12 +10,12 @@ import Stegindikator from 'nav-frontend-stegindikator';
 
 import './sykmeldingOversikt.less';
 
-import book from '../svg/book.svg';
-import bjorn from '../svg/bjorn.svg';
-import useAppStore from '../store/useAppStore';
+import book from '../../svg/book.svg';
+import bjorn from '../../svg/bjorn.svg';
+import useAppStore from '../../store/useAppStore';
 import { Knapp } from 'nav-frontend-knapper';
 import StegindikatorSteg from 'nav-frontend-stegindikator/lib/stegindikator-steg';
-import LenkepanelWrapper from '../components/Lenkepanel/LenkepanelWrapper';
+import LenkepanelWrapper from '../../components/Lenkepanel/LenkepanelWrapper';
 
 const getBrodsmuler = (id: string) => {
     return [
@@ -70,13 +70,6 @@ const SykmeldingOversikt = () => {
             </div>
 
             <Kategori tittel={'Krever handling'}>
-                <LenkepanelWrapper
-                    lenke={`/sykmelding/${sykmelding.id}`}
-                    tittel="Sykmelding"
-                    sykmeldinger={sykmelding}
-                    tekst="Status: sykmelding må bekreftes og sendes inn"
-                    svg={bjorn}
-                />
             </Kategori>
             <Kategori tittel={'Status'}>
                 

@@ -10,7 +10,7 @@ import DineSykmeldinger from './pages/DineSykmeldinger/DineSykmeldinger';
 import Sykmelding from './pages/Sykmelding';
 import Soknad from './pages/Soknad';
 import BeslutningFraNav from './pages/BeslutningerFraNav/BeslutningFraNav';
-import SykmeldingOversikt from './pages/SykmeldingOversikt';
+import SykmeldingOversikt from './pages/SykmeldingOversikt/SykmeldingOversikt';
 import Inntektsmelding from './pages/Inntektsmelding';
 import TidslinjeSide from './pages/TidslinjeSide/TidslinjeSide';
 
