@@ -8,6 +8,7 @@ import { LenkepanelBase } from 'nav-frontend-lenkepanel';
 import book from '../svg/book.svg';
 import bjorn from '../svg/bjorn.svg';
 import useAppStore from '../store/useAppStore';
+import UnderstreketOverskrift from '../components/UnderstreketOverskrift/UnderstreketOverskrift';
 
 const brodsmuler: Brodsmule[] = [
     {
@@ -89,8 +90,7 @@ interface SykmeldingkategoriProps {
 const Sykmeldingkategori = ({ tittel, children }: SykmeldingkategoriProps) => {
     return (
         <div style={{ marginBottom: '3rem' }}>
-            <Element>{tittel}</Element>
-            <hr />
+            <UnderstreketOverskrift tittel={tittel} />
             {Array.isArray(children)
                 ? children.map((child, index) => (
                       <div key={index} className="sykmelding" style={{ marginBottom: '1rem' }}>

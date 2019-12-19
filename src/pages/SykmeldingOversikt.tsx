@@ -15,6 +15,7 @@ import bjorn from '../svg/bjorn.svg';
 import useAppStore from '../store/useAppStore';
 import { Knapp } from 'nav-frontend-knapper';
 import StegindikatorSteg from 'nav-frontend-stegindikator/lib/stegindikator-steg';
+import UnderstreketOverskrift from '../components/UnderstreketOverskrift/UnderstreketOverskrift';
 
 const getBrodsmuler = (id: string) => {
     return [
@@ -111,8 +112,7 @@ interface KategoriProps {
 const Kategori = ({ tittel, children }: KategoriProps) => {
     return (
         <div style={{ marginBottom: '3rem' }}>
-            <Element>{tittel}</Element>
-            <hr />
+            <UnderstreketOverskrift tittel={tittel} />
             {Array.isArray(children)
                 ? children.map((child, index) => (
                       <div key={index} className="sykmelding" style={{ marginBottom: '1rem' }}>
