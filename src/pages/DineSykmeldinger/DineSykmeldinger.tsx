@@ -8,7 +8,7 @@ import { LenkepanelBase } from 'nav-frontend-lenkepanel';
 import book from '../../svg/book.svg';
 import bjorn from '../../svg/bjorn.svg';
 import useAppStore from '../../store/useAppStore';
-import LenkepanelWrapper from './components/LenkepanelWrapper';
+import LenkepanelEnArbeidsgiver from './components/LenkepanelEnArbeidsgiver';
 
 const brodsmuler: Brodsmule[] = [
     {
@@ -60,7 +60,7 @@ const DineSykmeldinger = () => {
                 />
             </Sykmeldingkategori>
             <Sykmeldingkategori tittel={'Tidligere sykmeldinger'}>
-                <LenkepanelWrapper
+                <LenkepanelEnArbeidsgiver
                     lenke="/sykmelding"
                     tittel="Sykmelding"
                     perioder={sykmeldinger[0].sykmelding.perioder}
