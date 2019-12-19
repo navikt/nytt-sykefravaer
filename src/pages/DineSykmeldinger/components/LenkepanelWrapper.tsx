@@ -8,11 +8,6 @@ import './LenkepanelWrapper.less';
 import { Periode, Arbeidsgiver } from '../../../types/sykmeldingTypes';
 import dayjs from 'dayjs';
 
-interface PeriodeMedArbeidsgiver {
-    arbeidsgiver: string;
-    periode: Periode;
-}
-
 interface LenkepanelProps {
     lenke: string;
     tittel: string;
