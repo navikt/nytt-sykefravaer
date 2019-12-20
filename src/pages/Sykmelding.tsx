@@ -2,6 +2,9 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 
 import Brodsmuler from '../components/brodsmuler/brodsmuler';
+import Header from '../components/Header/Header';
+
+const SIDETITTEL = 'Vis sykmelding';
 
 const getBrodsmuler = (id: string) => {
     return [
@@ -21,7 +24,7 @@ const getBrodsmuler = (id: string) => {
             erKlikkbar: true,
         },
         {
-            tittel: 'Vis sykmelding',
+            tittel: SIDETITTEL,
             sti: `/sykmeldinger/${id}/vis`,
             erKlikkbar: true,
         },
@@ -38,10 +41,13 @@ const Sykmelding = () => {
     const brodsmuler = getBrodsmuler(id);
 
     return (
-        <div className="limit">
-            <Brodsmuler brodsmuler={brodsmuler} />
-            Sykmelding
-        </div>
+        <>
+            <Header location={SIDETITTEL} />
+            <div className="limit">
+                <Brodsmuler brodsmuler={brodsmuler} />
+                Sykmelding
+            </div>
+        </>
     );
 };
 

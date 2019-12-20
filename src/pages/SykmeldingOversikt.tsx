@@ -15,7 +15,10 @@ import bjorn from '../svg/bjorn.svg';
 import useAppStore from '../store/useAppStore';
 import { Knapp } from 'nav-frontend-knapper';
 import StegindikatorSteg from 'nav-frontend-stegindikator/lib/stegindikator-steg';
+import Header from '../components/Header/Header';
 import UnderstreketOverskrift from '../components/UnderstreketOverskrift/UnderstreketOverskrift';
+
+const SIDETITTEL = 'Sykmelding';
 
 const getBrodsmuler = (id: string) => {
     return [
@@ -30,7 +33,7 @@ const getBrodsmuler = (id: string) => {
             erKlikkbar: true,
         },
         {
-            tittel: 'Sykmelding',
+            tittel: SIDETITTEL,
             sti: `/${id}`,
             erKlikkbar: true,
         },
@@ -38,7 +41,7 @@ const getBrodsmuler = (id: string) => {
 };
 
 const SykmeldingOversikt = () => {
-    document.title = 'Sykmelding - www.nav.no';
+    document.title = `${SIDETITTEL} - www.nav.no`;
 
     const { id } = useParams();
     const { sykmeldinger } = useAppStore();
@@ -57,30 +60,35 @@ const SykmeldingOversikt = () => {
     const { sykmelding } = aktuellSykmelding;
 
     return (
-        <div className="limit">
-            <Brodsmuler brodsmuler={brodsmuler} />
-            <Sidetittel style={{ textAlign: 'center', marginBottom: '1rem' }}>Sykmelding</Sidetittel>
-            <Undertittel style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                fra {sykmelding.perioder[0].fom.toDateString()} til{' '}
-                {sykmelding.perioder[sykmelding.perioder.length - 1].tom.toDateString()}
-            </Undertittel>
-
-            <Kategori tittel={'Status'}>
-                <Panel border>
-                    <Stegindikator visLabel>
-                        <StegindikatorSteg label={'Sykmeldingen må bekreftes'} index={0} aktiv />
-                        <StegindikatorSteg label={'hello'} index={1} />
-                        <StegindikatorSteg label={'hello'} index={2} />
-                    </Stegindikator>
-                </Panel>
-            </Kategori>
-            <Kategori tittel={'Dokumenter'}>
-                <Lenkepanel innhold={'Inntektsmelding'} lenkeTil={`/sykmeldinger/${id}/inntektsmelding`} />
-                <Lenkepanel innhold={'Vis sykmelding'} lenkeTil={`/sykmeldinger/${id}/vis`} />
-                <Lenkepanel innhold={'Søknader om sykepenger for periode'} lenkeTil={`/sykmeldinger/${id}/søknad`} />
-                <Lenkepanel innhold={'Beslutning fra NAV'} lenkeTil={`/sykmeldinger/${id}/beslutning`} />
-            </Kategori>
-        </div>
+        <>
+            <Header location={SIDETITTEL} />
+            <div className="limit">
+                <Brodsmuler brodsmuler={brodsmuler} />
+                <Sidetittel style={{ textAlign: 'center', marginBottom: '1rem' }}>Sykmelding</Sidetittel>
+                <Undertittel style={{ textAlign: 'center', marginBottom: '3rem' }}>
+                    fra {sykmelding.perioder[0].fom.toDateString()} til{' '}
+                    {sykmelding.perioder[sykmelding.perioder.length - 1].tom.toDateString()}
+                </Undertittel>
+                <Kategori tittel={'Status'}>
+                    <Panel border>
+                        <Stegindikator visLabel>
+                            <StegindikatorSteg label={'Sykmeldingen må bekreftes'} index={0} aktiv />
+                            <StegindikatorSteg label={'hello'} index={1} />
+                            <StegindikatorSteg label={'hello'} index={2} />
+                        </Stegindikator>
+                    </Panel>
+                </Kategori>
+                <Kategori tittel={'Dokumenter'}>
+                    <Lenkepanel innhold={'Inntektsmelding'} lenkeTil={`/sykmeldinger/${id}/inntektsmelding`} />
+                    <Lenkepanel innhold={'Vis sykmelding'} lenkeTil={`/sykmeldinger/${id}/vis`} />
+                    <Lenkepanel
+                        innhold={'Søknader om sykepenger for periode'}
+                        lenkeTil={`/sykmeldinger/${id}/søknad`}
+                    />
+                    <Lenkepanel innhold={'Beslutning fra NAV'} lenkeTil={`/sykmeldinger/${id}/beslutning`} />
+                </Kategori>
+            </div>
+        </>
     );
 };
 

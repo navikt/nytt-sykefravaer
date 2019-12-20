@@ -1,18 +1,17 @@
-@import '../../basic.less';
+@import '../../../basic.less';
 
 .sykefravaer-header {
-    border-bottom: 5px solid #87d5ee;
-    background-color: #c2eaf7;
+    border-bottom: 4px solid @headerBorderFarge;
+    background-color: @headerFarge;
     position: relative;
-    margin-bottom: 2rem;
+    height: 8rem;
 }
 
 .sykefravaer-header__image {
     position: absolute;
     right: 0.5rem;
     left: auto;
-    bottom: -5px;
-    display: block;
+    bottom: 15px;
 }
 
 @media (max-width: @screen-sm) {
