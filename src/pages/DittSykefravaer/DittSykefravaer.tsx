@@ -50,18 +50,18 @@ const DittSykefravaer = () => {
 
                 <CardContainer>
                     <Card
-                        tittel="Informasjon om sykefravær"
-                        tekst="Få oversikt over hva som skjer under et sykefravær."
+                        tittel="Sykefravær forklart"
+                        tekst="Vi har laget en tidslinje som viser deg hva som skjer under sykefraværet ved sykmelding over lengre tid."
                         lenke="/tidslinjen/"
                     />
                     <Card
-                        tittel="Oppfølgingsplan med arbeidsgiver"
-                        tekst="Lag en oppfølgingsplan med arbeidsgiver."
+                        tittel="Kontakt en veileder"
+                        tekst="Har du spørsmål vedrørende sykefravær eller trenger du informasjon fra en av våre veiledere?"
                         lenke="/oppfolgingsplan/oppfolgingsplaner"
                     />
                     <Card
-                        tittel="Din informasjon"
-                        tekst="Informasjon om arbeidsgiver, inntektsmelding (mer?)"
+                        tittel="Personinfo"
+                        tekst="Informasjonen vi innhenter for å vurdere dine søknader. Her kan du se og endre informasjonen."
                         lenke="www.nav.no"
                     />
                 </CardContainer>
