@@ -8,7 +8,10 @@ import { LenkepanelBase } from 'nav-frontend-lenkepanel';
 import book from '../svg/book.svg';
 import bjorn from '../svg/bjorn.svg';
 import useAppStore from '../store/useAppStore';
+import Header from '../components/Header/Header';
 import UnderstreketOverskrift from '../components/UnderstreketOverskrift/UnderstreketOverskrift';
+
+const SIDETITTEL = 'Dine sykmeldinger';
 
 const brodsmuler: Brodsmule[] = [
     {
@@ -17,14 +20,14 @@ const brodsmuler: Brodsmule[] = [
         erKlikkbar: true,
     },
     {
-        tittel: 'Dine sykmeldinger',
+        tittel: SIDETITTEL,
         sti: '/',
         erKlikkbar: true,
     },
 ];
 
 const DineSykmeldinger = () => {
-    document.title = 'Dine sykmeldinger - www.nav.no';
+    document.title = `${SIDETITTEL} - www.nav.no`;
 
     const { sykmeldinger } = useAppStore();
     console.log(sykmeldinger);
@@ -35,48 +38,51 @@ const DineSykmeldinger = () => {
     }
 
     return (
-        <div className="limit">
-            <Brodsmuler brodsmuler={brodsmuler} />
-            <Sidetittel style={{ textAlign: 'center', marginBottom: '3rem' }}>Dine sykmeldinger</Sidetittel>
-            <div style={{ marginBottom: '3rem' }}>
-                <Veileder
-                    svg={bjorn}
-                    kompakt
-                    innhold={
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora placeat ipsa totam
-                            eligendi? Dolore magni quia ullam, cumque nesciunt vel laudantium laborum nisi repudiandae
-                            neque veritatis, accusantium ipsum esse nam?
-                        </p>
-                    }
-                />
+        <>
+            <Header location={SIDETITTEL} />
+            <div className="limit">
+                <Brodsmuler brodsmuler={brodsmuler} />
+                <Sidetittel style={{ textAlign: 'center', marginBottom: '3rem' }}>Dine sykmeldinger</Sidetittel>
+                <div style={{ marginBottom: '3rem' }}>
+                    <Veileder
+                        svg={bjorn}
+                        kompakt
+                        innhold={
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora placeat ipsa totam
+                                eligendi? Dolore magni quia ullam, cumque nesciunt vel laudantium laborum nisi
+                                repudiandae neque veritatis, accusantium ipsum esse nam?
+                            </p>
+                        }
+                    />
+                </div>
+                <div className="sykmelding-kategori"></div>
+                <Sykmeldingkategori tittel={'Nye sykmeldinger'}>
+                    <SykmeldingLenkepanel
+                        sykemldingId={sykmeldinger[0].sykmelding.id}
+                        syketilfelleStartdato={new Date('01-12-2019')}
+                        syketilfelleSluttdato={new Date('10-12-2019')}
+                    />
+                </Sykmeldingkategori>
+                <Sykmeldingkategori tittel={'Tidligere sykmeldinger'}>
+                    <SykmeldingLenkepanel
+                        sykemldingId={'2'}
+                        syketilfelleStartdato={new Date('01-12-2019')}
+                        syketilfelleSluttdato={new Date('10-12-2019')}
+                    />
+                    <SykmeldingLenkepanel
+                        sykemldingId={'3'}
+                        syketilfelleStartdato={new Date('01-12-2019')}
+                        syketilfelleSluttdato={new Date('10-12-2019')}
+                    />
+                    <SykmeldingLenkepanel
+                        sykemldingId={'4'}
+                        syketilfelleStartdato={new Date('01-12-2019')}
+                        syketilfelleSluttdato={new Date('10-12-2019')}
+                    />
+                </Sykmeldingkategori>
             </div>
-            <div className="sykmelding-kategori"></div>
-            <Sykmeldingkategori tittel={'Nye sykmeldinger'}>
-                <SykmeldingLenkepanel
-                    sykemldingId={sykmeldinger[0].sykmelding.id}
-                    syketilfelleStartdato={new Date('01-12-2019')}
-                    syketilfelleSluttdato={new Date('10-12-2019')}
-                />
-            </Sykmeldingkategori>
-            <Sykmeldingkategori tittel={'Tidligere sykmeldinger'}>
-                <SykmeldingLenkepanel
-                    sykemldingId={'2'}
-                    syketilfelleStartdato={new Date('01-12-2019')}
-                    syketilfelleSluttdato={new Date('10-12-2019')}
-                />
-                <SykmeldingLenkepanel
-                    sykemldingId={'3'}
-                    syketilfelleStartdato={new Date('01-12-2019')}
-                    syketilfelleSluttdato={new Date('10-12-2019')}
-                />
-                <SykmeldingLenkepanel
-                    sykemldingId={'4'}
-                    syketilfelleStartdato={new Date('01-12-2019')}
-                    syketilfelleSluttdato={new Date('10-12-2019')}
-                />
-            </Sykmeldingkategori>
-        </div>
+        </>
     );
 };
 
