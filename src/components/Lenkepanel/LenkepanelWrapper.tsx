@@ -13,7 +13,7 @@ type Ikonbakgrunn = 'gul' | 'bla' | 'gra';
 interface LenkepanelProps {
     lenke: string;
     tittel: string;
-    tekstGra: string;
+    tekstGra?: string;
     tekstStatus?: string;
     svg: string;
     ikonStor?: boolean;
@@ -35,7 +35,7 @@ const tilLesbarPeriodeMedGraderingOgArbeidsgiver = (
 const LenkepanelWrapper = ({ lenke, tittel, tekstGra, tekstStatus, svg, ikonStor = false, ikonbakgrunn }: LenkepanelProps) => {
     return (
         <LenkepanelBase border href="" linkCreator={linkProps => <Link {...linkProps} to={lenke} />}>
-            <div className="lenkepanelwrapper-container">
+            <div className="lenkepanelwrapper-container ">
                 <img
                     src={svg}
                     width={ikonStor ? 100 : 60}

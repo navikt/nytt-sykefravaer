@@ -11,7 +11,7 @@ import RelatertInfo from './components/RelatertInfo';
 import CardContainer from './components/CardContainer';
 
 import './DittSykefravaer.less';
-import LenkepanelWrapper from './components/LenkepanelWrapper';
+import LenkepanelWrapper from '../../components/Lenkepanel/LenkepanelWrapper';
 import OverskriftSkille from '../../components/OverskriftSkille/OverskriftSkille';
 
 const brodsmuler: Brodsmule[] = [
@@ -52,11 +52,10 @@ const DittSykefravaer = () => {
                 <LenkepanelWrapper
                     lenke="/sykmeldinger/"
                     tittel="Dine sykmeldinger"
-                    tekst="Oversikt over dokumenter, status og beslutning for dine
-                sykeperioder."
+                    tekstGra="Oversikt over dokumenter, status og beslutning for dine sykeperioder."
                     svg={bjorn}
+                    ikonbakgrunn="gul"
                 />
-
                 <OverskriftSkille tekst="Informasjon og veiledning" />
                 <CardContainer>
                     <Card
