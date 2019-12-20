@@ -1,5 +1,5 @@
 import React from 'react';
-import { Element } from 'nav-frontend-typografi';
+import UnderstreketOverskrift from './UnderstreketOverskrift/UnderstreketOverskrift';
 
 interface KategoriProps {
     tittel: string;
@@ -9,8 +9,7 @@ interface KategoriProps {
 const Kategori = ({ tittel, children }: KategoriProps) => {
     return (
         <div style={{ marginBottom: '3rem' }}>
-            <Element>{tittel}</Element>
-            <hr />
+            <UnderstreketOverskrift tittel={tittel} />
             {Array.isArray(children)
                 ? children.map((child, index) => (
                       <div key={index} className="sykmelding" style={{ marginBottom: '1rem' }}>

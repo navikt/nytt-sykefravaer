@@ -7,6 +7,9 @@ import Hjelpetekst from 'nav-frontend-hjelpetekst';
 import TidslinjeMedArbeidsgiver from './TidslinjeMedArbeidsgiver';
 import './TidslinjeSide.less';
 import TidslinjeUtenArbeidsgiver from './TidslinjeUtenArbeidsgiver';
+import Header from '../../components/Header/Header';
+
+const SIDETITTEL = 'Hva skjer under sykefraværet?';
 
 const brodsmuler: Brodsmule[] = [
     {
@@ -15,7 +18,7 @@ const brodsmuler: Brodsmule[] = [
         erKlikkbar: true,
     },
     {
-        tittel: 'Hva skjer under sykefraværet?',
+        tittel: SIDETITTEL,
         sti: '/tidslinje',
         erKlikkbar: false,
     },
@@ -35,43 +38,46 @@ const TidslinjeSide = () => {
     };
 
     return (
-        <div className="limit">
-            <Brodsmuler brodsmuler={brodsmuler}></Brodsmuler>
-            <Sidetittel className="sidetittel">Hva skjer under sykefraværet?</Sidetittel>
-            <Tekstomrade className="infoheader">
-                På tidslinjen ser du hva som forventes av deg i løpet av sykefraværet. Oppgavene kan gjøres på andre
-                tidspunkter hvis det er behov for det. Hvis du er for syk til å delta i jobb eller aktivitet, kan du få
-                unntak fra enkelte av oppgavene
-            </Tekstomrade>
-            <div className="arbeidssituasjon">
-                <Radio
-                    label={'Jeg har arbeidsgiver'}
-                    name="arbeidssituasjon"
-                    value="med-arbeidsgiver"
-                    checked={harArbeidsgiver}
-                    onChange={radioEndring}
-                    className="arbeidssituasjon__med-arbeidsgiver"
-                />
-                <Radio
-                    label={
-                        <div className="arbeidssituasjon__uten-arbeidsgiver-label">
-                            Jeg har ikke arbeidsgiver
-                            <Hjelpetekst className="arbeidssituasjon__hjelpetekst">
-                                Velg «Jeg har ikke arbeidsgiver» dersom du er for eks. selvstendig næringsdrivende,
-                                frilanser eller arbeidsledig.
-                            </Hjelpetekst>
-                        </div>
-                    }
-                    name="arbeidssituasjon"
-                    value="uten-arbeidsgiver"
-                    onChange={radioEndring}
-                    checked={!harArbeidsgiver}
-                />
+        <>
+            <Header location={SIDETITTEL} />
+            <div className="limit">
+                <Brodsmuler brodsmuler={brodsmuler}></Brodsmuler>
+                <Sidetittel className="sidetittel">Hva skjer under sykefraværet?</Sidetittel>
+                <Tekstomrade className="infoheader">
+                    På tidslinjen ser du hva som forventes av deg i løpet av sykefraværet. Oppgavene kan gjøres på andre
+                    tidspunkter hvis det er behov for det. Hvis du er for syk til å delta i jobb eller aktivitet, kan du
+                    få unntak fra enkelte av oppgavene
+                </Tekstomrade>
+                <div className="arbeidssituasjon">
+                    <Radio
+                        label={'Jeg har arbeidsgiver'}
+                        name="arbeidssituasjon"
+                        value="med-arbeidsgiver"
+                        checked={harArbeidsgiver}
+                        onChange={radioEndring}
+                        className="arbeidssituasjon__med-arbeidsgiver"
+                    />
+                    <Radio
+                        label={
+                            <div className="arbeidssituasjon__uten-arbeidsgiver-label">
+                                Jeg har ikke arbeidsgiver
+                                <Hjelpetekst className="arbeidssituasjon__hjelpetekst">
+                                    Velg «Jeg har ikke arbeidsgiver» dersom du er for eks. selvstendig næringsdrivende,
+                                    frilanser eller arbeidsledig.
+                                </Hjelpetekst>
+                            </div>
+                        }
+                        name="arbeidssituasjon"
+                        value="uten-arbeidsgiver"
+                        onChange={radioEndring}
+                        checked={!harArbeidsgiver}
+                    />
+                </div>
+                <span className="tidslinje">
+                    {harArbeidsgiver ? <TidslinjeMedArbeidsgiver /> : <TidslinjeUtenArbeidsgiver />}
+                </span>
             </div>
-            <span className="tidslinje">
-                {harArbeidsgiver ? <TidslinjeMedArbeidsgiver /> : <TidslinjeUtenArbeidsgiver />}
-            </span>
-        </div>
+        </>
     );
 };
 
