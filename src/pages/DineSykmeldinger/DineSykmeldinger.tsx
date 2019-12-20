@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Sidetittel } from 'nav-frontend-typografi';
+import { Sidetittel, Undertittel } from 'nav-frontend-typografi';
 import Brodsmuler, { Brodsmule } from '../../components/brodsmuler/brodsmuler';
 import Veileder from '../../components/veileder/Veileder';
 
@@ -9,6 +9,9 @@ import bjorn from '../../svg/bjorn.svg';
 import useAppStore from '../../store/useAppStore';
 import Kategori from '../../components/Kategori';
 import LenkepanelWrapper from '../../components/Lenkepanel/LenkepanelWrapper';
+import NySykmeldingPanel from './components/NySykmeldingPanel';
+import { SykmeldingData } from '../../types/sykmeldingDataTypes';
+import BehandledePerioderPanel from './components/BehandledePerioderPanel';
 
 const brodsmuler: Brodsmule[] = [
     {
@@ -37,7 +40,12 @@ const DineSykmeldinger = () => {
     return (
         <div className="limit">
             <Brodsmuler brodsmuler={brodsmuler} />
-            <Sidetittel style={{ textAlign: 'center', marginBottom: '3rem' }}>Dine sykmeldinger</Sidetittel>
+            <Sidetittel style={{ textAlign: 'center', marginBottom: '1rem', marginTop: '2rem' }}>
+                Sykmeldingsperioder
+            </Sidetittel>
+            <Undertittel style={{ textAlign: 'center', marginBottom: '3rem' }}>
+                Oversikt over perioder du er- eller har vært sykmeldt
+            </Undertittel>
             <div style={{ marginBottom: '3rem' }}>
                 <Veileder
                     svg={bjorn}
@@ -53,24 +61,15 @@ const DineSykmeldinger = () => {
             </div>
             <div className="sykmelding-kategori"></div>
             <Kategori tittel={'Krever handling'}>
-                <LenkepanelWrapper
-                    lenke="/hello"
-                    tittel="sykmelding fra ... til .... 2019"
-                    tekstGra="grå tekst"
-                    tekstStatus="status i sykmeldingen"
-                    svg={bjorn}
-                    ikonbakgrunn="gul"
+                <NySykmeldingPanel
+                    lenke="/sykmelding"
+                    antallNyeSykmeldinger={2}
+                    periodeFra={new Date()}
+                    periodeTil={new Date()}
                 />
             </Kategori>
             <Kategori tittel="Status">
-                <LenkepanelWrapper
-                    lenke="/hello"
-                    tittel="sykmelding fra ... til .... 2019"
-                    tekstGra="grå tekst"
-                    tekstStatus="status i sykmeldingen"
-                    svg={bjorn}
-                    ikonbakgrunn="gul"
-                />
+                <BehandledePerioderPanel lenke="test" antallPerioder={3} />
             </Kategori>
         </div>
     );

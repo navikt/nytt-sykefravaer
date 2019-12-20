@@ -16,6 +16,9 @@ import useAppStore from '../../store/useAppStore';
 import { Knapp } from 'nav-frontend-knapper';
 import StegindikatorSteg from 'nav-frontend-stegindikator/lib/stegindikator-steg';
 import LenkepanelWrapper from '../../components/Lenkepanel/LenkepanelWrapper';
+import SykmeldingPanel from './components/SykmeldingPanel';
+import SoknadPanel from './components/SoknadPanel';
+import BeslutningPanel from './components/BeslutningPanel';
 
 const getBrodsmuler = (id: string) => {
     return [
@@ -65,14 +68,14 @@ const SykmeldingOversikt = () => {
                 {sykmelding.perioder[sykmelding.perioder.length - 1].tom.toDateString()}
             </Undertittel>
 
-            <div style={{ marginBottom: '3rem' }}>
-                {/* Contitional visning av bjørn */}
-            </div>
+            <div style={{ marginBottom: '3rem' }}>{/* Contitional visning av bjørn */}</div>
 
             <Kategori tittel={'Krever handling'}>
+                <SykmeldingPanel lenke={`test`} sykmelding={aktuellSykmelding} />
             </Kategori>
             <Kategori tittel={'Status'}>
-                
+                <SoknadPanel lenke={'test'} sykmelding={aktuellSykmelding} />
+                <BeslutningPanel lenke={'test'} />
             </Kategori>
         </div>
     );
