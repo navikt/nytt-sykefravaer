@@ -7,7 +7,6 @@
     margin: @cardMargin;
     border: 1px solid #cbcbcb;
     border-radius: 4px;
-    height: 260px;
     overflow: hidden;
     flex: 1;
     padding: 0;
@@ -25,21 +24,25 @@
         text-decoration: underline;
         color: #0067c5;
     }
+
+    .card__content-chevron {
+        left: 6px;
+    }
 }
 
-@headerHeight: 40%;
-
 .card__header {
-    height: @headerHeight;
+    height: 6rem;
     border-bottom: 4px solid @navDypBlaLighten60;
     background-color: @navDypBlaLighten80;
-    text-align: center;
+    padding-left: 3rem;
 }
 
 .card__content {
-    height: 100% - @headerHeight;
+    display: flex;
+    height: 10rem;
     padding: 1rem;
-    overflow: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .card__header-image {
@@ -48,9 +51,9 @@
 
 .card-container {
     display: flex;
+    flex-direction: row;
     padding: 0;
     margin-bottom: 2rem;
-    flex-wrap: wrap;
     width: calc(100% + @cardMargin * 2);
     margin-left: -@cardMargin;
 }
@@ -58,4 +61,29 @@
 .card__content-title {
     margin: 0;
     margin-bottom: 8px;
+}
+
+.card__content-text {
+    flex: 1;
+}
+
+.card__content-chevron {
+    visibility: hidden;
+    margin: auto;
+    left: 0;
+    transition: left 250ms;
+}
+
+@media (max-width: @screen-sm) {
+    .card-container {
+        flex-direction: column;
+    }
+
+    .card__content {
+        height: unset;
+    }
+
+    .card__content-chevron {
+        visibility: visible;
+    }
 }
