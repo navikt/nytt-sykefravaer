@@ -4,7 +4,7 @@ import bjorn from '../../svg/bjorn.svg';
 
 import { Brodsmule } from '../../components/brodsmuler/brodsmuler';
 import { Systemtittel } from 'nav-frontend-typografi';
-import Veileder, { StemningTypes } from '../../components/veileder/Veileder';
+import Veileder from '../../components/veileder/Veileder';
 import Card from './components/Card';
 import RelatertInfo from './components/RelatertInfo';
 import CardContainer from './components/CardContainer';
@@ -34,7 +34,7 @@ const DittSykefravaer = () => {
                             <p>Denne teksten avhenger av hvilke sykemeldinger brukeren har/ikke har.</p>
                         </>
                     }
-                    stemning={StemningTypes.GLAD}
+                    stemning="glad"
                     onClick={() => {}}
                     knappTekst="Demo knapp"
                 />

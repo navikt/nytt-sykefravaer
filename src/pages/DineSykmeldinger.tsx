@@ -1,9 +1,9 @@
 import React from 'react';
 import { useHistory, Link } from 'react-router-dom';
 
-import { Sidetittel, Element, Undertittel } from 'nav-frontend-typografi';
+import { Sidetittel, Undertittel } from 'nav-frontend-typografi';
 import Brodsmuler, { Brodsmule } from '../components/brodsmuler/brodsmuler';
-import Veileder, { StemningTypes } from '../components/veileder/Veileder';
+import Veileder from '../components/veileder/Veileder';
 import { LenkepanelBase } from 'nav-frontend-lenkepanel';
 import book from '../svg/book.svg';
 import useAppStore from '../store/useAppStore';
@@ -42,6 +42,18 @@ const DineSykmeldinger = () => {
             <div className="limit">
                 <Brodsmuler brodsmuler={brodsmuler} />
                 <Sidetittel style={{ textAlign: 'center', marginBottom: '3rem' }}>Dine sykmeldinger</Sidetittel>
+                <div style={{ marginBottom: '3rem' }}>
+                    <Veileder
+                        innhold={
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora placeat ipsa totam
+                                eligendi? Dolore magni quia ullam, cumque nesciunt vel laudantium laborum nisi
+                                repudiandae neque veritatis, accusantium ipsum esse nam?
+                            </p>
+                        }
+                        stemning="glad"
+                    />
+                </div>
                 <div className="sykmelding-kategori"></div>
                 <Sykmeldingkategori tittel={'Nye sykmeldinger'}>
                     <SykmeldingLenkepanel

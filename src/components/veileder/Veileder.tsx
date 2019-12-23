@@ -5,10 +5,7 @@ import { Hovedknapp } from 'nav-frontend-knapper';
 import './Veileder.less';
 import Bjorn from './Bjorn.svg';
 
-export enum StemningTypes {
-    GLAD,
-    NOYTRAL,
-}
+type StemningTypes = 'glad' | 'noytral';
 
 interface VeilederProps {
     innhold: JSX.Element;
@@ -18,12 +15,12 @@ interface VeilederProps {
 }
 
 const hentSvg = (stemning: StemningTypes) => {
-    if (stemning === StemningTypes.GLAD) {
+    if (stemning === 'glad') {
         return Bjorn;
     }
 
     // TODO: Nøytral Bjorn
-    if (stemning === StemningTypes.NOYTRAL) {
+    if (stemning === 'noytral') {
         return Bjorn;
     }
 
