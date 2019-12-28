@@ -32,7 +32,7 @@ const LenkepanelWrapper = ({ lenke, tittel, tekstGra, tekstStatus, svg, ikonbakg
                     ) : (
                         <Undertekst>{tekstGra}</Undertekst>
                     )}
-                    <Undertekst className="lenkepanel__status">{tekstStatus}</Undertekst>
+                    {tekstStatus ? <Undertekst className="lenkepanel__status">{tekstStatus}</Undertekst> : null}
                 </div>
             </div>
         </LenkepanelBase>

@@ -4,14 +4,14 @@ import LenkepanelWrapper from '../../../components/Lenkepanel/LenkepanelWrapper'
 
 import bjorn from '../../../svg/bjorn.svg';
 
-interface NySykmeldingPanelProps {
+interface SykmeldingPanelProps {
     lenke: string;
     antallNyeSykmeldinger: number;
     periodeFra: Date;
     periodeTil: Date;
 }
 
-const NySykmeldingPanel = ({ lenke, antallNyeSykmeldinger, periodeFra, periodeTil }: NySykmeldingPanelProps) => {
+const SykmeldingPanel = ({ lenke, antallNyeSykmeldinger, periodeFra, periodeTil }: SykmeldingPanelProps) => {
     const erSammeAr = dayjs(periodeFra).isSame(dayjs(periodeTil), 'year');
     const erSammeMnd = dayjs(periodeFra).isSame(dayjs(periodeTil), 'month');
 
@@ -29,4 +29,4 @@ const NySykmeldingPanel = ({ lenke, antallNyeSykmeldinger, periodeFra, periodeTi
     );
 };
 
-export default NySykmeldingPanel;
+export default SykmeldingPanel;

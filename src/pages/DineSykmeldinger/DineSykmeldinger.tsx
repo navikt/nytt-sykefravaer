@@ -3,14 +3,10 @@ import React from 'react';
 import { Sidetittel, Undertittel } from 'nav-frontend-typografi';
 import Brodsmuler, { Brodsmule } from '../../components/brodsmuler/brodsmuler';
 import Veileder from '../../components/veileder/Veileder';
-
-import book from '../../svg/book.svg';
 import bjorn from '../../svg/bjorn.svg';
 import useAppStore from '../../store/useAppStore';
 import Kategori from '../../components/Kategori';
-import LenkepanelWrapper from '../../components/Lenkepanel/LenkepanelWrapper';
-import NySykmeldingPanel from './components/NySykmeldingPanel';
-import { SykmeldingData } from '../../types/sykmeldingDataTypes';
+import SykmeldingPanel from './components/SykmeldingPanel';
 import BehandledePerioderPanel from './components/BehandledePerioderPanel';
 
 const brodsmuler: Brodsmule[] = [
@@ -61,14 +57,14 @@ const DineSykmeldinger = () => {
             </div>
             <div className="sykmelding-kategori"></div>
             <Kategori tittel={'Krever handling'}>
-                <NySykmeldingPanel
+                <SykmeldingPanel
                     lenke="/sykmelding"
                     antallNyeSykmeldinger={2}
                     periodeFra={new Date()}
                     periodeTil={new Date()}
                 />
             </Kategori>
-            <Kategori tittel="Status">
+            <Kategori tittel="Ferdig behandlet">
                 <BehandledePerioderPanel lenke="test" antallPerioder={3} />
             </Kategori>
         </div>
