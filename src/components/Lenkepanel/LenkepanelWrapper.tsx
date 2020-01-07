@@ -1,8 +1,9 @@
+import './LenkepanelWrapper.less';
+
 import React from 'react';
+import { LenkepanelBase } from 'nav-frontend-lenkepanel';
 import { Link } from 'react-router-dom';
 import { Undertekst, Undertittel } from 'nav-frontend-typografi';
-import { LenkepanelBase } from 'nav-frontend-lenkepanel';
-import './LenkepanelWrapper.less';
 
 type Ikonbakgrunn = 'gul' | 'bla' | 'gra';
 

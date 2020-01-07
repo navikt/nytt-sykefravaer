@@ -1,8 +1,8 @@
 import './Card.less';
 
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { HoyreChevron } from 'nav-frontend-chevron';
+import { Link } from 'react-router-dom';
 import { Undertittel } from 'nav-frontend-typografi';
 
 import bjorn from '../../../../svg/bjorn.svg';

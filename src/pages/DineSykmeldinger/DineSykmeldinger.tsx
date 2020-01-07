@@ -2,10 +2,10 @@ import React from 'react';
 import { Sidetittel, Undertittel } from 'nav-frontend-typografi';
 
 import BehandledePerioderPanel from './components/BehandledePerioderPanel';
-import useAppStore from '../../store/useAppStore';
 import Kategori from '../../components/Kategori';
 import SykmeldingPanel from './components/SykmeldingPanel';
 import Veileder from '../../components/Veileder/Veileder';
+import useAppStore from '../../store/useAppStore';
 import Brodsmuler, { Brodsmule } from '../../components/Brodsmuler/Brodsmuler';
 
 const brodsmuler: Brodsmule[] = [
