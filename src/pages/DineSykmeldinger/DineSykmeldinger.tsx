@@ -2,11 +2,10 @@ import React from 'react';
 import { Sidetittel, Undertittel } from 'nav-frontend-typografi';
 
 import BehandledePerioderPanel from './components/BehandledePerioderPanel';
+import useAppStore from '../../store/useAppStore';
 import Kategori from '../../components/Kategori';
 import SykmeldingPanel from './components/SykmeldingPanel';
 import Veileder from '../../components/Veileder/Veileder';
-import bjorn from '../../svg/bjorn.svg';
-import useAppStore from '../../store/useAppStore';
 import Brodsmuler, { Brodsmule } from '../../components/Brodsmuler/Brodsmuler';
 
 const brodsmuler: Brodsmule[] = [
@@ -44,8 +43,6 @@ const DineSykmeldinger = () => {
             </Undertittel>
             <div style={{ marginBottom: '3rem' }}>
                 <Veileder
-                    svg={bjorn}
-                    kompakt
                     innhold={
                         <p>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora placeat ipsa totam
@@ -53,6 +50,9 @@ const DineSykmeldinger = () => {
                             neque veritatis, accusantium ipsum esse nam?
                         </p>
                     }
+                    stemning="glad"
+                    onClick={() => {}}
+                    knappTekst="Demo knapp"
                 />
             </div>
             <div className="sykmelding-kategori"></div>

@@ -68,25 +68,6 @@ const SykmeldingOversikt = () => {
                     fra {sykmelding.perioder[0].fom.toDateString()} til{' '}
                     {sykmelding.perioder[sykmelding.perioder.length - 1].tom.toDateString()}
                 </Undertittel>
-                <div style={{ marginBottom: '3rem' }}>
-                    <Veilederpanel type={'plakat'} svg={bjorn}>
-                        <div
-                            style={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                alignItems: 'center',
-                                textAlign: 'center',
-                            }}
-                        >
-                            <Normaltekst style={{ marginBottom: '1rem' }}>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, nisi officia? Suscipit
-                                vero consectetur itaque perspiciatis optio, sint obcaecati unde ipsa ad facere debitis
-                                in quae fuga tenetur laboriosam exercitationem?
-                            </Normaltekst>
-                            <Knapp>Til sykmeldingen</Knapp>
-                        </div>
-                    </Veilederpanel>
-                </div>
                 <Kategori tittel={'Status'}>
                     <Panel border>
                         <Stegindikator visLabel>

@@ -24,22 +24,6 @@ const SoknadAvvist = ({ sykmeldingDto, soknad }: SoknadAvvistProps) => {
                 fra {sykmelding.perioder[0].fom.toDateString()} til{' '}
                 {sykmelding.perioder[sykmelding.perioder.length - 1].tom.toDateString()}
             </Undertittel>
-            <div style={{ marginBottom: '3rem' }}>
-                <Veilederpanel type={'plakat'} svg={bjorn}>
-                    <div
-                        style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                            textAlign: 'center',
-                        }}
-                    >
-                        <Normaltekst style={{ marginBottom: '1rem' }}>
-                            NAV har dessverre avslått din søknad om sykepenger
-                        </Normaltekst>
-                    </div>
-                </Veilederpanel>
-            </div>
             <Kategori tittel={'Begrunnelse'}>
                 <Normaltekst>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam eius itaque distinctio, id numquam
