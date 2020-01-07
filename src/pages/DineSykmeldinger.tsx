@@ -1,15 +1,15 @@
 import React from 'react';
-import { useHistory, Link } from 'react-router-dom';
-
-import { Sidetittel, Element, Undertittel } from 'nav-frontend-typografi';
-import Brodsmuler, { Brodsmule } from '../components/brodsmuler/brodsmuler';
-import Veileder from '../components/veileder/Veileder';
+import { Element, Sidetittel, Undertittel } from 'nav-frontend-typografi';
 import { LenkepanelBase } from 'nav-frontend-lenkepanel';
-import book from '../svg/book.svg';
-import bjorn from '../svg/bjorn.svg';
-import useAppStore from '../store/useAppStore';
+import { Link, useHistory } from 'react-router-dom';
+
 import Header from '../components/Header/Header';
 import UnderstreketOverskrift from '../components/UnderstreketOverskrift/UnderstreketOverskrift';
+import Veileder from '../components/veileder/Veileder';
+import bjorn from '../svg/bjorn.svg';
+import book from '../svg/book.svg';
+import useAppStore from '../store/useAppStore';
+import Brodsmuler, { Brodsmule } from '../components/brodsmuler/brodsmuler';
 
 const SIDETITTEL = 'Dine sykmeldinger';
 

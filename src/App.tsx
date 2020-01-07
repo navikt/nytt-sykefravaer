@@ -1,18 +1,19 @@
-import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.less';
 import './basic.less';
 
-import useAppStore from './store/useAppStore';
-import DataFetcher from './components/DataFetcher';
-import DittSykefravaer from './pages/DittSykefravaer/DittSykefravaer';
-import DineSykmeldinger from './pages/DineSykmeldinger';
-import Sykmelding from './pages/Sykmelding';
-import Soknad from './pages/Soknad';
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
 import BeslutningFraNav from './pages/BeslutningerFraNav/BeslutningFraNav';
-import SykmeldingOversikt from './pages/SykmeldingOversikt';
+import DataFetcher from './components/DataFetcher';
+import DineSykmeldinger from './pages/DineSykmeldinger';
+import DittSykefravaer from './pages/DittSykefravaer/DittSykefravaer';
 import Inntektsmelding from './pages/Inntektsmelding';
+import Soknad from './pages/Soknad';
+import Sykmelding from './pages/Sykmelding';
+import SykmeldingOversikt from './pages/SykmeldingOversikt';
 import TidslinjeSide from './pages/TidslinjeSide/TidslinjeSide';
+import useAppStore from './store/useAppStore';
 
 const App = () => {
     return (

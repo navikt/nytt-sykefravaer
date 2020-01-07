@@ -1,13 +1,13 @@
 import React from 'react';
-import { SykmeldingData } from '../../../types/sykmeldingDataTypes';
-import { Soknad } from '../../../types/soknadTypes';
-import { Sidetittel, Undertittel, Normaltekst } from 'nav-frontend-typografi';
 import Veilederpanel from 'nav-frontend-veilederpanel';
+import { Normaltekst, Sidetittel, Undertittel } from 'nav-frontend-typografi';
+import { Panel } from 'nav-frontend-paneler';
+
 import Kategori from '../../../components/Kategori';
 import Lenkepanel from '../../../components/Lenkepanel';
-
 import bjorn from '../../../svg/bjorn.svg';
-import { Panel } from 'nav-frontend-paneler';
+import { Soknad } from '../../../types/soknadTypes';
+import { SykmeldingData } from '../../../types/sykmeldingDataTypes';
 
 interface SoknadAvvistProps {
     sykmeldingDto: SykmeldingData;

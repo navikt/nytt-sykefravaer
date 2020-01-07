@@ -1,9 +1,9 @@
-import React from 'react';
+import './RelatertInfo.less';
+
 import Lenke from 'nav-frontend-lenker';
+import React from 'react';
 
 import OverskriftSkille from '../../../components/OverskriftSkille/OverskriftSkille';
-
-import './RelatertInfo.less';
 
 interface ItemProps {
     tekst: string;

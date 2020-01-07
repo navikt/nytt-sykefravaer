@@ -1,16 +1,14 @@
 import React from 'react';
-
-import bjorn from '../../svg/bjorn.svg';
-
-import { Brodsmule } from '../../components/brodsmuler/brodsmuler';
 import { Systemtittel } from 'nav-frontend-typografi';
-import Veileder from '../../components/veileder/Veileder';
-import Card from './components/Card';
-import RelatertInfo from './components/RelatertInfo';
-import CardContainer from './components/CardContainer';
-import SykefravaerHeader from './components/SykefravaerHeader';
 
+import Card from './components/Card';
+import CardContainer from './components/CardContainer';
 import LenkepanelWrapper from './components/LenkepanelWrapper';
+import RelatertInfo from './components/RelatertInfo';
+import SykefravaerHeader from './components/SykefravaerHeader';
+import Veileder from '../../components/veileder/Veileder';
+import bjorn from '../../svg/bjorn.svg';
+import { Brodsmule } from '../../components/brodsmuler/brodsmuler';
 
 const brodsmuler: Brodsmule[] = [
     {

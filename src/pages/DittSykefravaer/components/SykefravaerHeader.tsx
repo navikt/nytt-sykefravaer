@@ -1,10 +1,10 @@
-import React from 'react';
-import Brodsmuler, { Brodsmule } from '../../../components/brodsmuler/brodsmuler';
-import { Sidetittel } from 'nav-frontend-typografi';
-
 import './SykefravaerHeader.less';
 
+import React from 'react';
+import { Sidetittel } from 'nav-frontend-typografi';
+
 import konsultasjon from '../../../svg/konsultasjon.svg';
+import Brodsmuler, { Brodsmule } from '../../../components/brodsmuler/brodsmuler';
 
 const SykefravaerHeader = ({ brodsmuler }: { brodsmuler: Brodsmule[] }) => {
     return (

@@ -1,8 +1,9 @@
+import './Card.less';
+
 import React from 'react';
-import bjorn from '../../../svg/bjorn.svg';
 import { Link } from 'react-router-dom';
 
-import './Card.less';
+import bjorn from '../../../svg/bjorn.svg';
 
 interface CardProps {
     tittel: string;
