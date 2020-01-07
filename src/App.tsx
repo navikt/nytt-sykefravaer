@@ -6,12 +6,12 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import BeslutningFraNav from './pages/BeslutningerFraNav/BeslutningFraNav';
 import DataFetcher from './components/DataFetcher';
-import DineSykmeldinger from './pages/DineSykmeldinger';
+import DineSykmeldinger from './pages/DineSykmeldinger/DineSykmeldinger';
 import DittSykefravaer from './pages/DittSykefravaer/DittSykefravaer';
 import Inntektsmelding from './pages/Inntektsmelding';
 import Soknad from './pages/Soknad';
 import Sykmelding from './pages/Sykmelding';
-import SykmeldingOversikt from './pages/SykmeldingOversikt';
+import SykmeldingOversikt from './pages/SykmeldingOversikt/SykmeldingOversikt';
 import TidslinjeSide from './pages/TidslinjeSide/TidslinjeSide';
 import useAppStore from './store/useAppStore';
 

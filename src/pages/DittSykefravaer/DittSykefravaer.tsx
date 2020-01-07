@@ -3,7 +3,8 @@ import { Systemtittel } from 'nav-frontend-typografi';
 
 import Card from './components/Card/Card';
 import CardContainer from './components/Card/CardContainer';
-import LenkepanelWrapper from './components/LenkepanelWrapper';
+import LenkepanelWrapper from './components/Lenkepanel/LenkepanelWrapper';
+import OverskriftSkille from '../../components/OverskriftSkille/OverskriftSkille';
 import RelatertInfo from './components/RelatertInfo';
 import SykefravaerHeader from './components/SykefravaerHeader';
 import Veileder from '../../components/Veileder/Veileder';
@@ -37,15 +38,15 @@ const DittSykefravaer = () => {
                         </>
                     }
                 />
-
+                <OverskriftSkille tekst="Aktuelt" />
                 <LenkepanelWrapper
                     lenke="/sykmeldinger/"
                     tittel="Dine sykmeldinger"
-                    tekst="Oversikt over dokumenter, status og beslutning for dine
-                sykeperioder."
+                    tekstGra="Oversikt over dokumenter, status og beslutning for dine sykeperioder."
                     svg={bjorn}
+                    ikonbakgrunn="gul"
                 />
-
+                <OverskriftSkille tekst="Informasjon og veiledning" />
                 <CardContainer>
                     <Card
                         tittel="Informasjon om sykefravær"
