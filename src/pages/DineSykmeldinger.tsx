@@ -1,12 +1,11 @@
 import React from 'react';
 import { useHistory, Link } from 'react-router-dom';
 
-import { Sidetittel, Element, Undertittel } from 'nav-frontend-typografi';
+import { Sidetittel, Undertittel } from 'nav-frontend-typografi';
 import Brodsmuler, { Brodsmule } from '../components/brodsmuler/brodsmuler';
 import Veileder from '../components/veileder/Veileder';
 import { LenkepanelBase } from 'nav-frontend-lenkepanel';
 import book from '../svg/book.svg';
-import bjorn from '../svg/bjorn.svg';
 import useAppStore from '../store/useAppStore';
 import Header from '../components/Header/Header';
 import UnderstreketOverskrift from '../components/UnderstreketOverskrift/UnderstreketOverskrift';
@@ -45,8 +44,6 @@ const DineSykmeldinger = () => {
                 <Sidetittel style={{ textAlign: 'center', marginBottom: '3rem' }}>Dine sykmeldinger</Sidetittel>
                 <div style={{ marginBottom: '3rem' }}>
                     <Veileder
-                        svg={bjorn}
-                        kompakt
                         innhold={
                             <p>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora placeat ipsa totam
@@ -54,6 +51,7 @@ const DineSykmeldinger = () => {
                                 repudiandae neque veritatis, accusantium ipsum esse nam?
                             </p>
                         }
+                        stemning="glad"
                     />
                 </div>
                 <div className="sykmelding-kategori"></div>
