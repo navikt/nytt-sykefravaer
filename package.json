@@ -64,6 +64,12 @@
     "eslintConfig": {
         "extends": "react-app"
     },
+    "importSort": {
+        ".js, .jsx, .ts, .tsx": {
+            "style": "renke",
+            "parser": "typescript"
+        }
+    },
     "browserslist": {
         "production": [
             ">0.2%",
@@ -84,6 +90,9 @@
         "@types/node": "12.12.14",
         "@types/react": "16.9.14",
         "@types/react-dom": "16.9.4",
+        "import-sort-style-renke": "^6.0.0",
+        "prettier": "^1.19.1",
+        "prettier-plugin-import-sort": "0.0.3",
         "yet-another-fetch-mock": "^3.3.1"
     }
 }
