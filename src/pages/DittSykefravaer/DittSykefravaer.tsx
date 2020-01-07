@@ -1,16 +1,15 @@
 import React from 'react';
 
-import konsultasjon from '../../svg/konsultasjon.svg';
 import bjorn from '../../svg/bjorn.svg';
 
-import Brodsmuler, { Brodsmule } from '../../components/brodsmuler/brodsmuler';
-import { Sidetittel, Systemtittel } from 'nav-frontend-typografi';
+import { Brodsmule } from '../../components/brodsmuler/brodsmuler';
+import { Systemtittel } from 'nav-frontend-typografi';
 import Veileder from '../../components/veileder/Veileder';
 import Card from './components/Card';
 import RelatertInfo from './components/RelatertInfo';
 import CardContainer from './components/CardContainer';
+import SykefravaerHeader from './components/SykefravaerHeader';
 
-import './DittSykefravaer.less';
 import LenkepanelWrapper from '../../components/Lenkepanel/LenkepanelWrapper';
 import OverskriftSkille from '../../components/OverskriftSkille/OverskriftSkille';
 
@@ -27,14 +26,7 @@ const DittSykefravaer = () => {
 
     return (
         <>
-            <div className="sykefravaer-header">
-                <div className="limit-short">
-                    <Brodsmuler brodsmuler={brodsmuler} />
-                    <Sidetittel>Ditt sykefravær</Sidetittel>
-                    <img className="sykefravaer-header__image" src={konsultasjon} alt="Konsultasjon" />
-                </div>
-            </div>
-
+            <SykefravaerHeader brodsmuler={brodsmuler} />
             <div className="limit">
                 <Veileder
                     kompakt

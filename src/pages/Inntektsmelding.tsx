@@ -2,6 +2,9 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 
 import Brodsmuler from '../components/brodsmuler/brodsmuler';
+import Header from '../components/Header/Header';
+
+const SIDETITTEL = 'Inntektsmelding';
 
 const getBrodsmuler = (id: string) => {
     return [
@@ -22,7 +25,7 @@ const getBrodsmuler = (id: string) => {
         },
         {
             tittel: 'Inntektsmelding',
-            sti: `/sykmeldinger/${id}/inntekstmelding`,
+            sti: `/sykmeldinger/${id}/inntektsmelding`,
             erKlikkbar: true,
         },
     ];
@@ -37,10 +40,13 @@ const Inntektsmelding = () => {
     const brodsmuler = getBrodsmuler(id);
 
     return (
-        <div className="limit">
-            <Brodsmuler brodsmuler={brodsmuler} />
-            Inntektsmelding
-        </div>
+        <>
+            <Header location={SIDETITTEL} />
+            <div className="limit">
+                <Brodsmuler brodsmuler={brodsmuler} />
+                Inntektsmelding
+            </div>
+        </>
     );
 };
 
