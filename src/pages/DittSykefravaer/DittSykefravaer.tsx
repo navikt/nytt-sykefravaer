@@ -3,7 +3,7 @@ import { Systemtittel } from 'nav-frontend-typografi';
 
 import Card from './components/Card/Card';
 import CardContainer from './components/Card/CardContainer';
-import LenkepanelWrapper from './components/Lenkepanel/LenkepanelWrapper';
+import LenkepanelWrapper from '../../components/Lenkepanel/LenkepanelWrapper';
 import OverskriftSkille from '../../components/OverskriftSkille/OverskriftSkille';
 import RelatertInfo from './components/RelatertInfo';
 import SykefravaerHeader from './components/SykefravaerHeader';

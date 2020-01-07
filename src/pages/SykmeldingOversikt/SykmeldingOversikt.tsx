@@ -1,14 +1,15 @@
+import './sykmeldingOversikt.less';
+
 import React from 'react';
+import { Sidetittel, Undertittel } from 'nav-frontend-typografi';
 import { useParams } from 'react-router-dom';
 
-import Brodsmuler from '../../components/brodsmuler/brodsmuler';
-import { Undertittel, Sidetittel } from 'nav-frontend-typografi';
-import useAppStore from '../../store/useAppStore';
-import SykmeldingPanel from './components/SykmeldingPanel';
-import SoknadPanel from './components/SoknadPanel';
 import BeslutningPanel from './components/BeslutningPanel';
+import Brodsmuler from '../../components/Brodsmuler/Brodsmuler';
 import Kategori from '../../components/Kategori';
-import './sykmeldingOversikt.less';
+import SoknadPanel from './components/SoknadPanel';
+import SykmeldingPanel from './components/SykmeldingPanel';
+import useAppStore from '../../store/useAppStore';
 
 const getBrodsmuler = (id: string) => {
     return [

@@ -1,13 +1,13 @@
 import React from 'react';
-
 import { Sidetittel, Undertittel } from 'nav-frontend-typografi';
-import Brodsmuler, { Brodsmule } from '../../components/brodsmuler/brodsmuler';
-import Veileder from '../../components/veileder/Veileder';
-import bjorn from '../../svg/bjorn.svg';
-import useAppStore from '../../store/useAppStore';
+
+import BehandledePerioderPanel from './components/BehandledePerioderPanel';
 import Kategori from '../../components/Kategori';
 import SykmeldingPanel from './components/SykmeldingPanel';
-import BehandledePerioderPanel from './components/BehandledePerioderPanel';
+import Veileder from '../../components/Veileder/Veileder';
+import bjorn from '../../svg/bjorn.svg';
+import useAppStore from '../../store/useAppStore';
+import Brodsmuler, { Brodsmule } from '../../components/Brodsmuler/Brodsmuler';
 
 const brodsmuler: Brodsmule[] = [
     {
