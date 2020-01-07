@@ -1,14 +1,14 @@
 import React from 'react';
 import { Systemtittel } from 'nav-frontend-typografi';
 
-import Card from './components/Card';
-import CardContainer from './components/CardContainer';
+import Card from './components/Card/Card';
+import CardContainer from './components/Card/CardContainer';
 import LenkepanelWrapper from './components/LenkepanelWrapper';
 import RelatertInfo from './components/RelatertInfo';
 import SykefravaerHeader from './components/SykefravaerHeader';
-import Veileder from '../../components/veileder/Veileder';
+import Veileder from '../../components/Veileder/Veileder';
 import bjorn from '../../svg/bjorn.svg';
-import { Brodsmule } from '../../components/brodsmuler/brodsmuler';
+import { Brodsmule } from '../../components/Brodsmuler/Brodsmuler';
 
 const brodsmuler: Brodsmule[] = [
     {

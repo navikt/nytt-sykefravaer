@@ -10,7 +10,7 @@ import { Knapp } from 'nav-frontend-knapper';
 import { LenkepanelBase } from 'nav-frontend-lenkepanel';
 import { Link, useHistory, useParams } from 'react-router-dom';
 
-import Brodsmuler from '../components/brodsmuler/brodsmuler';
+import Brodsmuler from '../components/Brodsmuler/Brodsmuler';
 import Header from '../components/Header/Header';
 import UnderstreketOverskrift from '../components/UnderstreketOverskrift/UnderstreketOverskrift';
 import bjorn from '../svg/bjorn.svg';

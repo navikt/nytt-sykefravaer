@@ -9,7 +9,7 @@ import { Sidetittel } from 'nav-frontend-typografi';
 import Header from '../../components/Header/Header';
 import TidslinjeMedArbeidsgiver from './TidslinjeMedArbeidsgiver';
 import TidslinjeUtenArbeidsgiver from './TidslinjeUtenArbeidsgiver';
-import Brodsmuler, { Brodsmule } from '../../components/brodsmuler/brodsmuler';
+import Brodsmuler, { Brodsmule } from '../../components/Brodsmuler/Brodsmuler';
 
 const SIDETITTEL = 'Hva skjer under sykefraværet?';
 

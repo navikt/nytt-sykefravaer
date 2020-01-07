@@ -5,11 +5,11 @@ import { Link, useHistory } from 'react-router-dom';
 
 import Header from '../components/Header/Header';
 import UnderstreketOverskrift from '../components/UnderstreketOverskrift/UnderstreketOverskrift';
-import Veileder from '../components/veileder/Veileder';
+import Veileder from '../components/Veileder/Veileder';
 import bjorn from '../svg/bjorn.svg';
 import book from '../svg/book.svg';
 import useAppStore from '../store/useAppStore';
-import Brodsmuler, { Brodsmule } from '../components/brodsmuler/brodsmuler';
+import Brodsmuler, { Brodsmule } from '../components/Brodsmuler/Brodsmuler';
 
 const SIDETITTEL = 'Dine sykmeldinger';
 

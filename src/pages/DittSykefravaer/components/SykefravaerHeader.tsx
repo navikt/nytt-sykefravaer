@@ -4,7 +4,7 @@ import React from 'react';
 import { Sidetittel } from 'nav-frontend-typografi';
 
 import konsultasjon from '../../../svg/konsultasjon.svg';
-import Brodsmuler, { Brodsmule } from '../../../components/brodsmuler/brodsmuler';
+import Brodsmuler, { Brodsmule } from '../../../components/Brodsmuler/Brodsmuler';
 
 const SykefravaerHeader = ({ brodsmuler }: { brodsmuler: Brodsmule[] }) => {
     return (
