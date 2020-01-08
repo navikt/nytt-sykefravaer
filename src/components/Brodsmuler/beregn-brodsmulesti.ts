@@ -1,7 +1,7 @@
 import {
     getSykefravaerUrl,
-    getUrlTilSykmeldinger,
     getUrlTilSykmelding,
+    getUrlTilSykmeldinger,
     getUrlTilTidslinje,
 } from '../../utils/url-utils';
 

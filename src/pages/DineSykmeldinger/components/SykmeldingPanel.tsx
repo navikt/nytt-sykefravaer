@@ -1,7 +1,7 @@
 import React from 'react';
 import dayjs from 'dayjs';
-import LenkepanelWrapper from '../../../components/Lenkepanel/LenkepanelWrapper';
 
+import LenkepanelWrapper from '../../../components/Lenkepanel/LenkepanelWrapper';
 import bjorn from '../../../svg/bjorn.svg';
 
 interface SykmeldingPanelProps {
