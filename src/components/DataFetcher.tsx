@@ -5,10 +5,13 @@ import useFetch, { isNotStarted, FetchState, hasData, isAnyNotStartedOrPending, 
 import useAppStore from '../store/useAppStore';
 import { SykmeldingData } from '../types/sykmeldingDataTypes';
 import { Sykmelding, Status } from '../types/sykmeldingTypes';
+import { Sykefravaer } from '../types/sykefravaerTypes';
+import { Soknad } from '../types/soknadTypes';
 
 const DataFetcher = (props: { children: any }) => {
-    const { setSykmeldinger } = useAppStore();
+    const { setSykmeldinger, setSykefravaer } = useAppStore();
     const sykmeldingerFetcher = useFetch<SykmeldingData[]>();
+    const sykefravaerFetcher = useFetch<Sykefravaer[]>();
 
     useEffect(() => {
         if (isNotStarted(sykmeldingerFetcher)) {
@@ -29,6 +32,23 @@ const DataFetcher = (props: { children: any }) => {
             );
         }
     }, [setSykmeldinger, sykmeldingerFetcher]);
+
+    useEffect(() => {
+        if (isNotStarted(sykefravaerFetcher)) {
+            sykefravaerFetcher.fetch('/syforest/sykefravaer/', undefined, (fetchState: FetchState<Sykefravaer[]>) => {
+                if (hasData(fetchState)) {
+                    const { data } = fetchState;
+                    const sykefravaer = data.map(fravaer => ({
+                        id: fravaer.id,
+                        sykmeldinger: fravaer.sykmeldinger.map(sykmelding => new SykmeldingData(sykmelding)),
+                        soknader: fravaer.soknader.map(soknad => new Soknad(soknad)),
+                    }));
+                    console.log(sykefravaer);
+                    setSykefravaer(sykefravaer);
+                }
+            });
+        }
+    }, [setSykefravaer, sykefravaerFetcher]);
 
     if (isAnyNotStartedOrPending([sykmeldingerFetcher])) {
         return <Spinner />;

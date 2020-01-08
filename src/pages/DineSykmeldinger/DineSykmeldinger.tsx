@@ -2,11 +2,10 @@ import React from 'react';
 
 import { Sidetittel, Undertittel } from 'nav-frontend-typografi';
 import Brodsmuler, { Brodsmule } from '../../components/brodsmuler/brodsmuler';
-import Veileder from '../../components/veileder/Veileder';
 import useAppStore from '../../store/useAppStore';
 import Kategori from '../../components/Kategori';
-import SykmeldingPanel from './components/SykmeldingPanel';
-import BehandledePerioderPanel from './components/BehandledePerioderPanel';
+import SykmeldingPanel from './components/SykefravaerPanel';
+import BehandledeFravaerPanel from './components/BehandledeFravaerPanel';
 
 const brodsmuler: Brodsmule[] = [
     {
@@ -24,48 +23,36 @@ const brodsmuler: Brodsmule[] = [
 const DineSykmeldinger = () => {
     document.title = 'Dine sykmeldinger - www.nav.no';
 
-    const { sykmeldinger } = useAppStore();
-    console.log(sykmeldinger);
+    const { sykefravaer } = useAppStore();
+    console.log(sykefravaer);
 
-    // TODO: Erstatt dette med en fornuftig visning for ingen sykmeldinger
-    if (!sykmeldinger) {
-        return <div>Ingen sykmeldinger</div>;
+    // TODO: Erstatt dette med en fornuftig visning for ingen sykefravaer
+    if (!sykefravaer) {
+        return <div>Ingen sykefravaer</div>;
     }
 
     return (
         <div className="limit">
             <Brodsmuler brodsmuler={brodsmuler} />
             <Sidetittel style={{ textAlign: 'center', marginBottom: '1rem', marginTop: '2rem' }}>
-                Sykmeldingsperioder
+                Dine sykefravær
             </Sidetittel>
             <Undertittel style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                Oversikt over perioder du er- eller har vært sykmeldt
+                Oversikt over pågående- og tidligere sykefravær
             </Undertittel>
-            <div style={{ marginBottom: '3rem' }}>
-                <Veileder
-                    innhold={
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora placeat ipsa totam
-                            eligendi? Dolore magni quia ullam, cumque nesciunt vel laudantium laborum nisi repudiandae
-                            neque veritatis, accusantium ipsum esse nam?
-                        </p>
-                    }
-                    stemning="glad"
-                    onClick={() => {}}
-                    knappTekst="Demo knapp"
-                />
-            </div>
-            <div className="sykmelding-kategori"></div>
             <Kategori tittel={'Krever handling'}>
-                <SykmeldingPanel
-                    lenke="/sykmelding"
-                    antallNyeSykmeldinger={2}
-                    periodeFra={new Date()}
-                    periodeTil={new Date()}
-                />
+                {sykefravaer.map(fravaer => (
+                    <SykmeldingPanel
+                        key={fravaer.id}
+                        lenke={fravaer.id}
+                        antallNyeSykmeldinger={fravaer.sykmeldinger.length}
+                        periodeFra={new Date()}
+                        periodeTil={new Date()}
+                    />
+                ))}
             </Kategori>
             <Kategori tittel="Ferdig behandlet">
-                <BehandledePerioderPanel lenke="test" antallPerioder={3} />
+                <BehandledeFravaerPanel lenke="test" antallSykefravær={3} />
             </Kategori>
         </div>
     );
