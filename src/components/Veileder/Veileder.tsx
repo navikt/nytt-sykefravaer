@@ -1,8 +1,9 @@
+import './Veileder.less';
+
 import React from 'react';
 import Veilederpanel from 'nav-frontend-veilederpanel';
 import { Hovedknapp } from 'nav-frontend-knapper';
 
-import './Veileder.less';
 import Bjorn from './Bjorn.svg';
 
 type StemningTypes = 'glad' | 'noytral';

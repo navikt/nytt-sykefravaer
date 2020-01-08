@@ -1,13 +1,14 @@
 import React from 'react';
-import TidslinjeElement from './TidslinjeElement';
 import { Normaltekst } from 'nav-frontend-typografi';
-import sykmeldtHvaNa from './svg/sykmeldt-hva-na.svg';
+
+import TidslinjeElement from './TidslinjeElement';
+import innen26uker from './svg/medArbeidsgiver/innen-26uker.svg';
+import innen39uker from './svg/medArbeidsgiver/innen-39uker.svg';
 import innen4uker from './svg/medArbeidsgiver/innen-4uker.svg';
 import innen7uker from './svg/medArbeidsgiver/innen-7uker.svg';
 import innen8uker from './svg/medArbeidsgiver/innen-8uker.svg';
-import innen26uker from './svg/medArbeidsgiver/innen-26uker.svg';
-import innen39uker from './svg/medArbeidsgiver/innen-39uker.svg';
 import sluttfasen3 from './svg/sluttfasen-3.svg';
+import sykmeldtHvaNa from './svg/sykmeldt-hva-na.svg';
 
 const TidslinjeMedArbeidsgiver = () => (
     <>

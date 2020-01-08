@@ -1,9 +1,11 @@
 import React from 'react';
 import { SykmeldingData } from '../../../types/sykmeldingDataTypes';
 // import { tilLesbarPeriodeMedGraderingOgArbeidsgiver } from '../../../utils/periodeUtils';
+
 import LenkepanelWrapper from '../../../components/Lenkepanel/LenkepanelWrapper';
 import bjorn from '../../../svg/bjorn.svg';
 import { Soknad } from '../../../types/soknadTypes';
+
 interface SoknadPanelProps {
     lenke: string;
     sykmeldinger: SykmeldingData[];

@@ -1,4 +1,4 @@
-import { statusGenerator, diagnoseGenerator, bidiagnoseGenerator, getRandomNumber } from './mockUtils';
+import { bidiagnoseGenerator, diagnoseGenerator, getRandomNumber, statusGenerator } from './mockUtils';
 
 export const avbruttSykmelding = {
     status: statusGenerator('avbrutt'),

@@ -1,17 +1,15 @@
 import React from 'react';
-
-import bjorn from '../../svg/bjorn.svg';
-
-import { Brodsmule } from '../../components/brodsmuler/brodsmuler';
 import { Systemtittel } from 'nav-frontend-typografi';
-import Veileder from '../../components/veileder/Veileder';
-import Card from './components/Card';
-import RelatertInfo from './components/RelatertInfo';
-import CardContainer from './components/CardContainer';
-import SykefravaerHeader from './components/SykefravaerHeader';
 
+import Card from './components/Card/Card';
+import CardContainer from './components/Card/CardContainer';
 import LenkepanelWrapper from '../../components/Lenkepanel/LenkepanelWrapper';
 import OverskriftSkille from '../../components/OverskriftSkille/OverskriftSkille';
+import RelatertInfo from './components/RelatertInfo';
+import SykefravaerHeader from './components/SykefravaerHeader';
+import Veileder from '../../components/Veileder/Veileder';
+import bjorn from '../../svg/bjorn.svg';
+import { Brodsmule } from '../../components/Brodsmuler/Brodsmuler';
 
 // TODO: Sett opp logikk for henting av veileder basert på tilgjengelige sykefravær
 

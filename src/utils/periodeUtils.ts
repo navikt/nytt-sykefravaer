@@ -1,4 +1,4 @@
-import { Periode, Arbeidsgiver } from '../types/sykmeldingTypes';
+import { Arbeidsgiver, Periode } from '../types/sykmeldingTypes';
 import { hentDagerMellomDatoer } from '../utils/datoUtils';
 
 export const tilLesbarPeriodeMedGraderingOgArbeidsgiver = (periode: Periode, arbeidsgiver: Arbeidsgiver): string => {
