@@ -1,18 +1,19 @@
-import React from 'react';
-import { useParams, useLocation } from 'react-router-dom';
-
-import Brodsmuler from '../../components/brodsmuler/brodsmuler';
-import { Undertittel, Sidetittel, Element } from 'nav-frontend-typografi';
-import SykmeldingPanel from './components/SykmeldingPanel';
-import SoknadPanel from './components/SoknadPanel';
-import BeslutningPanel from './components/BeslutningPanel';
-import Kategori from '../../components/Kategori';
 import './dokumentOversikt.less';
-import { useSelectSykefravaer } from '../../store/selectAppStore';
+
+import React from 'react';
+import { Element, Sidetittel, Undertittel } from 'nav-frontend-typografi';
+import { useLocation, useParams } from 'react-router-dom';
+
+import BeslutningPanel from './components/BeslutningPanel';
+import Brodsmuler from '../../components/Brodsmuler/Brodsmuler';
 import Header from '../../components/Header/Header';
+import Kategori from '../../components/Kategori';
+import SoknadPanel from './components/SoknadPanel';
+import SykmeldingPanel from './components/SykmeldingPanel';
+import Veileder from '../../components/Veileder/Veileder';
 import { StatusTyper } from '../../types/sykmeldingTypes';
-import Veileder from '../../components/veileder/Veileder';
 import { Sykefravaer } from '../../types/sykefravaerTypes';
+import { useSelectSykefravaer } from '../../store/selectAppStore';
 
 const SIDETITTEL = 'Dokumentoversikt';
 

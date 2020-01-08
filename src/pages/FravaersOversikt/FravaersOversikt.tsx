@@ -1,13 +1,13 @@
 import React from 'react';
-
 import { Sidetittel, Undertittel } from 'nav-frontend-typografi';
-import Brodsmuler, { Brodsmule } from '../../components/brodsmuler/brodsmuler';
-import useAppStore from '../../store/useAppStore';
-import Kategori from '../../components/Kategori';
-import SykmeldingPanel from './components/SykefravaerPanel';
+import { useLocation } from 'react-router-dom';
+
 import BehandledeFravaerPanel from './components/BehandledeFravaerPanel';
 import Header from '../../components/Header/Header';
-import { useLocation } from 'react-router-dom';
+import Kategori from '../../components/Kategori';
+import SykmeldingPanel from './components/SykefravaerPanel';
+import useAppStore from '../../store/useAppStore';
+import Brodsmuler, { Brodsmule } from '../../components/Brodsmuler/Brodsmuler';
 
 const SIDETITTEL = 'Fraværsoversikt';
 
