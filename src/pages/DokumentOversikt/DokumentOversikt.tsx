@@ -57,15 +57,15 @@ const getBrodsmuler = (id: string) => {
 const DokumentOversikt = () => {
     document.title = `${SIDETITTEL} - www.nav.no`;
 
-    const { id } = useParams();
+    const { fravaerId } = useParams();
     const { pathname } = useLocation();
-    const sykefravaer = useSelectSykefravaer(id);
+    const sykefravaer = useSelectSykefravaer(fravaerId);
 
-    if (!id) {
+    if (!fravaerId) {
         return null;
     }
 
-    const brodsmuler = getBrodsmuler(id);
+    const brodsmuler = getBrodsmuler(fravaerId);
 
     // TODO: Erstatt med feilmeldingsside
     if (!sykefravaer) {

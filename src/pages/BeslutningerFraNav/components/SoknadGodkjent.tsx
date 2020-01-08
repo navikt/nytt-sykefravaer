@@ -13,7 +13,7 @@ interface SoknadGodkjentProps {
 }
 
 const SoknadGodkjent = ({ sykmeldingDto, soknad }: SoknadGodkjentProps) => {
-    const { id } = useParams();
+    const { sykmeldingId } = useParams();
     const { sykmelding } = sykmeldingDto;
 
     return (
@@ -46,7 +46,7 @@ const SoknadGodkjent = ({ sykmeldingDto, soknad }: SoknadGodkjentProps) => {
                             </p>
                         </>
                     }
-                    lenkeTil={`/sykmeldinger/${id}/beslutning`}
+                    lenkeTil={`/sykmeldinger/${sykmeldingId}/beslutning`}
                 />
             </Kategori>
             <Kategori tittel={'Dokumenter for beslutningsgrunnlag'}>
