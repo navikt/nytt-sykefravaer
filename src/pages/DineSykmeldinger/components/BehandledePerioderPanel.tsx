@@ -1,6 +1,6 @@
 import React from 'react';
-import LenkepanelWrapper from '../../../components/Lenkepanel/LenkepanelWrapper';
 
+import LenkepanelWrapper from '../../../components/Lenkepanel/LenkepanelWrapper';
 import bjorn from '../../../svg/bjorn.svg';
 
 interface BehandledePerioderPanelProps {

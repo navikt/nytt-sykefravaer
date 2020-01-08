@@ -1,6 +1,6 @@
-import React from 'react';
-
 import './Header.less';
+
+import React from 'react';
 import { Systemtittel } from 'nav-frontend-typografi';
 
 const Header = ({ location }: { location: string }) => {

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import UnderstreketOverskrift from './UnderstreketOverskrift/UnderstreketOverskrift';
 
 interface KategoriProps {

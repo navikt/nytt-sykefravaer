@@ -1,12 +1,11 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-import Brodsmuler from '../../components/brodsmuler/brodsmuler';
+import Brodsmuler from '../../components/Brodsmuler/Brodsmuler';
+import SoknadAvvist from './components/SoknadAvvist';
+import SoknadGodkjent from './components/SoknadGodkjent';
 import useAppStore from '../../store/useAppStore';
-
 import { Beslutning } from '../../types/soknadTypes';
-import SoknadGodkjent from './beslutninger/SoknadGodkjent';
-import SoknadAvvist from './beslutninger/SoknadAvvist';
 
 const getBrodsmuler = (id: string) => {
     return [

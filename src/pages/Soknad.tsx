@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-import Brodsmuler from '../components/brodsmuler/brodsmuler';
+import Brodsmuler from '../components/Brodsmuler/Brodsmuler';
 import Header from '../components/Header/Header';
 
 const SIDETITTEL = 'Søknad';

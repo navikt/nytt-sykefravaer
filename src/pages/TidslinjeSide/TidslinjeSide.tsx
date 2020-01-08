@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
-import { Sidetittel } from 'nav-frontend-typografi';
-import Tekstomrade from 'nav-frontend-tekstomrade';
-import Brodsmuler, { Brodsmule } from '../../components/brodsmuler/brodsmuler';
-import { Radio } from 'nav-frontend-skjema';
-import Hjelpetekst from 'nav-frontend-hjelpetekst';
-import TidslinjeMedArbeidsgiver from './TidslinjeMedArbeidsgiver';
 import './TidslinjeSide.less';
-import TidslinjeUtenArbeidsgiver from './TidslinjeUtenArbeidsgiver';
+
+import Hjelpetekst from 'nav-frontend-hjelpetekst';
+import Tekstomrade from 'nav-frontend-tekstomrade';
+import React, { useState } from 'react';
+import { Radio } from 'nav-frontend-skjema';
+import { Sidetittel } from 'nav-frontend-typografi';
+
 import Header from '../../components/Header/Header';
+import TidslinjeMedArbeidsgiver from './TidslinjeMedArbeidsgiver';
+import TidslinjeUtenArbeidsgiver from './TidslinjeUtenArbeidsgiver';
+import Brodsmuler, { Brodsmule } from '../../components/Brodsmuler/Brodsmuler';
 
 const SIDETITTEL = 'Hva skjer under sykefraværet?';
 

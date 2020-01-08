@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
 import Spinner from 'nav-frontend-spinner';
+import React, { useEffect } from 'react';
 import { AlertStripeFeil } from 'nav-frontend-alertstriper';
-import useFetch, { isNotStarted, FetchState, hasData, isAnyNotStartedOrPending, hasAnyFailed } from '../hooks/useFetch';
+
 import useAppStore from '../store/useAppStore';
+import useFetch, { FetchState, hasAnyFailed, hasData, isAnyNotStartedOrPending, isNotStarted } from '../hooks/useFetch';
+import { Status, Sykmelding } from '../types/sykmeldingTypes';
 import { SykmeldingData } from '../types/sykmeldingDataTypes';
-import { Sykmelding, Status } from '../types/sykmeldingTypes';
 
 const DataFetcher = (props: { children: any }) => {
     const { setSykmeldinger } = useAppStore();

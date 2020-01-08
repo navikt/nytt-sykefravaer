@@ -1,22 +1,21 @@
-import React from 'react';
-import { useHistory, useParams, Link } from 'react-router-dom';
-
-import Brodsmuler from '../components/brodsmuler/brodsmuler';
-import { LenkepanelBase } from 'nav-frontend-lenkepanel';
-import { Undertittel, Element, Sidetittel, Normaltekst } from 'nav-frontend-typografi';
-import Veilederpanel from 'nav-frontend-veilederpanel';
-import PanelBase, { Panel } from 'nav-frontend-paneler';
-import Stegindikator from 'nav-frontend-stegindikator';
-
 import './sykmeldingOversikt.less';
 
-import book from '../svg/book.svg';
-import bjorn from '../svg/bjorn.svg';
-import useAppStore from '../store/useAppStore';
-import { Knapp } from 'nav-frontend-knapper';
+import React from 'react';
+import Stegindikator from 'nav-frontend-stegindikator';
 import StegindikatorSteg from 'nav-frontend-stegindikator/lib/stegindikator-steg';
+import Veilederpanel from 'nav-frontend-veilederpanel';
+import PanelBase, { Panel } from 'nav-frontend-paneler';
+import { Element, Normaltekst, Sidetittel, Undertittel } from 'nav-frontend-typografi';
+import { Knapp } from 'nav-frontend-knapper';
+import { LenkepanelBase } from 'nav-frontend-lenkepanel';
+import { Link, useHistory, useParams } from 'react-router-dom';
+
+import Brodsmuler from '../components/Brodsmuler/Brodsmuler';
 import Header from '../components/Header/Header';
 import UnderstreketOverskrift from '../components/UnderstreketOverskrift/UnderstreketOverskrift';
+import bjorn from '../svg/bjorn.svg';
+import book from '../svg/book.svg';
+import useAppStore from '../store/useAppStore';
 
 const SIDETITTEL = 'Sykmelding';
 

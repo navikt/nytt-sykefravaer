@@ -1,7 +1,7 @@
+import './OverskriftSkille.less';
+
 import React from 'react';
 import { Systemtittel } from 'nav-frontend-typografi';
-
-import './OverskriftSkille.less';
 
 interface OverskriftSkilleProps {
     tekst: string;

@@ -1,8 +1,8 @@
 import React from 'react';
-import { useHistory } from 'react-router';
 import { LenkepanelBase } from 'nav-frontend-lenkepanel';
 import { Link } from 'react-router-dom';
 import { Undertittel } from 'nav-frontend-typografi';
+import { useHistory } from 'react-router';
 
 import book from '../svg/book.svg';
 
