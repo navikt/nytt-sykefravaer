@@ -1,4 +1,4 @@
-import { Sykmelding, Status } from './sykmeldingTypes';
+import { Status, Sykmelding } from './sykmeldingTypes';
 
 export class SykmeldingData {
     sykmelding: Sykmelding;

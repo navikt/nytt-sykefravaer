@@ -1,7 +1,8 @@
 import createUseContext from 'constate';
 import { useState } from 'react';
+
+import { Beslutning, Soknad } from '../types/soknadTypes';
 import { SykmeldingData } from '../types/sykmeldingDataTypes';
-import { Soknad, Beslutning } from '../types/soknadTypes';
 
 const useAppStore = createUseContext(() => {
     const [sykmeldinger, setSykmeldinger] = useState<SykmeldingData[] | null>(null);

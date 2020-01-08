@@ -1,7 +1,9 @@
-import React, { ReactNode, useRef } from 'react';
-import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel';
-import { Element } from 'nav-frontend-typografi';
 import './TidslinjeElement.less';
+
+import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel';
+import React, { ReactNode, useRef } from 'react';
+import { Element } from 'nav-frontend-typografi';
+
 import klokke from './svg/klokke.svg';
 import plaster from './svg/plaster.svg';
 import sirkel from './svg/sirkel.svg';

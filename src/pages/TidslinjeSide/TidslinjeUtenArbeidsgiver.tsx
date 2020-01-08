@@ -1,11 +1,12 @@
 import React from 'react';
-import TidslinjeElement from './TidslinjeElement';
 import { Normaltekst } from 'nav-frontend-typografi';
-import sykmeldtHvaNa from './svg/sykmeldt-hva-na.svg';
-import innen8uker from './svg/utenArbeigsgiver/innen-8uker.svg';
+
+import TidslinjeElement from './TidslinjeElement';
 import innen12uker from './svg/utenArbeigsgiver/innen-12uker.svg';
 import innen39uker from './svg/utenArbeigsgiver/innen-39uker.svg';
+import innen8uker from './svg/utenArbeigsgiver/innen-8uker.svg';
 import sluttfasen3 from './svg/sluttfasen-3.svg';
+import sykmeldtHvaNa from './svg/sykmeldt-hva-na.svg';
 
 const TidslinjeUtenArbeidsgiver = () => (
     <>

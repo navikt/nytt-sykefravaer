@@ -1,6 +1,6 @@
-import React from 'react';
-
 import './Card.less';
+
+import React from 'react';
 
 interface CardProps {
     children: JSX.Element | JSX.Element[];
