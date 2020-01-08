@@ -33,6 +33,9 @@ const DataFetcher = (props: { children: any }) => {
         }
     }, [setSykmeldinger, sykmeldingerFetcher]);
 
+    // TODO: Ved henting av sykefravær bør man kun hente sykmeldings ID og det som trengs for å vise status. Deretter hentes sykmeldinger når man trenger de.
+    // Slik DataFetcher er nå så hentes absolutt alt ved første pageview.
+
     useEffect(() => {
         if (isNotStarted(sykefravaerFetcher)) {
             sykefravaerFetcher.fetch('/syforest/sykefravaer/', undefined, (fetchState: FetchState<Sykefravaer[]>) => {
