@@ -1,11 +1,9 @@
 import React from 'react';
-import Veilederpanel from 'nav-frontend-veilederpanel';
 import { Normaltekst, Sidetittel, Undertittel } from 'nav-frontend-typografi';
 import { Panel } from 'nav-frontend-paneler';
 
 import Kategori from '../../../components/Kategori';
 import Lenkepanel from '../../../components/Lenkepanel';
-import bjorn from '../../../svg/bjorn.svg';
 import { Soknad } from '../../../types/soknadTypes';
 import { SykmeldingData } from '../../../types/sykmeldingDataTypes';
 
