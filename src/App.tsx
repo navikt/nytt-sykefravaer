@@ -6,11 +6,11 @@ import './basic.less';
 import useAppStore from './store/useAppStore';
 import DataFetcher from './components/DataFetcher';
 import DittSykefravaer from './pages/DittSykefravaer/DittSykefravaer';
-import DineSykmeldinger from './pages/DineSykmeldinger/DineSykmeldinger';
+import FravaersOversikt from './pages/FravaersOversikt/FravaersOversikt';
 import Sykmelding from './pages/Sykmelding';
 import Soknad from './pages/Soknad';
 import BeslutningFraNav from './pages/BeslutningerFraNav/BeslutningFraNav';
-import SykmeldingOversikt from './pages/SykmeldingOversikt/SykmeldingOversikt';
+import DokumentOversikt from './pages/DokumentOversikt/DokumentOversikt';
 import Inntektsmelding from './pages/Inntektsmelding';
 import TidslinjeSide from './pages/TidslinjeSide/TidslinjeSide';
 
@@ -21,13 +21,14 @@ const App = () => {
                 <BrowserRouter>
                     <Switch>
                         <Route exact path="/" component={DittSykefravaer} />
-                        <Route exact path="/sykmeldinger/" component={DineSykmeldinger} />
+                        <Route exact path="/fravaer/" component={FravaersOversikt} />
+                        <Route exact path="/fravaer/:id/" component={DokumentOversikt} />
+                        <Route exact path="/fravaer/:id/inntektsmelding/" component={Inntektsmelding} />
+                        <Route exact path="/fravaer/:id/vis/" component={Sykmelding} />
+                        <Route exact path="/fravaer/:id/soknad/" component={Soknad} />
+                        <Route exact path="/fravaer/:id/beslutning/" component={BeslutningFraNav} />
+
                         <Route exact path="/tidslinjen/" component={TidslinjeSide} />
-                        <Route exact path="/sykmeldinger/:id/" component={SykmeldingOversikt} />
-                        <Route exact path="/sykmeldinger/:id/inntektsmelding/" component={Inntektsmelding} />
-                        <Route exact path="/sykmeldinger/:id/vis/" component={Sykmelding} />
-                        <Route exact path="/sykmeldinger/:id/soknad/" component={Soknad} />
-                        <Route exact path="/sykmeldinger/:id/beslutning/" component={BeslutningFraNav} />
                     </Switch>
                 </BrowserRouter>
             </DataFetcher>

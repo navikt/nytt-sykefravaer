@@ -5,19 +5,23 @@ import LenkepanelWrapper from '../../../components/Lenkepanel/LenkepanelWrapper'
 import bjorn from '../../../svg/bjorn.svg';
 interface SykmeldingPanelProps {
     lenke: string;
-    sykmelding: SykmeldingData;
+    sykmeldingData: SykmeldingData;
 }
 
-const SykmeldingPanel = ({ lenke, sykmelding }: SykmeldingPanelProps) => {
-    const perioderMedGraderingOgLengdeTekst = sykmelding.sykmelding.perioder.map(periode =>
-        tilLesbarPeriodeMedGraderingOgArbeidsgiver(periode, sykmelding.sykmelding.arbeidsgiver),
+const SykmeldingPanel = ({ lenke, sykmeldingData }: SykmeldingPanelProps) => {
+    const { status, sykmelding } = sykmeldingData;
+
+    const perioderMedGraderingOgLengdeTekst = sykmelding.perioder.map(periode =>
+        tilLesbarPeriodeMedGraderingOgArbeidsgiver(periode, sykmelding.arbeidsgiver),
     );
-    const statustekst = sykmelding.status.status; // TODO: bytte til 'hentStatusTekst' når alle statustekster er ferdige
+    const statustekst = status.status; // TODO: bytte til 'hentStatusTekst' når alle statustekster er ferdige
+
+    const tittel = 'Sykmelding mottatt'; // TODO: tittel skal være basert på sykmeldingstatus. 'hentTittel'
 
     return (
         <LenkepanelWrapper
             lenke={lenke}
-            tittel="Sykelding"
+            tittel={tittel}
             tekstGra={perioderMedGraderingOgLengdeTekst}
             tekstStatus={`Status: ${statustekst}`}
             svg={bjorn}

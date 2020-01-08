@@ -13,6 +13,8 @@ import SykefravaerHeader from './components/SykefravaerHeader';
 import LenkepanelWrapper from '../../components/Lenkepanel/LenkepanelWrapper';
 import OverskriftSkille from '../../components/OverskriftSkille/OverskriftSkille';
 
+// TODO: Sett opp logikk for henting av veileder basert på tilgjengelige sykefravær
+
 const brodsmuler: Brodsmule[] = [
     {
         tittel: 'Ditt sykefravaer',
@@ -41,9 +43,9 @@ const DittSykefravaer = () => {
                 />
                 <OverskriftSkille tekst="Aktuelt" />
                 <LenkepanelWrapper
-                    lenke="/sykmeldinger/"
-                    tittel="Dine sykmeldinger"
-                    tekstGra="Oversikt over dokumenter, status og beslutning for dine sykeperioder."
+                    lenke="/fravaer"
+                    tittel="Status i dine sykefravær"
+                    tekstGra="Her finner du nye sykmeldinger, søknader om sykepenger, svar på søknader samt utbetalingsinformasjon."
                     svg={bjorn}
                     ikonbakgrunn="gul"
                 />
