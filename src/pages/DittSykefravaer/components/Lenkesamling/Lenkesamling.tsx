@@ -1,9 +1,9 @@
-import './RelatertInfo.less';
+import './Lenkesamling.less';
 
 import Lenke from 'nav-frontend-lenker';
 import React from 'react';
 
-import OverskriftSkille from '../../../components/OverskriftSkille/OverskriftSkille';
+import OverskriftSkille from '../../../../components/OverskriftSkille/OverskriftSkille';
 
 interface ItemProps {
     tekst: string;
@@ -11,17 +11,17 @@ interface ItemProps {
 
 const LenkeElement = ({ tekst }: ItemProps) => {
     return (
-        <Lenke className="relatertinfo__lenkeelement" href="">
+        <Lenke className="lenkesamling__lenkeelement" href="">
             {tekst}
         </Lenke>
     );
 };
 
-const RelatertInfo = () => {
+const Lenkesamling = () => {
     return (
         <>
             <OverskriftSkille tekst="Relatert informasjon" />
-            <div className="relatertinfo-container">
+            <div className="lenkesamling-container">
                 <LenkeElement tekst="Digital sykmelding" />
                 <LenkeElement tekst="Ofte stilte spørsmål" />
                 <LenkeElement tekst="Opphold i utlandet" />
@@ -36,4 +36,4 @@ const RelatertInfo = () => {
     );
 };
 
-export default RelatertInfo;
+export default Lenkesamling;
