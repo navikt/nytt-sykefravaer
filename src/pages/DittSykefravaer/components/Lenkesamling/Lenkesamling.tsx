@@ -14,10 +14,12 @@ interface LenkeElementProps {
 
 const LenkeElement = ({ tekst, lenke, ekstern }: LenkeElementProps) => {
     return (
-        <Lenke className="lenkesamling__lenkeelement" href={lenke}>
-            <span>{tekst}</span>
-            {ekstern ?? <ExternalLink />}
-        </Lenke>
+        <div className="lenkesamling__lenkeelement">
+            <Lenke className="lenkesamling__lenke" href={lenke}>
+                <span>{tekst}</span>
+                {ekstern && <ExternalLink className="lenkesamling__svg" />}
+            </Lenke>
+        </div>
     );
 };
 
@@ -25,17 +27,17 @@ const Lenkesamling = () => {
     return (
         <>
             <OverskriftSkille tekst="Relatert informasjon" />
-            <div className="lenkesamling-container">
-                <LenkeElement tekst="Digital sykmelding" lenke="www.nrk.no" ekstern />
-                <LenkeElement tekst="Ofte stilte spørsmål" lenke="www.nrk.no" ekstern />
-                <LenkeElement tekst="Opphold i utlandet" lenke="www.nav.no" />
-                <LenkeElement tekst="Begrepsforklaring" lenke="www.nav.no" />
-                <LenkeElement tekst="Syk i svangerskapsperioden" lenke="www.nav.no" />
-                <LenkeElement tekst="Regelverk" lenke="www.nav.no" />
-                <LenkeElement tekst="Annen informasjon" lenke="www.nrk.no" ekstern />
-                <LenkeElement tekst="Overgang til AAP" lenke="www.nav.no" />
-                <LenkeElement tekst="Slik klager du" lenke="www.nrk.no" ekstern />
-            </div>
+            <nav className="lenkesamling">
+                <LenkeElement tekst="Digital sykmelding" lenke="https://www.nrk.no/" ekstern />
+                <LenkeElement tekst="Ofte stilte spørsmål" lenke="https://www.nrk.no/" ekstern />
+                <LenkeElement tekst="Opphold i utlandet" lenke="opphold" />
+                <LenkeElement tekst="Begrepsforklaring" lenke="begrep" />
+                <LenkeElement tekst="Syk i svangerskapsperioden" lenke="syk" />
+                <LenkeElement tekst="Regelverk" lenke="regelverk" />
+                <LenkeElement tekst="Annen informasjon" lenke="https://www.nrk.no/" ekstern />
+                <LenkeElement tekst="Overgang til AAP" lenke="overgang" />
+                <LenkeElement tekst="Slik klager du" lenke="https://www.nrk.no/" ekstern />
+            </nav>
         </>
     );
 };

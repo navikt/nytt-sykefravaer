@@ -1,11 +1,39 @@
+@import '../../../../basic.less';
+
 .lenkesamling__lenkeelement {
-    flex: 1;
+    margin-bottom: 1.5rem;
     text-align: center;
-    padding: 1rem;
-    white-space: nowrap;
 }
 
-.lenkesamling-container {
-    display: flex;
-    flex-wrap: wrap;
+.lenkesamling__lenke {
+    color: black;
+    border-bottom: 1px solid lightgray;
+    text-decoration: none;
+}
+
+.lenkesamling__lenke:hover {
+    border-bottom: 1px solid #979797;
+}
+
+.lenkesamling {
+    column-count: 3;
+    margin: 1.5rem;
+}
+
+.lenkesamling {
+    column-count: 1;
+}
+
+@media (min-width: @screen-tablet) {
+    .lenkesamling {
+        column-count: 2;
+        margin: 1.5rem;
+    }
+}
+
+@media (min-width: @screen-desktop) {
+    .lenkesamling {
+        column-count: 3;
+        margin: 1.5rem;
+    }
 }

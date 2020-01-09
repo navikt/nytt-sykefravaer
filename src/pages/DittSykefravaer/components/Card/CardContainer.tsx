@@ -7,7 +7,7 @@ interface CardProps {
 }
 
 const CardContainer = ({ children }: CardProps) => {
-    return <div className="card-container">{children}</div>;
+    return <nav className="card-container">{children}</nav>;
 };
 
 export default CardContainer;

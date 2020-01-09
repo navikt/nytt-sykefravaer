@@ -1,7 +1,7 @@
 import React from 'react';
 
-const ExternalLink = () => (
-    <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+const ExternalLink = ({ className }: { className: string }) => (
+    <svg className={className} width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
         <title>Ekstern lenke</title>
         <g stroke="none" fill="none">
             <path
