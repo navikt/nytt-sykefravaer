@@ -33,16 +33,16 @@ const getBrodsmuler = (id: string) => {
 };
 
 const BeslutningFraNav = () => {
-    const { id } = useParams();
+    const { sykmeldingId } = useParams();
     const { sykmeldinger, soknader } = useAppStore(); // todo: hent inn søknad
 
-    if (!id || !sykmeldinger || !soknader) {
+    if (!sykmeldingId || !sykmeldinger || !soknader) {
         return null;
     }
 
-    const brodsmuler = getBrodsmuler(id);
+    const brodsmuler = getBrodsmuler(sykmeldingId);
 
-    const aktuellSykmelding = sykmeldinger.find(sykmeldingDto => sykmeldingDto.sykmelding.id === id);
+    const aktuellSykmelding = sykmeldinger.find(sykmeldingDto => sykmeldingDto.sykmelding.id === sykmeldingId);
     const akutellSoknad = soknader[0]; // todo: finne ut hvordan søknader passer inn i løpet
 
     if (!aktuellSykmelding || !akutellSoknad) {

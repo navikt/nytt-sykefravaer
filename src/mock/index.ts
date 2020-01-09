@@ -1,6 +1,7 @@
 import FetchMock, { MiddlewareUtils } from 'yet-another-fetch-mock';
 
 import { sykmeldingerMock } from './data/sykmeldinger';
+import { sykefravaerMock } from './data/sykefravaer';
 
 const mock = FetchMock.configure({
     enableFallback: true,
@@ -8,3 +9,4 @@ const mock = FetchMock.configure({
 });
 
 mock.get('/syforest/sykmeldinger', sykmeldingerMock);
+mock.get('/syforest/sykefravaer', sykefravaerMock);

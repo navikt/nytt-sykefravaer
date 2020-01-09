@@ -6,10 +6,13 @@ import useAppStore from '../store/useAppStore';
 import useFetch, { FetchState, hasAnyFailed, hasData, isAnyNotStartedOrPending, isNotStarted } from '../hooks/useFetch';
 import { Status, Sykmelding } from '../types/sykmeldingTypes';
 import { SykmeldingData } from '../types/sykmeldingDataTypes';
+import { Sykefravaer } from '../types/sykefravaerTypes';
+import { Soknad } from '../types/soknadTypes';
 
 const DataFetcher = (props: { children: any }) => {
-    const { setSykmeldinger } = useAppStore();
+    const { setSykmeldinger, setSykefravaer } = useAppStore();
     const sykmeldingerFetcher = useFetch<SykmeldingData[]>();
+    const sykefravaerFetcher = useFetch<Sykefravaer[]>();
 
     useEffect(() => {
         if (isNotStarted(sykmeldingerFetcher)) {
@@ -30,6 +33,26 @@ const DataFetcher = (props: { children: any }) => {
             );
         }
     }, [setSykmeldinger, sykmeldingerFetcher]);
+
+    // TODO: Ved henting av sykefravær bør man kun hente sykmeldings ID og det som trengs for å vise status. Deretter hentes sykmeldinger når man trenger de.
+    // Slik DataFetcher er nå så hentes absolutt alt ved første pageview.
+
+    useEffect(() => {
+        if (isNotStarted(sykefravaerFetcher)) {
+            sykefravaerFetcher.fetch('/syforest/sykefravaer/', undefined, (fetchState: FetchState<Sykefravaer[]>) => {
+                if (hasData(fetchState)) {
+                    const { data } = fetchState;
+                    const sykefravaer = data.map(fravaer => ({
+                        id: fravaer.id,
+                        sykmeldinger: fravaer.sykmeldinger.map(sykmelding => new SykmeldingData(sykmelding)),
+                        soknader: fravaer.soknader.map(soknad => new Soknad(soknad)),
+                    }));
+                    console.log(sykefravaer);
+                    setSykefravaer(sykefravaer);
+                }
+            });
+        }
+    }, [setSykefravaer, sykefravaerFetcher]);
 
     if (isAnyNotStartedOrPending([sykmeldingerFetcher])) {
         return <Spinner />;
