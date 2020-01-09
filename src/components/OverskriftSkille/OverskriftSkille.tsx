@@ -10,9 +10,7 @@ interface OverskriftSkilleProps {
 const OverskriftSkille = ({ tekst }: OverskriftSkilleProps) => {
     return (
         <div className="overskriftskille">
-            <hr className="overskriftskille__hr" />
             <Systemtittel className="overskriftskille__tittel">{tekst}</Systemtittel>
-            <hr className="overskriftskille__hr" />
         </div>
     );
 };
