@@ -9,11 +9,9 @@ import Brodsmuler, { Brodsmule } from '../../../components/Brodsmuler/Brodsmuler
 const SykefravaerHeader = ({ brodsmuler }: { brodsmuler: Brodsmule[] }) => {
     return (
         <div className="sykefravaer-header">
-            <div className="limit-short">
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <Brodsmuler brodsmuler={brodsmuler} />
-                    <Sidetittel>Ditt sykefravær</Sidetittel>
-                </div>
+            <div className="sykefravaer-header__container">
+                <Brodsmuler brodsmuler={brodsmuler} />
+                <Sidetittel className="sykefravaer-header__tekst">Ditt sykefravær</Sidetittel>
                 <img className="sykefravaer-header__image" src={konsultasjon} alt="Konsultasjon" />
             </div>
         </div>

@@ -1,27 +1,33 @@
 @import '../../../basic.less';
 
 .sykefravaer-header {
-    border-bottom: 4px solid @headerBorderFarge;
+    border-bottom: 5px solid @headerBorderFarge;
     background-color: @headerFarge;
+}
+
+.sykefravaer-header__container {
+    margin: auto;
+    padding: 1rem 1rem 1rem;
     position: relative;
-    height: 8rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .sykefravaer-header__image {
+    align-self: flex-end;
     position: absolute;
-    right: 0.5rem;
-    left: auto;
-    bottom: 15px;
+    bottom: 0px;
+    height: 90%;
+    width: auto;
 }
 
-@media (max-width: @screen-desktop) {
-    .sykefravaer-header__image {
-        visibility: hidden;
-    }
+.sykefravaer-header__tekst {
+    margin-top: 2rem;
+    z-index: 1;
+}
 
-    .sykefravaer-header {
-        text-align: center;
-        padding-bottom: 1rem;
-        padding-top: 1rem;
+@media (min-width: @screen-desktop) {
+    .sykefravaer-header__container {
+        width: @screen-desktop;
     }
 }

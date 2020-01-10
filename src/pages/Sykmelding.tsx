@@ -32,13 +32,13 @@ const getBrodsmuler = (id: string) => {
 };
 
 const Sykmelding = () => {
-    const { id } = useParams();
+    const { sykmeldingId } = useParams();
 
-    if (!id) {
+    if (!sykmeldingId) {
         return null;
     }
 
-    const brodsmuler = getBrodsmuler(id);
+    const brodsmuler = getBrodsmuler(sykmeldingId);
 
     return (
         <>

@@ -2,24 +2,24 @@
 
 .overskriftskille {
     display: flex;
-    padding-bottom: 1rem;
-    margin-top: 3rem;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.25rem;
+    text-align: center;
 }
 
-.overskriftskille__hr {
+.overskriftskille::before,
+.overskriftskille::after {
+    content: '';
     flex: 1;
-    margin-top: 0.9rem;
-    border-color: #979797;
-    border-style: inset;
-    border-width: 0.5px;
+    height: 1px;
+    background-color: #979797;
 }
 
 .overskriftskille__tittel {
-    flex: 0;
-    text-align: center;
-    white-space: nowrap;
-    padding: 0 1rem 0 1rem;
-    min-width: 50%;
+    flex-shrink: 0;
+    margin: 0 1rem;
 }
 
 @media (max-width: @screen-desktop) {
