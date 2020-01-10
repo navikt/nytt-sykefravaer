@@ -94,7 +94,7 @@ const DokumentOversikt = () => {
                 {veileder}
 
                 {kreverHandling.length > 0 && (
-                    <Kategori tittel={'Krever handling'}>
+                    <Kategori tittel={'Nye varsler'}>
                         {kreverHandling.map(sykmeldingData => (
                             <SykmeldingPanel
                                 key={sykmeldingData.sykmelding.id}

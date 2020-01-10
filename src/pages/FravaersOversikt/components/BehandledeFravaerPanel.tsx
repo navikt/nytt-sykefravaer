@@ -1,6 +1,6 @@
 import React from 'react';
-import LenkepanelWrapper from '../../../components/Lenkepanel/LenkepanelWrapper';
 
+import LenkepanelWrapper from '../../../components/Lenkepanel/LenkepanelWrapper';
 import bjorn from '../../../svg/bjorn.svg';
 
 interface BehandledeFravaerPanelProps {
@@ -11,7 +11,7 @@ interface BehandledeFravaerPanelProps {
 const BehandledeFravaerPanel = ({ lenke, antallSykefravær }: BehandledeFravaerPanelProps) => (
     <LenkepanelWrapper
         lenke={lenke}
-        tittel={`Oversikt over tidligere fravær`}
+        tittel={`Oversikt over tidligere sykefravær`}
         tekstGra={`${antallSykefravær} sykefravær totalt`}
         ikonbakgrunn="gra"
         svg={bjorn}

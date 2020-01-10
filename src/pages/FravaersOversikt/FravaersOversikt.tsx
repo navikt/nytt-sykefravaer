@@ -48,7 +48,18 @@ const FravaersOversikt = () => {
                 <Undertittel style={{ textAlign: 'center', marginBottom: '3rem' }}>
                     Oversikt over aktive- og tidligere sykefravær
                 </Undertittel>
-                <Kategori tittel={'Krever handling'}>
+                <Kategori tittel={'Nye varsler'}>
+                    {sykefravaer.map(fravaer => (
+                        <SykmeldingPanel
+                            key={fravaer.id}
+                            lenke={`${pathname}/${fravaer.id}`}
+                            antallNyeSykmeldinger={fravaer.sykmeldinger.length}
+                            periodeFra={new Date()}
+                            periodeTil={new Date()}
+                        />
+                    ))}
+                </Kategori>
+                <Kategori tittel={'Pågående sykefravær'}>
                     {sykefravaer.map(fravaer => (
                         <SykmeldingPanel
                             key={fravaer.id}
