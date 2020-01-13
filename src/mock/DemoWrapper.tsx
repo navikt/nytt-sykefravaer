@@ -21,7 +21,6 @@ const configureMock = () => {
 const mockRequests = (brukerId: string) => {
     mock = configureMock();
 
-    console.log('new mocks');
     const sykefravaer = brukere.find(bruker => bruker.value === brukerId)?.sykefravaer;
 
     mock.get('/syforest/sykmeldinger', []);
