@@ -9,7 +9,7 @@ export const ingenSykmeldingerIngenSoknader = [];
 
 export const nySykmeldingInaktivSoknad = [
     {
-        id: 'fravaer1',
+        id: 'fravaerId',
         sykmeldinger: [nySykmelding],
         soknader: [inaktivSoknad],
     },
@@ -17,7 +17,7 @@ export const nySykmeldingInaktivSoknad = [
 
 export const toNyeSykmeldingerInaktivSoknad = [
     {
-        id: 'fravaer2',
+        id: 'fravaerId',
         // TODO: åpne for samme type søknad med litt annen data
         // TODO: lag funksjon for å definere startdato og lengde på søknad
         sykmeldinger: [nySykmelding, nySykmelding],
@@ -28,7 +28,7 @@ export const toNyeSykmeldingerInaktivSoknad = [
 
 export const nySykmeldingAktivSoknad = [
     {
-        id: 'fravaer3',
+        id: 'fravaerId',
         sykmeldinger: [nySykmelding],
         soknader: [aktivSoknad],
     },
@@ -36,7 +36,7 @@ export const nySykmeldingAktivSoknad = [
 
 export const sendtSykmeldingAktivSoknad = [
     {
-        id: 'fravaer4',
+        id: 'fravaerId',
         sykmeldinger: [sendtSykmelding],
         soknader: [aktivSoknad],
     },
@@ -44,7 +44,7 @@ export const sendtSykmeldingAktivSoknad = [
 
 export const sendtSykmeldingInaktivSoknad = [
     {
-        id: 'fravaer5',
+        id: 'fravaerId',
         sykmeldinger: [sendtSykmelding],
         soknader: [inaktivSoknad],
     },
@@ -52,7 +52,7 @@ export const sendtSykmeldingInaktivSoknad = [
 
 export const sendtSykmeldingSendtSoknad = [
     {
-        id: 'fravaer5',
+        id: 'fravaerId',
         sykmeldinger: [sendtSykmelding],
         soknader: [sendtSoknad],
     },

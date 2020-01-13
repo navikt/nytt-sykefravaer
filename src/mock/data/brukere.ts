@@ -8,6 +8,8 @@ import {
     toNyeSykmeldingerInaktivSoknad,
 } from './sykefravaer';
 
+// TODO: Legg til støtte for tidligere fravær
+// - Krever modellendring. Sykefravær må inneholde en eller flere sykefravær.
 export const brukere = [
     { value: 'bruker1', label: 'Ingen sykmelding, ingen søknader', sykefravaer: ingenSykmeldingerIngenSoknader },
     { value: 'bruker2', label: 'Ny sykmelding, inaktiv søknad', sykefravaer: nySykmeldingInaktivSoknad },

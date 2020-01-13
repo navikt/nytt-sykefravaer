@@ -48,6 +48,7 @@ const DemoWrapper = () => {
 
                     setBrukerId(event.target.value);
                 }}
+                value={brukerId}
             >
                 <option key="init" value="">
                     -- Bytt bruker --
