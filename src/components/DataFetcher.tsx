@@ -2,17 +2,32 @@ import Spinner from 'nav-frontend-spinner';
 import React, { useEffect } from 'react';
 import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 
+import env from '../utils/environment';
 import useAppStore from '../store/useAppStore';
+import useMockAppStore from '../mock/useMockAppStore';
 import useFetch, { FetchState, hasAnyFailed, hasData, isAnyNotStartedOrPending, isNotStarted } from '../hooks/useFetch';
-import { Status, Sykmelding } from '../types/sykmeldingTypes';
-import { SykmeldingData } from '../types/sykmeldingDataTypes';
-import { Sykefravaer } from '../types/sykefravaerTypes';
 import { Soknad } from '../types/soknadTypes';
+import { Status, Sykmelding } from '../types/sykmeldingTypes';
+import { Sykefravaer } from '../types/sykefravaerTypes';
+import { SykmeldingData } from '../types/sykmeldingDataTypes';
 
 const DataFetcher = (props: { children: any }) => {
+    // Demo
+    const { brukerId } = useMockAppStore();
+
     const { setSykmeldinger, setSykefravaer } = useAppStore();
     const sykmeldingerFetcher = useFetch<SykmeldingData[]>();
     const sykefravaerFetcher = useFetch<Sykefravaer[]>();
+
+    // Brukes for å resetter status på fetchere ved endring av BrukerID. Dette skjer kun i demo.
+    useEffect(() => {
+        if (env.isDevelopment || env.isRunningOnHeroku) {
+            sykefravaerFetcher.reset();
+            sykmeldingerFetcher.reset();
+        }
+        // Ønsker ikke å oppdatere basert på endring i fetchers.
+        // eslint-disable-next-line
+    }, [brukerId]);
 
     useEffect(() => {
         if (isNotStarted(sykmeldingerFetcher)) {

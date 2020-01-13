@@ -1,7 +1,7 @@
-import { nySykmelding } from './nysykmelding';
-import { avvistSykmelding } from './avvistSykmelding';
 import { avbruttSykmelding } from './avbruttSykmelding';
+import { avvistSykmelding } from './avvistSykmelding';
 import { bekreftetSykmelding } from './bekreftetSykmelding';
+import { nySykmelding } from './nysykmelding';
 import { sendtSykmelding } from './sendtSykmelding';
 
 const soknad1 = {

@@ -10,11 +10,17 @@ import * as serviceWorker from './serviceWorker';
 import App from './App';
 import DemoWrapper from './mock/DemoWrapper';
 import env from './utils/environment';
+import useMockAppStore from './mock/useMockAppStore';
 
 dayjs.locale('nb');
 
 if (env.isDevelopment || env.isRunningOnHeroku) {
-    ReactDOM.render(<DemoWrapper />, document.getElementById('root'));
+    ReactDOM.render(
+        <useMockAppStore.Provider>
+            <DemoWrapper />
+        </useMockAppStore.Provider>,
+        document.getElementById('root'),
+    );
 } else {
     ReactDOM.render(<App />, document.getElementById('root'));
 }

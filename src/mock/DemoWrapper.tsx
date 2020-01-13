@@ -1,27 +1,39 @@
+import React from 'react';
 import FetchMock, { MiddlewareUtils } from 'yet-another-fetch-mock';
-import React, { useState } from 'react';
 
 import App from '../App';
+import useMockAppStore from './useMockAppStore';
 import { brukere } from './data/brukere';
-import { sykefravaerMock } from './data/sykefravaer';
-import { sykmeldingerMock } from './data/sykmeldinger';
 
 /*
 Denne komponenten vises kun i dev-modus, og lar deg skifte mellom ulike brukere med forskjellig sykmeldingshistorikk.
 */
 
-const mock = FetchMock.configure({
-    enableFallback: true,
-    middleware: MiddlewareUtils.combine(MiddlewareUtils.delayMiddleware(1000), MiddlewareUtils.loggingMiddleware()),
-});
+let mock: FetchMock;
 
-const mockRequests = (brukerId: string | null) => {
-    mock.get('/syforest/sykmeldinger', sykmeldingerMock);
-    mock.get('/syforest/sykefravaer', sykefravaerMock);
+const configureMock = () => {
+    return FetchMock.configure({
+        enableFallback: true,
+        middleware: MiddlewareUtils.combine(MiddlewareUtils.delayMiddleware(1000), MiddlewareUtils.loggingMiddleware()),
+    });
+};
+
+const mockRequests = (brukerId: string) => {
+    mock = configureMock();
+
+    console.log('new mocks');
+    const sykefravaer = brukere.find(bruker => bruker.value === brukerId)?.sykefravaer;
+
+    mock.get('/syforest/sykmeldinger', []);
+    if (sykefravaer) {
+        mock.get('/syforest/sykefravaer', sykefravaer);
+    } else {
+        mock.get('/syforest/sykefravaer', []);
+    }
 };
 
 const DemoWrapper = () => {
-    const [brukerId, setBrukerId] = useState<string | null>(null);
+    const { brukerId, setBrukerId } = useMockAppStore();
 
     mockRequests(brukerId);
 
@@ -31,7 +43,12 @@ const DemoWrapper = () => {
                 style={{ position: 'absolute', right: 0, zIndex: 1 }}
                 name="brukere"
                 id="bruker-select"
-                onChange={event => setBrukerId(event.target.value)}
+                onChange={event => {
+                    mock.restore();
+                    mock = configureMock();
+
+                    setBrukerId(event.target.value);
+                }}
             >
                 {brukere.map(({ value, label }) => (
                     <option key={value} value={value}>
