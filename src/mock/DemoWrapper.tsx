@@ -14,7 +14,7 @@ let mock: FetchMock;
 const configureMock = () => {
     return FetchMock.configure({
         enableFallback: true,
-        middleware: MiddlewareUtils.combine(MiddlewareUtils.delayMiddleware(1000), MiddlewareUtils.loggingMiddleware()),
+        middleware: MiddlewareUtils.combine(MiddlewareUtils.delayMiddleware(200), MiddlewareUtils.loggingMiddleware()),
     });
 };
 
@@ -49,6 +49,9 @@ const DemoWrapper = () => {
                     setBrukerId(event.target.value);
                 }}
             >
+                <option key="init" value="">
+                    -- Bytt bruker --
+                </option>
                 {brukere.map(({ value, label }) => (
                     <option key={value} value={value}>
                         {label}
