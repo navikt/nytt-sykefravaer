@@ -13,7 +13,7 @@ import SykmeldingPanel from './components/SykmeldingPanel';
 import Veileder from '../../components/Veileder/Veileder';
 import { StatusTyper } from '../../types/sykmeldingTypes';
 import { Sykefravaer } from '../../types/sykefravaerTypes';
-import { useSelectSykefravaer } from '../../store/selectAppStore';
+import { useSykefravaerFraId } from '../../store/selectAppStore';
 
 const SIDETITTEL = 'Dokumentoversikt';
 
@@ -59,7 +59,7 @@ const DokumentOversikt = () => {
 
     const { fravaerId } = useParams();
     const { pathname } = useLocation();
-    const sykefravaer = useSelectSykefravaer(fravaerId);
+    const sykefravaer = useSykefravaerFraId(fravaerId);
 
     if (!fravaerId) {
         return null;

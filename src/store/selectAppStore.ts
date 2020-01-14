@@ -15,36 +15,48 @@ export const useSelectSykmeldinger = () => {
     return { nyeSykmeldinger, tidligereSykmeldinger };
 };
 
-export const useSelectSykefravaerList = () => {
+// Sykefravær som inneholder nye sykmeldinger
+export const useSykefravaerNyeSykmeldinger = () => {
+    const { sykefravaer } = useAppStore();
+
+    if (!sykefravaer) {
+        return [];
+    }
+
+    return sykefravaer.filter(fravaer =>
+        fravaer.sykmeldinger.some(sykmelding => sykmelding.status.status === StatusTyper.NY),
+    );
+};
+
+// Sykefravær som inneholder aktive søknader
+export const useSykefravaerAktiveSoknader = () => {
+    const { sykefravaer } = useAppStore();
+
+    if (!sykefravaer) {
+        return [];
+    }
+
+    return sykefravaer.filter(fravaer => fravaer.soknader.some(soknad => soknad.beslutning === Beslutning.INAKTIV));
+};
+
+// Sykefravær med bekreftede/sendte sykmeldinger og inaktive søknader
+export const useSykefravaerPagaende = () => {
     const { sykefravaer } = useAppStore();
 
     if (!sykefravaer) {
         return {};
     }
 
-    // Sykefravær som inneholder:
-    // - en eller flere nye sykmeldinger
-    // - en eller flere aktive søknader
-    const ubehandledeFravaer = sykefravaer.filter(fravaer => {
-        if (fravaer.sykmeldinger.some(sykmelding => sykmelding.status.status === StatusTyper.NY)) {
-            return true;
-        }
+    const ikkeNyeSykefravaer = sykefravaer.filter(fravaer =>
+        fravaer.sykmeldinger.some(sykmelding => sykmelding.status.status !== StatusTyper.NY),
+    );
 
-        if (
-            fravaer.soknader.some(
-                soknad => soknad.beslutning === Beslutning.AKTIV || soknad.beslutning === Beslutning.AVVIST,
-            )
-        ) {
-            return true;
-        }
-
-        return false;
-    });
-
-    return { sykefravaer, ubehandledeFravaer };
+    return ikkeNyeSykefravaer.filter(fravaer =>
+        fravaer.soknader.some(soknad => soknad.beslutning === Beslutning.INAKTIV),
+    );
 };
 
-export const useSelectSykefravaer = (id?: string) => {
+export const useSykefravaerFraId = (id?: string) => {
     const { sykefravaer } = useAppStore();
 
     if (!id) {

@@ -11,7 +11,7 @@ import SykefravaerPanel from '../FravaersOversikt/components/SykefravaerPanel';
 import Veileder from '../../components/Veileder/Veileder';
 import bjorn from '../../svg/bjorn.svg';
 import { Brodsmule } from '../../components/Brodsmuler/Brodsmuler';
-import { useSelectSykefravaerList } from '../../store/selectAppStore';
+import { useSykefravaerAktiveSoknader, useSykefravaerNyeSykmeldinger } from '../../store/selectAppStore';
 
 // TODO: Sett opp logikk for henting av veileder basert på tilgjengelige sykefravær
 
@@ -26,7 +26,8 @@ const brodsmuler: Brodsmule[] = [
 const DittSykefravaer = () => {
     document.title = 'Ditt sykefravær - www.nav.no';
 
-    const { ubehandledeFravaer } = useSelectSykefravaerList();
+    const fravaerMedNyeSykmeldinger = useSykefravaerNyeSykmeldinger();
+    const fravaerMedAktiveSoknader = useSykefravaerAktiveSoknader();
 
     return (
         <>
@@ -47,7 +48,12 @@ const DittSykefravaer = () => {
                 )}
 
                 <OverskriftSkille tekst="Nye varsler" />
-                {ubehandledeFravaer?.map(fravaer => (
+                {fravaerMedNyeSykmeldinger.map(fravaer => (
+                    <SykefravaerPanel key={fravaer.id} lenke={`/fravaer/${fravaer.id}`} sykefravaer={fravaer} />
+                ))}
+                {fravaerMedAktiveSoknader.map((
+                    fravaer /* TODO: Teksten på Sykefravaerpanel må endres for å kunne reflektere at en søknad er klar for utfylling */,
+                ) => (
                     <SykefravaerPanel key={fravaer.id} lenke={`/fravaer/${fravaer.id}`} sykefravaer={fravaer} />
                 ))}
                 <LenkepanelWrapper
