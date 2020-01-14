@@ -50,24 +50,12 @@ const FravaersOversikt = () => {
                 </Undertittel>
                 <Kategori tittel={'Nye varsler'}>
                     {sykefravaer.map(fravaer => (
-                        <SykmeldingPanel
-                            key={fravaer.id}
-                            lenke={`${pathname}/${fravaer.id}`}
-                            antallNyeSykmeldinger={fravaer.sykmeldinger.length}
-                            periodeFra={new Date()}
-                            periodeTil={new Date()}
-                        />
+                        <SykmeldingPanel key={fravaer.id} lenke={`${pathname}/${fravaer.id}`} sykefravaer={fravaer} />
                     ))}
                 </Kategori>
                 <Kategori tittel={'Pågående sykefravær'}>
                     {sykefravaer.map(fravaer => (
-                        <SykmeldingPanel
-                            key={fravaer.id}
-                            lenke={`${pathname}/${fravaer.id}`}
-                            antallNyeSykmeldinger={fravaer.sykmeldinger.length}
-                            periodeFra={new Date()}
-                            periodeTil={new Date()}
-                        />
+                        <SykmeldingPanel key={fravaer.id} lenke={`${pathname}/${fravaer.id}`} sykefravaer={fravaer} />
                     ))}
                 </Kategori>
                 <Kategori tittel="Ferdig behandlet">

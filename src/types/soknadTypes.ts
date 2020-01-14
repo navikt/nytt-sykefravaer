@@ -1,6 +1,9 @@
 export enum Beslutning {
-    GODKJENT = 'GODKJENT',
+    SENDT = 'SENDT',
+    AKTIV = 'AKTIV',
+    INAKTIV = 'INAKTIV',
     AVVIST = 'AVVIST',
+    GODKJENT = 'GODKJENT',
 }
 
 export class Soknad {

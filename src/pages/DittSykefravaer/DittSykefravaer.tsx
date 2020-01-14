@@ -7,9 +7,11 @@ import LenkepanelWrapper from '../../components/Lenkepanel/LenkepanelWrapper';
 import Lenkesamling from './components/Lenkesamling/Lenkesamling';
 import OverskriftSkille from '../../components/OverskriftSkille/OverskriftSkille';
 import SykefravaerHeader from './components/SykefravaerHeader';
+import SykefravaerPanel from '../FravaersOversikt/components/SykefravaerPanel';
 import Veileder from '../../components/Veileder/Veileder';
 import bjorn from '../../svg/bjorn.svg';
 import { Brodsmule } from '../../components/Brodsmuler/Brodsmuler';
+import { useSelectSykefravaerList } from '../../store/selectAppStore';
 
 // TODO: Sett opp logikk for henting av veileder basert på tilgjengelige sykefravær
 
@@ -24,30 +26,47 @@ const brodsmuler: Brodsmule[] = [
 const DittSykefravaer = () => {
     document.title = 'Ditt sykefravær - www.nav.no';
 
+    const { ubehandledeFravaer } = useSelectSykefravaerList();
+
     return (
         <>
             <SykefravaerHeader brodsmuler={brodsmuler} />
             <div className="limit">
-                <Veileder
-                    innhold={
-                        <>
-                            <Systemtittel>Velkommen til ditt sykefravær.</Systemtittel>
-                            <p>Denne teksten avhenger av hvilke sykemeldinger brukeren har/ikke har.</p>
-                        </>
-                    }
-                    stemning="glad"
-                    onClick={() => {}}
-                    knappTekst="Demo knapp"
-                />
-                <OverskriftSkille tekst="Aktuelt" />
+                {/* I hvilke tilfeller veileder skal vises er ikke definert enda. */ false && (
+                    <Veileder
+                        innhold={
+                            <>
+                                <Systemtittel>Velkommen til ditt sykefravær.</Systemtittel>
+                                <p>Denne teksten avhenger av hvilke sykemeldinger brukeren har/ikke har.</p>
+                            </>
+                        }
+                        stemning="glad"
+                        onClick={() => {}}
+                        knappTekst="Demo knapp"
+                    />
+                )}
+
+                <OverskriftSkille tekst="Nye varsler" />
+                {ubehandledeFravaer?.map(fravaer => (
+                    <SykefravaerPanel key={fravaer.id} lenke={`/fravaer/${fravaer.id}`} sykefravaer={fravaer} />
+                ))}
                 <LenkepanelWrapper
                     lenke="/fravaer"
-                    tittel="Status i dine sykefravær"
-                    tekstGra="Her finner du nye sykmeldinger, søknader om sykepenger, svar på søknader samt utbetalingsinformasjon."
+                    tittel="Oversikt over dine sykefravær"
+                    tekstGra="Her finner du pågående- og tidligere sykefravær med tilhørende dokumenter: Sykmeldinger, søknader, svar fra NAV og utbetalingsdetaljer."
                     svg={bjorn}
                     ikonbakgrunn="gul"
                 />
                 <OverskriftSkille tekst="Informasjon og veiledning" />
+                <LenkepanelWrapper
+                    lenke="/forklart"
+                    tittel="Digital sykmelding forklart"
+                    tekstGra={[
+                        'Tradisjonelt har sykmeldingen blitt skrevet ut på papir.',
+                        'Her viser vi deg hvordan den digitale sykmeldingen fungerer.',
+                    ]}
+                    svg={bjorn}
+                />
                 <CardContainer>
                     <Card
                         tittel="Sykefravær forklart"

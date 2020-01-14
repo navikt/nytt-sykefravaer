@@ -27,8 +27,8 @@ export const nySykmelding = {
         },
         perioder: [
             {
-                fom: '2018-10-18',
-                tom: '2018-11-12',
+                fom: '2018-09-01',
+                tom: '2018-10-01',
                 aktivitetIkkeMulig: {
                     medisinskArsak: {
                         beskrivelse: 'dette er en beskrivelse',
@@ -48,8 +48,8 @@ export const nySykmelding = {
                 reisetilskudd: false,
             },
             {
-                fom: '2018-10-18',
-                tom: '2018-11-12',
+                fom: '2018-10-16',
+                tom: '2018-11-01',
                 aktivitetIkkeMulig: {
                     medisinskArsak: {
                         beskrivelse: 'dette er en beskrivelse',

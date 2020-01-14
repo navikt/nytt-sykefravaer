@@ -13,7 +13,7 @@ interface LenkepanelProps {
     tekstGra?: string | string[];
     tekstStatus?: string;
     svg: string;
-    ikonbakgrunn: Ikonbakgrunn;
+    ikonbakgrunn?: Ikonbakgrunn;
 }
 
 const LenkepanelWrapper = ({ lenke, tittel, tekstGra, tekstStatus, svg, ikonbakgrunn }: LenkepanelProps) => {
@@ -23,7 +23,7 @@ const LenkepanelWrapper = ({ lenke, tittel, tekstGra, tekstStatus, svg, ikonbakg
                 <img
                     src={svg}
                     width={60}
-                    className={`lenkepanelwrapper-ikon ikon--${ikonbakgrunn}`}
+                    className={`lenkepanelwrapper-ikon ${ikonbakgrunn && `ikon--${ikonbakgrunn}`}`}
                     alt="Lenkepanelillustrasjon"
                 />
                 <div className={`lenkepanelwrapper-tekst ${!tekstStatus && 'lenkepanelwrapper-tekst--sentrer'}`}>
