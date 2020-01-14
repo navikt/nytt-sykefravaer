@@ -8,6 +8,10 @@ interface KategoriProps {
 }
 
 const Kategori = ({ tittel, children }: KategoriProps) => {
+    if (Array.isArray(children) && children.length === 0) {
+        return null;
+    }
+
     return (
         <div style={{ marginBottom: '3rem' }}>
             <UnderstreketOverskrift tittel={tittel} />

@@ -44,7 +44,7 @@ export const useSykefravaerPagaende = () => {
     const { sykefravaer } = useAppStore();
 
     if (!sykefravaer) {
-        return {};
+        return [];
     }
 
     const ikkeNyeSykefravaer = sykefravaer.filter(fravaer =>
@@ -53,6 +53,27 @@ export const useSykefravaerPagaende = () => {
 
     return ikkeNyeSykefravaer.filter(fravaer =>
         fravaer.soknader.some(soknad => soknad.beslutning === Beslutning.INAKTIV),
+    );
+};
+
+export const useSykefravaerMedNyeSykmeldingerEllerAktiveSoknader = () => {
+    return [...useSykefravaerNyeSykmeldinger(), ...useSykefravaerAktiveSoknader()];
+};
+
+// Sykefravær som kun har ferdig behandlede sykmeldinger og godkjente søknader
+export const useSykefravaerFerdigBehandlet = () => {
+    const { sykefravaer } = useAppStore();
+
+    if (!sykefravaer) {
+        return [];
+    }
+
+    const fravaerMedFerdigeSykmeldinger = sykefravaer.filter(fravaer =>
+        fravaer.sykmeldinger.some(sykmelding => sykmelding.status.status !== StatusTyper.NY),
+    );
+
+    return fravaerMedFerdigeSykmeldinger.filter(fravaer =>
+        fravaer.soknader.some(soknad => soknad.beslutning === Beslutning.GODKJENT),
     );
 };
 

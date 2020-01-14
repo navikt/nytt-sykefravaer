@@ -6,8 +6,12 @@ import BehandledeFravaerPanel from './components/BehandledeFravaerPanel';
 import Header from '../../components/Header/Header';
 import Kategori from '../../components/Kategori';
 import SykmeldingPanel from './components/SykefravaerPanel';
-import useAppStore from '../../store/useAppStore';
 import Brodsmuler, { Brodsmule } from '../../components/Brodsmuler/Brodsmuler';
+import {
+    useSykefravaerFerdigBehandlet,
+    useSykefravaerMedNyeSykmeldingerEllerAktiveSoknader,
+    useSykefravaerPagaende,
+} from '../../store/selectAppStore';
 
 const SIDETITTEL = 'Fraværsoversikt';
 
@@ -27,13 +31,13 @@ const brodsmuler: Brodsmule[] = [
 const FravaersOversikt = () => {
     document.title = `${SIDETITTEL} - www.nav.no`;
 
-    const { sykefravaer } = useAppStore();
+    const nyeSykefravaer = useSykefravaerMedNyeSykmeldingerEllerAktiveSoknader();
+    const pagaendeSykefravaer = useSykefravaerPagaende();
+    const ferdigeSykefravaer = useSykefravaerFerdigBehandlet();
     const { pathname } = useLocation();
 
-    console.log(sykefravaer);
-
     // TODO: Erstatt dette med en fornuftig visning for ingen sykefravaer
-    if (!sykefravaer) {
+    if (!nyeSykefravaer) {
         return <div>Ingen sykefravaer</div>;
     }
 
@@ -49,17 +53,22 @@ const FravaersOversikt = () => {
                     Oversikt over aktive- og tidligere sykefravær
                 </Undertittel>
                 <Kategori tittel={'Nye varsler'}>
-                    {sykefravaer.map(fravaer => (
+                    {nyeSykefravaer.map(fravaer => (
                         <SykmeldingPanel key={fravaer.id} lenke={`${pathname}/${fravaer.id}`} sykefravaer={fravaer} />
                     ))}
                 </Kategori>
                 <Kategori tittel={'Pågående sykefravær'}>
-                    {sykefravaer.map(fravaer => (
+                    {pagaendeSykefravaer.map(fravaer => (
                         <SykmeldingPanel key={fravaer.id} lenke={`${pathname}/${fravaer.id}`} sykefravaer={fravaer} />
                     ))}
                 </Kategori>
                 <Kategori tittel="Ferdig behandlet">
-                    <BehandledeFravaerPanel lenke="test" antallSykefravær={3} />
+                    {ferdigeSykefravaer.map(fravaer => (
+                        <BehandledeFravaerPanel
+                            lenke={`${pathname}/${fravaer.id}`}
+                            antallSykefravær={3 /* TODO: Refactor */}
+                        />
+                    ))}
                 </Kategori>
             </div>
         </>
