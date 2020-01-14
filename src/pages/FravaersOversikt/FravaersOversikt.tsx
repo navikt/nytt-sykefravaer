@@ -64,10 +64,7 @@ const FravaersOversikt = () => {
                 </Kategori>
                 <Kategori tittel="Ferdig behandlet">
                     {ferdigeSykefravaer.map(fravaer => (
-                        <BehandledeFravaerPanel
-                            lenke={`${pathname}/${fravaer.id}`}
-                            antallSykefravær={3 /* TODO: Refactor */}
-                        />
+                        <BehandledeFravaerPanel lenke={`${pathname}/${fravaer.id}`} sykefravaer={fravaer} />
                     ))}
                 </Kategori>
             </div>

@@ -2,19 +2,28 @@ import React from 'react';
 
 import LenkepanelWrapper from '../../../components/Lenkepanel/LenkepanelWrapper';
 import bjorn from '../../../svg/bjorn.svg';
+import { Sykefravaer } from '../../../types/sykefravaerTypes';
+import { hentSykefravaerTilFraDatoStreng, tilLesbarDato } from './panelUtils';
 
 interface BehandledeFravaerPanelProps {
     lenke: string;
-    antallSykefravær: number;
+    sykefravaer: Sykefravaer;
 }
 
-const BehandledeFravaerPanel = ({ lenke, antallSykefravær }: BehandledeFravaerPanelProps) => (
-    <LenkepanelWrapper
-        lenke={lenke}
-        tittel={`Oversikt over tidligere sykefravær`}
-        tekstGra={`${antallSykefravær} sykefravær totalt`}
-        ikonbakgrunn="gra"
-        svg={bjorn}
-    />
-);
+const BehandledeFravaerPanel = ({ lenke, sykefravaer }: BehandledeFravaerPanelProps) => {
+    const tilFraDatoStreng = hentSykefravaerTilFraDatoStreng(sykefravaer);
+
+    // TODO: Hent dato søknaden ble bekreftet
+    const soknadsDato = tilLesbarDato(new Date());
+
+    return (
+        <LenkepanelWrapper
+            lenke={lenke}
+            tittel={tilFraDatoStreng}
+            tekstGra={`Søknad ble behandlet ${soknadsDato}`}
+            svg={bjorn}
+        />
+    );
+};
+
 export default BehandledeFravaerPanel;
