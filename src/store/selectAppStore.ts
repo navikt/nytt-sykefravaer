@@ -1,6 +1,7 @@
 import useAppStore from './useAppStore';
 import { Beslutning } from '../types/soknadTypes';
 import { StatusTyper } from '../types/sykmeldingTypes';
+import { Sykefravaer } from '../types/sykefravaerTypes';
 
 export const useSelectSykmeldinger = () => {
     const { sykmeldinger } = useAppStore();
@@ -56,8 +57,22 @@ export const useSykefravaerPagaende = () => {
     );
 };
 
+const fjernDuplikateSykefravaer = (sykefravaer1: Sykefravaer[], sykefravaer2: Sykefravaer[]) => {
+    return sykefravaer2.reduce((utenDuplikat, fravaer) => {
+        if (utenDuplikat.length === 0) {
+            return [fravaer];
+        }
+
+        if (utenDuplikat.findIndex(f => f.id === fravaer.id) > 0) {
+            return [...utenDuplikat, fravaer];
+        }
+
+        return utenDuplikat;
+    }, sykefravaer1);
+};
+
 export const useSykefravaerMedNyeSykmeldingerEllerAktiveSoknader = () => {
-    return [...useSykefravaerNyeSykmeldinger(), ...useSykefravaerAktiveSoknader()];
+    return fjernDuplikateSykefravaer(useSykefravaerNyeSykmeldinger(), useSykefravaerAktiveSoknader());
 };
 
 // Sykefravær som kun har ferdig behandlede sykmeldinger og godkjente søknader

@@ -1,14 +1,19 @@
 export const sendtSoknad = {
     id: 'soknad1',
-    beslutning: 'sendt',
+    beslutning: 'SENDT',
 };
 
 export const inaktivSoknad = {
     id: 'soknad2',
-    beslutning: 'inaktiv',
+    beslutning: 'INAKTIV',
 };
 
 export const aktivSoknad = {
     id: 'soknad3',
-    beslutning: 'aktiv',
+    beslutning: 'AKTIV',
+};
+
+export const godkjentSoknad = {
+    id: 'soknad4',
+    beslutning: 'GODKJENT',
 };

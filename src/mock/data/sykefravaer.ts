@@ -1,4 +1,4 @@
-import { aktivSoknad, inaktivSoknad, sendtSoknad } from './soknader';
+import { aktivSoknad, godkjentSoknad, inaktivSoknad, sendtSoknad } from './soknader';
 import { avbruttSykmelding } from './avbruttSykmelding';
 import { avvistSykmelding } from './avvistSykmelding';
 import { bekreftetSykmelding } from './bekreftetSykmelding';
@@ -23,6 +23,14 @@ export const toNyeSykmeldingerInaktivSoknad = [
         sykmeldinger: [nySykmelding, nySykmelding],
         // TODO: lag funksjon for å knytte en søknad til en sykmelding (er dette relevant?)
         soknader: [inaktivSoknad],
+    },
+    {
+        id: 'fravaerId2',
+        // TODO: åpne for samme type søknad med litt annen data
+        // TODO: lag funksjon for å definere startdato og lengde på søknad
+        sykmeldinger: [bekreftetSykmelding],
+        // TODO: lag funksjon for å knytte en søknad til en sykmelding (er dette relevant?)
+        soknader: [godkjentSoknad],
     },
 ];
 
