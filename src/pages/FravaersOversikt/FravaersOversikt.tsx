@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 import BehandledeFravaerPanel from './components/BehandledeFravaerPanel';
 import Header from '../../components/Header/Header';
 import Kategori from '../../components/Kategori';
+import PagaendeFravaerPanel from './components/PagaendeFravaerPanel';
 import SykmeldingPanel from './components/SykefravaerPanel';
 import Brodsmuler, { Brodsmule } from '../../components/Brodsmuler/Brodsmuler';
 import {
@@ -59,7 +60,11 @@ const FravaersOversikt = () => {
                 </Kategori>
                 <Kategori tittel={'Pågående sykefravær'}>
                     {pagaendeSykefravaer.map(fravaer => (
-                        <SykmeldingPanel key={fravaer.id} lenke={`${pathname}/${fravaer.id}`} sykefravaer={fravaer} />
+                        <PagaendeFravaerPanel
+                            key={fravaer.id}
+                            lenke={`${pathname}/${fravaer.id}`}
+                            sykefravaer={fravaer}
+                        />
                     ))}
                 </Kategori>
                 <Kategori tittel="Ferdig behandlet">

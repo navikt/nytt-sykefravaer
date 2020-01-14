@@ -26,10 +26,20 @@ export const toNyeSykmeldingerInaktivSoknad = [
     },
     {
         id: 'fravaerId2',
-        // TODO: åpne for samme type søknad med litt annen data
-        // TODO: lag funksjon for å definere startdato og lengde på søknad
         sykmeldinger: [bekreftetSykmelding],
-        // TODO: lag funksjon for å knytte en søknad til en sykmelding (er dette relevant?)
+        soknader: [godkjentSoknad],
+    },
+];
+
+export const toSykmeldingerInaktivSoknad = [
+    {
+        id: 'fravaerId',
+        sykmeldinger: [nySykmelding, sendtSykmelding],
+        soknader: [inaktivSoknad],
+    },
+    {
+        id: 'fravaerId2',
+        sykmeldinger: [bekreftetSykmelding],
         soknader: [godkjentSoknad],
     },
 ];
