@@ -51,9 +51,9 @@ const FravaersOversikt = () => {
                     Dine sykefravær
                 </Sidetittel>
                 <Undertittel style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                    Oversikt over aktive- og tidligere sykefravær
+                    Oversikt over pågående- og tidligere sykefravær
                 </Undertittel>
-                <Kategori tittel={'Nye varsler'}>
+                <Kategori tittel={'Nye varslinger'}>
                     {nyeSykefravaer.map(fravaer => (
                         <SykmeldingPanel key={fravaer.id} lenke={`${pathname}/${fravaer.id}`} sykefravaer={fravaer} />
                     ))}

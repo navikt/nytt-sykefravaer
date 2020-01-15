@@ -14,7 +14,7 @@ const UnderstreketOverskriftMedSortering = ({
     return (
         <>
             <div style={{ display: 'flex' }}>
-                <Element style={{ flex: '1', display: 'flex', alignItems: 'flex-end' }}>{tittel}</Element>
+                <Element className="understreket__tittel">{tittel}</Element>
                 <Select label="Sortér etter:" onChange={event => settSortering(event.target.value)}>
                     <option value="dato">Dato</option>
                     <option value="annet">Annet sorteringsvalg</option>
