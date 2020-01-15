@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
 
-import { Periode } from '../../../types/sykmeldingTypes';
+import { Beslutning } from '../../../types/soknadTypes';
+import { Periode, StatusTyper } from '../../../types/sykmeldingTypes';
 import { Sykefravaer } from '../../../types/sykefravaerTypes';
 import { SykmeldingData } from '../../../types/sykmeldingDataTypes';
 
@@ -90,4 +91,20 @@ const tilLesbarDatoStreng = (start: Date, end: Date) => {
     const lesbarTil = tilLesbarDato(end);
 
     return `${lesbarFra} - ${lesbarTil}`;
+};
+
+export const fravaerHarNySykmelding = (sykefravaer: Sykefravaer) => {
+    return sykefravaer.sykmeldinger.some(sykmelding => sykmelding.status.status === StatusTyper.NY);
+};
+
+export const fravaerHarAktivSoknad = (sykefravaer: Sykefravaer) => {
+    return sykefravaer.soknader.some(soknad => soknad.beslutning === Beslutning.AKTIV);
+};
+
+export const hentAntallNyeSykmeldinger = (sykefravaer: Sykefravaer) => {
+    return sykefravaer.sykmeldinger.filter(sykmelding => sykmelding.status.status === StatusTyper.NY).length;
+};
+
+export const hentAntallAktiveSoknader = (sykefravaer: Sykefravaer) => {
+    return sykefravaer.soknader.filter(soknad => soknad.beslutning === Beslutning.AKTIV).length;
 };

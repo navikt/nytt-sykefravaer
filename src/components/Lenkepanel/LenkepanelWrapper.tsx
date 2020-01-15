@@ -29,7 +29,7 @@ const LenkepanelWrapper = ({ lenke, tittel, tekstGra, tekstStatus, svg, ikonbakg
                 <div className={`lenkepanelwrapper-tekst ${!tekstStatus && 'lenkepanelwrapper-tekst--sentrer'}`}>
                     <Undertittel className="lenkepanel__heading">{tittel}</Undertittel>
                     {tekstGra instanceof Array ? (
-                        tekstGra.map(tekst => <Undertekst>{tekst}</Undertekst>)
+                        tekstGra.map((tekst, index) => <Undertekst key={index.toString()}>{tekst}</Undertekst>)
                     ) : (
                         <Undertekst>{tekstGra}</Undertekst>
                     )}

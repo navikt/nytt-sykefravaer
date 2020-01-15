@@ -44,6 +44,19 @@ export const toSykmeldingerInaktivSoknad = [
     },
 ];
 
+export const toSykmeldingerAktivSoknad = [
+    {
+        id: 'fravaerId',
+        sykmeldinger: [nySykmelding, sendtSykmelding],
+        soknader: [aktivSoknad],
+    },
+    {
+        id: 'fravaerId2',
+        sykmeldinger: [bekreftetSykmelding],
+        soknader: [godkjentSoknad],
+    },
+];
+
 export const nySykmeldingAktivSoknad = [
     {
         id: 'fravaerId',

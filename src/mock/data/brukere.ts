@@ -6,6 +6,7 @@ import {
     sendtSykmeldingInaktivSoknad,
     sendtSykmeldingSendtSoknad,
     toNyeSykmeldingerInaktivSoknad,
+    toSykmeldingerAktivSoknad,
     toSykmeldingerInaktivSoknad,
 } from './sykefravaer';
 
@@ -19,6 +20,11 @@ export const brukere = [
         value: 'bruker8',
         label: 'Ny sykmelding, bekreftet sykmelding. Inaktiv søknad',
         sykefravaer: toSykmeldingerInaktivSoknad,
+    },
+    {
+        value: 'bruker9',
+        label: 'Ny sykmelding, bekreftet sykmelding. Aktiv søknad',
+        sykefravaer: toSykmeldingerAktivSoknad,
     },
     {
         value: 'bruker4',

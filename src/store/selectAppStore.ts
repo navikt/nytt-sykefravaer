@@ -72,7 +72,9 @@ const fjernDuplikateSykefravaer = (sykefravaer1: Sykefravaer[], sykefravaer2: Sy
 };
 
 export const useSykefravaerMedNyeSykmeldingerEllerAktiveSoknader = () => {
-    return fjernDuplikateSykefravaer(useSykefravaerNyeSykmeldinger(), useSykefravaerAktiveSoknader());
+    const fravaerNyeSykmeldinger = useSykefravaerNyeSykmeldinger();
+    const fravaerAktiveSoknader = useSykefravaerAktiveSoknader();
+    return fjernDuplikateSykefravaer(fravaerNyeSykmeldinger, fravaerAktiveSoknader);
 };
 
 // Sykefravær som kun har ferdig behandlede sykmeldinger og godkjente søknader
