@@ -67,7 +67,12 @@ const FravaersOversikt = () => {
                         />
                     ))}
                 </Kategori>
-                <Kategori tittel="Ferdig behandlet">
+                <Kategori
+                    tittel="Ferdig behandlet"
+                    settSortering={(sortering: string) =>
+                        console.log('TODO: Implementer sortering av ferdig behandlede søknader:', sortering)
+                    }
+                >
                     {ferdigeSykefravaer.map(fravaer => (
                         <BehandledeFravaerPanel
                             key={fravaer.id}
