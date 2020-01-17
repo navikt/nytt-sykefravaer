@@ -4,7 +4,6 @@ import LenkepanelWrapper from '../../../components/Lenkepanel/LenkepanelWrapper'
 import bjorn from '../../../svg/bjorn.svg';
 import { Arbeidsgiver } from '../../../types/sykmeldingTypes';
 import { Beslutning, Soknad } from '../../../types/soknadTypes';
-import { SykmeldingData } from '../../../types/sykmeldingDataTypes';
 import { tilLesbarDato } from '../../FravaersOversikt/components/panelUtils';
 import { tilLesbarPeriodeMedGraderingOgArbeidsgiver } from '../../../utils/periodeUtils';
 

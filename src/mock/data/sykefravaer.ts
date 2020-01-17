@@ -1,6 +1,4 @@
 import { aktivSoknad, godkjentSoknad, inaktivSoknad, sendtSoknad } from './soknader';
-import { avbruttSykmelding } from './avbruttSykmelding';
-import { avvistSykmelding } from './avvistSykmelding';
 import { bekreftetSykmelding } from './bekreftetSykmelding';
 import { nySykmelding } from './nysykmelding';
 import { sendtSykmelding } from './sendtSykmelding';

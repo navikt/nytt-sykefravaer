@@ -1,7 +1,7 @@
 import './dokumentOversikt.less';
 
 import React from 'react';
-import { Element, Sidetittel, Undertittel } from 'nav-frontend-typografi';
+import { Sidetittel, Undertittel } from 'nav-frontend-typografi';
 import { useLocation, useParams } from 'react-router-dom';
 
 import Brodsmuler from '../../components/Brodsmuler/Brodsmuler';
@@ -9,17 +9,15 @@ import Header from '../../components/Header/Header';
 import Kategori from '../../components/Kategori';
 import SoknadPanel from './components/SoknadPanel';
 import SykmeldingPanel from './components/SykmeldingPanel';
-import Veileder from '../../components/Veileder/Veileder';
-import { Sykefravaer } from '../../types/sykefravaerTypes';
 import {
     useAktiveSoknaderFraSykefravaer,
     useFerdigBehandledeSykmeldingerFraSykefravaer,
-    useInaktiveSoknaderFraSykefravaer,
     useNyeSykmeldingerFraSykefravaer,
 } from '../../store/selectAppStore';
 
 const SIDETITTEL = 'Status i sykefravær';
 
+/* TODO: Sett opp logikk for visning av veileder
 const getVeileder = (sykefravaer: Sykefravaer) => {
     return (
         <Veileder
@@ -36,6 +34,7 @@ const getVeileder = (sykefravaer: Sykefravaer) => {
         />
     );
 };
+*/
 
 const getBrodsmuler = (id: string) => {
     return [
@@ -65,9 +64,8 @@ const DokumentOversikt = () => {
 
     const nyeSykmeldinger = useNyeSykmeldingerFraSykefravaer(fravaerId);
     const ferdigeSykmeldinger = useFerdigBehandledeSykmeldingerFraSykefravaer(fravaerId);
-    const inaktiveSoknader = useInaktiveSoknaderFraSykefravaer(fravaerId);
+    // const inaktiveSoknader = useInaktiveSoknaderFraSykefravaer(fravaerId);
     const aktiveSoknader = useAktiveSoknaderFraSykefravaer(fravaerId);
-    const soknader = useAktiveSoknaderFraSykefravaer(fravaerId);
 
     if (!fravaerId) {
         return null;
