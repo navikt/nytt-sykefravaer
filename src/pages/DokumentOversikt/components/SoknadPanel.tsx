@@ -1,30 +1,53 @@
 import React from 'react';
-import { SykmeldingData } from '../../../types/sykmeldingDataTypes';
-// import { tilLesbarPeriodeMedGraderingOgArbeidsgiver } from '../../../utils/periodeUtils';
 
 import LenkepanelWrapper from '../../../components/Lenkepanel/LenkepanelWrapper';
 import bjorn from '../../../svg/bjorn.svg';
-import { Soknad } from '../../../types/soknadTypes';
+import { Arbeidsgiver } from '../../../types/sykmeldingTypes';
+import { Beslutning, Soknad } from '../../../types/soknadTypes';
+import { SykmeldingData } from '../../../types/sykmeldingDataTypes';
+import { tilLesbarDato } from '../../FravaersOversikt/components/panelUtils';
+import { tilLesbarPeriodeMedGraderingOgArbeidsgiver } from '../../../utils/periodeUtils';
 
 interface SoknadPanelProps {
     lenke: string;
-    sykmeldinger: SykmeldingData[];
-    soknader: Soknad[]; // TODO: endres fra optional til mandatory
+    soknad: Soknad;
 }
 
-const SoknadPanel = ({ lenke, sykmeldinger, soknader }: SoknadPanelProps) => {
-    /*
-    const perioderMedGraderingOgLengdeTekst = sykmelding.sykmelding.perioder.map(periode =>
-        tilLesbarPeriodeMedGraderingOgArbeidsgiver(periode, sykmelding.sykmelding.arbeidsgiver),
+const hentStatusTekst = (beslutning: Beslutning, arbeidsgiver: Arbeidsgiver) => {
+    if (beslutning === Beslutning.AKTIV) {
+        return 'Klikk for å fylle ut søknad og sende nå';
+    }
+
+    if (beslutning === Beslutning.INAKTIV) {
+        return `Søknad om sykepenger aktiveres ${tilLesbarDato(new Date())}`;
+    }
+
+    if (beslutning === Beslutning.AVVIST || beslutning === Beslutning.GODKJENT) {
+        return 'Klikk for å se svar fra NAV nå';
+    }
+
+    if (beslutning === Beslutning.SENDT) {
+        return `Søknad ble sendt til ${arbeidsgiver.navn}/NAV ${tilLesbarDato(new Date())}`;
+    }
+
+    return '';
+};
+
+const SoknadPanel = ({ lenke, soknad }: SoknadPanelProps) => {
+    const periodeMedGraderingOgLengdeTekst = tilLesbarPeriodeMedGraderingOgArbeidsgiver(
+        soknad.periode,
+        soknad.arbeidsgiver,
     );
-    */
+
+    const statusTekst = hentStatusTekst(soknad.beslutning, soknad.arbeidsgiver);
+
     // TODO: Få tak i info fra soknad.
     return (
         <LenkepanelWrapper
             lenke={lenke}
-            tittel="Søknader om sykepenger"
-            tekstGra={'undertekst'}
-            tekstStatus={'Aktiveres 22.november 2019'}
+            tittel="Søknad om sykepenger"
+            tekstGra={periodeMedGraderingOgLengdeTekst}
+            tekstStatus={statusTekst}
             svg={bjorn}
             ikonbakgrunn="gul"
         />

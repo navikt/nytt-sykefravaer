@@ -107,3 +107,47 @@ export const useSykefravaerFraId = (id?: string) => {
 
     return sykefravaer.find(fravaer => fravaer.id === id);
 };
+
+export const useSykmeldingerFraSykefravaer = (id?: string) => {
+    const sykefravaer = useSykefravaerFraId(id);
+
+    if (!sykefravaer) {
+        return [];
+    }
+
+    return sykefravaer.sykmeldinger;
+};
+
+export const useSoknaderFraSykefravaer = (id?: string) => {
+    const sykefravaer = useSykefravaerFraId(id);
+
+    if (!sykefravaer) {
+        return [];
+    }
+
+    return sykefravaer.soknader;
+};
+
+export const useNyeSykmeldingerFraSykefravaer = (id?: string) => {
+    const sykmeldinger = useSykmeldingerFraSykefravaer(id);
+
+    return sykmeldinger.filter(sykmelding => sykmelding.status.status === StatusTyper.NY);
+};
+
+export const useAktiveSoknaderFraSykefravaer = (id?: string) => {
+    const soknader = useSoknaderFraSykefravaer(id);
+
+    return soknader.filter(soknader => soknader.beslutning === Beslutning.AKTIV);
+};
+
+export const useInaktiveSoknaderFraSykefravaer = (id?: string) => {
+    const soknader = useSoknaderFraSykefravaer(id);
+
+    return soknader.filter(soknader => soknader.beslutning === Beslutning.INAKTIV);
+};
+
+export const useFerdigBehandledeSykmeldingerFraSykefravaer = (id?: string) => {
+    const sykmeldinger = useSykmeldingerFraSykefravaer(id);
+
+    return sykmeldinger.filter(sykmelding => sykmelding.status.status !== StatusTyper.NY);
+};

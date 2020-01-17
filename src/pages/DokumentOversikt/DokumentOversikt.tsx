@@ -4,18 +4,21 @@ import React from 'react';
 import { Element, Sidetittel, Undertittel } from 'nav-frontend-typografi';
 import { useLocation, useParams } from 'react-router-dom';
 
-import BeslutningPanel from './components/BeslutningPanel';
 import Brodsmuler from '../../components/Brodsmuler/Brodsmuler';
 import Header from '../../components/Header/Header';
 import Kategori from '../../components/Kategori';
 import SoknadPanel from './components/SoknadPanel';
 import SykmeldingPanel from './components/SykmeldingPanel';
 import Veileder from '../../components/Veileder/Veileder';
-import { StatusTyper } from '../../types/sykmeldingTypes';
 import { Sykefravaer } from '../../types/sykefravaerTypes';
-import { useSykefravaerFraId } from '../../store/selectAppStore';
+import {
+    useAktiveSoknaderFraSykefravaer,
+    useFerdigBehandledeSykmeldingerFraSykefravaer,
+    useInaktiveSoknaderFraSykefravaer,
+    useNyeSykmeldingerFraSykefravaer,
+} from '../../store/selectAppStore';
 
-const SIDETITTEL = 'Dokumentoversikt';
+const SIDETITTEL = 'Status i sykefravær';
 
 const getVeileder = (sykefravaer: Sykefravaer) => {
     return (
@@ -59,7 +62,12 @@ const DokumentOversikt = () => {
 
     const { fravaerId } = useParams();
     const { pathname } = useLocation();
-    const sykefravaer = useSykefravaerFraId(fravaerId);
+
+    const nyeSykmeldinger = useNyeSykmeldingerFraSykefravaer(fravaerId);
+    const ferdigeSykmeldinger = useFerdigBehandledeSykmeldingerFraSykefravaer(fravaerId);
+    const inaktiveSoknader = useInaktiveSoknaderFraSykefravaer(fravaerId);
+    const aktiveSoknader = useAktiveSoknaderFraSykefravaer(fravaerId);
+    const soknader = useAktiveSoknaderFraSykefravaer(fravaerId);
 
     if (!fravaerId) {
         return null;
@@ -67,19 +75,8 @@ const DokumentOversikt = () => {
 
     const brodsmuler = getBrodsmuler(fravaerId);
 
-    // TODO: Erstatt med feilmeldingsside
-    if (!sykefravaer) {
-        return <p>kunne ikke finne sykefravær</p>;
-    }
-
-    const { soknader, sykmeldinger } = sykefravaer;
-
-    // TODO: lag useSelectors for disse
-    const kreverHandling = sykmeldinger.filter(sykmelding => sykmelding.status.status === StatusTyper.NY);
-    const kreverIkkeHandling = sykmeldinger.filter(sykmelding => sykmelding.status.status !== StatusTyper.NY);
-
     // TODO: Sett opp logikk for visning av veileder
-    const veileder = getVeileder(sykefravaer);
+    // const veileder = getVeileder(sykefravaer);
 
     return (
         <>
@@ -91,11 +88,9 @@ const DokumentOversikt = () => {
                     fra {new Date().toDateString()} til {new Date().toDateString()}
                 </Undertittel>
 
-                {veileder}
-
-                {kreverHandling.length > 0 && (
-                    <Kategori tittel={'Nye varsler'}>
-                        {kreverHandling.map(sykmeldingData => (
+                {nyeSykmeldinger.length > 0 && (
+                    <Kategori tittel={'Nye varslinger'}>
+                        {nyeSykmeldinger.map(sykmeldingData => (
                             <SykmeldingPanel
                                 key={sykmeldingData.sykmelding.id}
                                 lenke={`${pathname}/${sykmeldingData.sykmelding.id}`}
@@ -104,9 +99,20 @@ const DokumentOversikt = () => {
                         ))}
                     </Kategori>
                 )}
-                {kreverIkkeHandling.length > 0 && (
-                    <Kategori tittel={'Dokumenter'}>
-                        {kreverIkkeHandling.map(sykmeldingData => (
+                {nyeSykmeldinger.length > 0 && (
+                    <Kategori tittel={'Nye varslinger'}>
+                        {aktiveSoknader.map(soknad => (
+                            <SoknadPanel
+                                key={soknad.id}
+                                lenke={`${pathname}/${soknad.sykmeldingId}/soknad`}
+                                soknad={soknad}
+                            />
+                        ))}
+                    </Kategori>
+                )}
+                {ferdigeSykmeldinger.length > 0 && (
+                    <Kategori tittel={'Ferdig behandlet'}>
+                        {ferdigeSykmeldinger.map(sykmeldingData => (
                             <SykmeldingPanel
                                 key={sykmeldingData.sykmelding.id}
                                 lenke={`${pathname}/${sykmeldingData.sykmelding.id}`}
@@ -115,10 +121,6 @@ const DokumentOversikt = () => {
                         ))}
                     </Kategori>
                 )}
-                <Kategori tittel={'Status'}>
-                    <SoknadPanel lenke={'test'} sykmeldinger={sykmeldinger} soknader={soknader} />
-                    <BeslutningPanel lenke={'test'} />
-                </Kategori>
             </div>
         </>
     );

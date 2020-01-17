@@ -6,7 +6,7 @@ import BehandledeFravaerPanel from './components/BehandledeFravaerPanel';
 import Header from '../../components/Header/Header';
 import Kategori from '../../components/Kategori';
 import PagaendeFravaerPanel from './components/PagaendeFravaerPanel';
-import SykmeldingPanel from './components/SykefravaerPanel';
+import SykefravaerPanel from './components/SykefravaerPanel';
 import Brodsmuler, { Brodsmule } from '../../components/Brodsmuler/Brodsmuler';
 import {
     useSykefravaerFerdigBehandlet,
@@ -55,7 +55,7 @@ const FravaersOversikt = () => {
                 </Undertittel>
                 <Kategori tittel={'Nye varslinger'}>
                     {nyeSykefravaer.map(fravaer => (
-                        <SykmeldingPanel key={fravaer.id} lenke={`${pathname}/${fravaer.id}`} sykefravaer={fravaer} />
+                        <SykefravaerPanel key={fravaer.id} lenke={`${pathname}/${fravaer.id}`} sykefravaer={fravaer} />
                     ))}
                 </Kategori>
                 <Kategori tittel={'Pågående sykefravær'}>
