@@ -2,12 +2,49 @@ import React from 'react';
 
 import LenkepanelWrapper from '../../../components/Lenkepanel/LenkepanelWrapper';
 import bjorn from '../../../svg/bjorn.svg';
+import { Arbeidsgiver, Status, StatusTyper } from '../../../types/sykmeldingTypes';
 import { SykmeldingData } from '../../../types/sykmeldingDataTypes';
+import { tilLesbarDato } from '../../FravaersOversikt/components/panelUtils';
 import { tilLesbarPeriodeMedGraderingOgArbeidsgiver } from '../../../utils/periodeUtils';
+
 interface SykmeldingPanelProps {
     lenke: string;
     sykmeldingData: SykmeldingData;
 }
+
+const hentStatusTekst = (statusData: Status, arbeidsgiver: Arbeidsgiver) => {
+    const { status } = statusData;
+
+    if (status === StatusTyper.NY) {
+        return 'Klikk for å sende sykmeldingen nå';
+    }
+
+    if (status === StatusTyper.BEKREFTET) {
+        return `Sykmelding ble bekreftet og sendt til ${arbeidsgiver.navn || 'arbeidsgiver'} ${tilLesbarDato(
+            new Date(),
+        )}`;
+    }
+
+    if (status === StatusTyper.SENDT) {
+        return `Sykmelding ble sendt til NAV ${tilLesbarDato(new Date())}`;
+    }
+
+    if (status === StatusTyper.AVVIST) {
+        return `Sykmelding ble avvist ${tilLesbarDato(new Date())}`;
+    }
+
+    if (status === StatusTyper.AVBRUTT) {
+        return `Sykmelding ble avbrutt av deg ${tilLesbarDato(new Date())}`;
+    }
+};
+
+const hentTittel = (status: StatusTyper) => {
+    if (status === StatusTyper.NY) {
+        return 'Ny sykmelding';
+    }
+
+    return 'Sykmelding';
+};
 
 const SykmeldingPanel = ({ lenke, sykmeldingData }: SykmeldingPanelProps) => {
     const { status, sykmelding } = sykmeldingData;
@@ -15,16 +52,15 @@ const SykmeldingPanel = ({ lenke, sykmeldingData }: SykmeldingPanelProps) => {
     const perioderMedGraderingOgLengdeTekst = sykmelding.perioder.map(periode =>
         tilLesbarPeriodeMedGraderingOgArbeidsgiver(periode, sykmelding.arbeidsgiver),
     );
-    const statustekst = status.status; // TODO: bytte til 'hentStatusTekst' når alle statustekster er ferdige
-
-    const tittel = 'Sykmelding mottatt'; // TODO: tittel skal være basert på sykmeldingstatus. 'hentTittel'
+    const statustekst = hentStatusTekst(status, sykmelding.arbeidsgiver);
+    const tittel = hentTittel(status.status);
 
     return (
         <LenkepanelWrapper
             lenke={lenke}
             tittel={tittel}
             tekstGra={perioderMedGraderingOgLengdeTekst}
-            tekstStatus={`Status: ${statustekst}`}
+            tekstStatus={statustekst}
             svg={bjorn}
             ikonbakgrunn="gul"
         />
