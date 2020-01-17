@@ -1,9 +1,9 @@
 import { bidiagnoseGenerator, diagnoseGenerator, getRandomNumber, statusGenerator } from './mockUtils';
 
-export const nySykmelding = {
+export const nySykmelding = (id: string) => ({
     status: statusGenerator('ny'),
     sykmelding: {
-        id: 'ny123',
+        id,
         msgId: '123124334',
         pasientAktoerId: '41234123',
         medisinskVurdering: {
@@ -139,4 +139,4 @@ export const nySykmelding = {
         signaturDato: '2019-04-29T08:34:16.861476',
         navnFastlege: 'Doktor Legesen',
     },
-};
+});
