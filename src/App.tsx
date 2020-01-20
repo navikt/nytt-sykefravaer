@@ -2,6 +2,7 @@ import './App.less';
 import './basic.less';
 
 import React from 'react';
+import ScrollMemory from 'react-router-scroll-memory';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import BeslutningFraNav from './pages/BeslutningerFraNav/BeslutningFraNav';
@@ -20,6 +21,7 @@ const App = () => {
         <useAppStore.Provider>
             <DataFetcher>
                 <BrowserRouter>
+                    <ScrollMemory />
                     <Switch>
                         <Route exact path="/" component={DittSykefravaer} />
                         <Route exact path="/fravaer/" component={FravaersOversikt} />
