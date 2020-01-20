@@ -1,9 +1,9 @@
 import './LenkepanelWrapper.less';
 
 import React from 'react';
+import { Element, Undertekst, Undertittel } from 'nav-frontend-typografi';
 import { LenkepanelBase } from 'nav-frontend-lenkepanel';
 import { Link } from 'react-router-dom';
-import { Undertekst, Undertittel } from 'nav-frontend-typografi';
 
 type Ikonbakgrunn = 'gul' | 'bla' | 'gra';
 
@@ -33,7 +33,7 @@ const LenkepanelWrapper = ({ lenke, tittel, tekstGra, tekstStatus, svg, ikonbakg
                     ) : (
                         <Undertekst>{tekstGra}</Undertekst>
                     )}
-                    {tekstStatus && <Undertekst className="lenkepanel__status">{tekstStatus}</Undertekst>}
+                    {tekstStatus && <Element className="lenkepanel__status">{tekstStatus}</Element>}
                 </div>
             </div>
         </LenkepanelBase>
