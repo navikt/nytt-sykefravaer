@@ -9,6 +9,7 @@ import Header from '../../components/Header/Header';
 import Kategori from '../../components/Kategori';
 import SoknadPanel from './components/SoknadPanel';
 import SykmeldingPanel from './components/SykmeldingPanel';
+import setDocumentTittel from '../../utils/setDocumentTittel';
 import {
     useAktiveSoknaderFraSykefravaer,
     useFerdigBehandledeSykmeldingerFraSykefravaer,
@@ -57,7 +58,7 @@ const getBrodsmuler = (id: string) => {
 };
 
 const DokumentOversikt = () => {
-    document.title = `${SIDETITTEL} - www.nav.no`;
+    setDocumentTittel(SIDETITTEL);
 
     const { fravaerId } = useParams();
     const { pathname } = useLocation();

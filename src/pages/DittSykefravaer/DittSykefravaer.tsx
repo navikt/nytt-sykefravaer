@@ -10,14 +10,17 @@ import SykefravaerHeader from './components/SykefravaerHeader';
 import SykefravaerPanel from '../FravaersOversikt/components/SykefravaerPanel';
 import Veileder from '../../components/Veileder/Veileder';
 import bjorn from '../../svg/bjorn.svg';
+import setDocumentTittel from '../../utils/setDocumentTittel';
 import { Brodsmule } from '../../components/Brodsmuler/Brodsmuler';
 import { useSykefravaerMedNyeSykmeldingerEllerAktiveSoknader } from '../../store/selectAppStore';
 
 // TODO: Sett opp logikk for henting av veileder basert på tilgjengelige sykefravær
 
+const SIDETITTEL = 'Ditt sykefravær';
+
 const brodsmuler: Brodsmule[] = [
     {
-        tittel: 'Ditt sykefravaer',
+        tittel: SIDETITTEL,
         sti: '/',
         erKlikkbar: true,
     },
@@ -28,7 +31,7 @@ const Seksjon = ({ children }: { children: any }) => {
 };
 
 const DittSykefravaer = () => {
-    document.title = 'Ditt sykefravær - www.nav.no';
+    setDocumentTittel(SIDETITTEL);
 
     const sykefravaer = useSykefravaerMedNyeSykmeldingerEllerAktiveSoknader();
 

@@ -7,6 +7,7 @@ import Header from '../../components/Header/Header';
 import Kategori from '../../components/Kategori';
 import PagaendeFravaerPanel from './components/PagaendeFravaerPanel';
 import SykefravaerPanel from './components/SykefravaerPanel';
+import setDocumentTittel from '../../utils/setDocumentTittel';
 import Brodsmuler, { Brodsmule } from '../../components/Brodsmuler/Brodsmuler';
 import {
     useSykefravaerFerdigBehandlet,
@@ -30,7 +31,7 @@ const brodsmuler: Brodsmule[] = [
 ];
 
 const FravaersOversikt = () => {
-    document.title = `${SIDETITTEL} - www.nav.no`;
+    setDocumentTittel(SIDETITTEL);
 
     const nyeSykefravaer = useSykefravaerMedNyeSykmeldingerEllerAktiveSoknader();
     const pagaendeSykefravaer = useSykefravaerPagaende();

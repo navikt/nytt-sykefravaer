@@ -9,6 +9,7 @@ import { Sidetittel } from 'nav-frontend-typografi';
 import Header from '../../components/Header/Header';
 import TidslinjeMedArbeidsgiver from './TidslinjeMedArbeidsgiver';
 import TidslinjeUtenArbeidsgiver from './TidslinjeUtenArbeidsgiver';
+import setDocumentTittel from '../../utils/setDocumentTittel';
 import Brodsmuler, { Brodsmule } from '../../components/Brodsmuler/Brodsmuler';
 
 const SIDETITTEL = 'Hva skjer under sykefraværet?';
@@ -27,7 +28,7 @@ const brodsmuler: Brodsmule[] = [
 ];
 
 const TidslinjeSide = () => {
-    document.title = 'Tidslinjen - www.nav.no';
+    setDocumentTittel('Tidslinjen');
 
     const [harArbeidsgiver, setHarArbeidsgiver] = useState(true);
 
