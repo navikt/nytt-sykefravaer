@@ -20,20 +20,24 @@ const hentStatusTekst = (statusData: Status, arbeidsgiver: Arbeidsgiver) => {
     }
 
     if (status === StatusTyper.BEKREFTET) {
+        // TODO: Hent dato fra sykmelding
         return `Sykmelding ble bekreftet og sendt til ${arbeidsgiver.navn || 'arbeidsgiver'} ${tilLesbarDato(
             new Date(),
         )}`;
     }
 
     if (status === StatusTyper.SENDT) {
+        // TODO: Hent dato fra sykmelding
         return `Sykmelding ble sendt til NAV ${tilLesbarDato(new Date())}`;
     }
 
     if (status === StatusTyper.AVVIST) {
+        // TODO: Hent dato fra sykmelding
         return `Sykmelding ble avvist ${tilLesbarDato(new Date())}`;
     }
 
     if (status === StatusTyper.AVBRUTT) {
+        // TODO: Hent dato fra sykmelding
         return `Sykmelding ble avbrutt av deg ${tilLesbarDato(new Date())}`;
     }
 };

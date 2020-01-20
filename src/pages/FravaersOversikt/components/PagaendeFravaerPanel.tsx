@@ -13,8 +13,9 @@ interface PagaendeFravaerPanelProps {
 const PagaendeFravaerPanel = ({ lenke, sykefravaer }: PagaendeFravaerPanelProps) => {
     const tilFraDatoStreng = hentSykefravaerTilFraDatoStreng(sykefravaer);
 
-    // TODO: Hent dato sykmeldingen ble bekreftet
+    // TODO: Hent dato fra sykmelding
     const sykmeldingBekreftetDato = tilLesbarDato(new Date());
+    // TODO: Hent dato fra søknad
     const soknadAktiveresDato = tilLesbarDato(new Date());
 
     return (

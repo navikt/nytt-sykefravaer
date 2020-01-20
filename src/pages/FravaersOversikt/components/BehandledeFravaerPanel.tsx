@@ -13,7 +13,7 @@ interface BehandledeFravaerPanelProps {
 const BehandledeFravaerPanel = ({ lenke, sykefravaer }: BehandledeFravaerPanelProps) => {
     const tilFraDatoStreng = hentSykefravaerTilFraDatoStreng(sykefravaer);
 
-    // TODO: Hent dato søknaden ble bekreftet
+    // TODO: Hent dato fra søknad
     const soknadsDato = tilLesbarDato(new Date());
 
     return (

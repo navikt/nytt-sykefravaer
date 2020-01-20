@@ -18,6 +18,7 @@ const hentStatusTekst = (beslutning: Beslutning, arbeidsgiver: Arbeidsgiver) => 
     }
 
     if (beslutning === Beslutning.INAKTIV) {
+        // TODO: Hent dato fra søknad
         return `Søknad om sykepenger aktiveres ${tilLesbarDato(new Date())}`;
     }
 
@@ -26,6 +27,7 @@ const hentStatusTekst = (beslutning: Beslutning, arbeidsgiver: Arbeidsgiver) => 
     }
 
     if (beslutning === Beslutning.SENDT) {
+        // TODO: Hent dato fra søknad
         return `Søknad ble sendt til ${arbeidsgiver.navn}/NAV ${tilLesbarDato(new Date())}`;
     }
 

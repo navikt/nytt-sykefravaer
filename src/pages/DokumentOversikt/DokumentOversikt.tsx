@@ -76,6 +76,7 @@ const DokumentOversikt = () => {
     // TODO: Sett opp logikk for visning av veileder
     // const veileder = getVeileder(sykefravaer);
 
+    // TODO: Hent dato fra sykefravær
     return (
         <>
             <Header location={SIDETITTEL} />
