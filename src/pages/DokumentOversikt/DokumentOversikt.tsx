@@ -11,6 +11,7 @@ import Kategori from '../../components/Kategori';
 import SoknadPanel from './components/SoknadPanel';
 import SykmeldingPanel from './components/SykmeldingPanel';
 import Veileder from '../../components/Veileder/Veileder';
+import setDocumentTittel from '../../utils/setDocumentTittel';
 import { StatusTyper } from '../../types/sykmeldingTypes';
 import { Sykefravaer } from '../../types/sykefravaerTypes';
 import { useSelectSykefravaer } from '../../store/selectAppStore';
@@ -55,7 +56,7 @@ const getBrodsmuler = (id: string) => {
 };
 
 const DokumentOversikt = () => {
-    document.title = `${SIDETITTEL} - www.nav.no`;
+    setDocumentTittel(SIDETITTEL);
 
     const { fravaerId } = useParams();
     const { pathname } = useLocation();

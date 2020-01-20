@@ -6,6 +6,7 @@ import BehandledeFravaerPanel from './components/BehandledeFravaerPanel';
 import Header from '../../components/Header/Header';
 import Kategori from '../../components/Kategori';
 import SykmeldingPanel from './components/SykefravaerPanel';
+import setDocumentTittel from '../../utils/setDocumentTittel';
 import useAppStore from '../../store/useAppStore';
 import Brodsmuler, { Brodsmule } from '../../components/Brodsmuler/Brodsmuler';
 
@@ -25,7 +26,7 @@ const brodsmuler: Brodsmule[] = [
 ];
 
 const FravaersOversikt = () => {
-    document.title = `${SIDETITTEL} - www.nav.no`;
+    setDocumentTittel(SIDETITTEL);
 
     const { sykefravaer } = useAppStore();
     const { pathname } = useLocation();
