@@ -13,7 +13,7 @@ const UnderstreketOverskriftMedSortering = ({
 }) => {
     return (
         <>
-            <div style={{ display: 'flex' }}>
+            <div className="understreket__container">
                 <Element className="understreket__tittel">{tittel}</Element>
                 <Select label="Sortér etter:" onChange={event => settSortering(event.target.value)}>
                     <option value="dato">Dato</option>
