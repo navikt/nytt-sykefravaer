@@ -12,8 +12,6 @@ interface UtvidbarProps {
     ikon: string;
     ikonHover: string;
     ikonAltTekst?: string;
-    visLukk?: boolean;
-    fargetema?: string;
 }
 
 const Utvidbar = (props: UtvidbarProps) => {
@@ -53,9 +51,9 @@ const Utvidbar = (props: UtvidbarProps) => {
                     scroll(!apen);
                     setApen(!apen);
                 }}
-                className={`utvidbar__toggle ${props.fargetema ? `utvidbar__toggle-${props.fargetema}` : ''}`}
+                className={`utvidbar__toggle`}
             >
-                <img aria-hidden="true" className="utvidbar__ikon" width={20} alt={props.ikonAltTekst} src={ikon} />
+                <img aria-hidden="true" className="utvidbar__ikon" width={25} alt={props.ikonAltTekst} src={ikon} />
                 <Element tag="h3">{props.tittel}</Element>
                 <div className="utvidbar__handling">
                     <Normaltekst className="utvidbar__handling__tekst" tag="em">
@@ -66,7 +64,7 @@ const Utvidbar = (props: UtvidbarProps) => {
             </button>
             <div
                 className={'utvidbar__innholdContainer' + (apen ? ' apen' : '')}
-                style={{ maxHeight: apen ? 'fit-content' : '0' }}
+                style={{ maxHeight: apen ? innhold.current?.offsetHeight : '0' }}
             >
                 <div ref={innhold} className="utvidbar__innhold">
                     {props.children}

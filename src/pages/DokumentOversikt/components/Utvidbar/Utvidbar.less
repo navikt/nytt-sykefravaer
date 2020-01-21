@@ -21,14 +21,6 @@
         background-color: white;
     }
 
-    .utvidbar__toggle-lilla {
-        background-color: @navLillaLighten80;
-    }
-
-    .utvidbar__toggle-info {
-        background-color: @navLysBlaLighten80;
-    }
-
     .utvidbar__toggle:focus {
         box-shadow: 0 0 0 3px @fokusFarge;
         z-index: 1;
@@ -47,6 +39,7 @@
 
     .utvidbar__handling {
         color: @navBla;
+        text-align: end;
 
         em {
             font-style: normal;
@@ -83,7 +76,7 @@
     }
 }
 
-@media (max-width: @screen-sm) {
+@media (max-width: @screen-tablet) {
     .utvidbar {
         width: 100%;
     }
@@ -94,5 +87,11 @@
 
     .utvidbar__innhold {
         padding: 1.5rem 1rem 2.5rem 1rem;
+    }
+}
+
+@media (min-width: @screen-tablet) {
+    .utvidbar__handling {
+        width: 6rem;
     }
 }

@@ -103,8 +103,9 @@ const DokumentOversikt = () => {
                     nedtrekksTekst="Historikk"
                     ikon={information}
                     ikonHover={informationHover}
+                    ikonAltTekst="Historikk"
                 >
-                    <div>Innhold</div>
+                    <div>Kommer snart</div>
                 </Utvidbar>
 
                 {kreverHandling.length > 0 && (
