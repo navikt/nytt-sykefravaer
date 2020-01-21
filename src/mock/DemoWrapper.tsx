@@ -39,7 +39,7 @@ const DemoWrapper = () => {
     return (
         <>
             <select
-                style={{ position: 'absolute', right: 0, zIndex: 1 }}
+                style={{ position: 'absolute', right: 0, zIndex: 1, width: 20, background: 'white' }}
                 name="brukere"
                 id="bruker-select"
                 onChange={event => {
