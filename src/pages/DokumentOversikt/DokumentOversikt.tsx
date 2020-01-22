@@ -10,7 +10,10 @@ import Header from '../../components/Header/Header';
 import Kategori from '../../components/Kategori';
 import SoknadPanel from './components/SoknadPanel';
 import SykmeldingPanel from './components/SykmeldingPanel';
+import Utvidbar from './components/Utvidbar/Utvidbar';
 import Veileder from '../../components/Veileder/Veileder';
+import information from '../../svg/information.svg';
+import informationHover from '../../svg/informationHover.svg';
 import setDocumentTittel from '../../utils/setDocumentTittel';
 import { StatusTyper } from '../../types/sykmeldingTypes';
 import { Sykefravaer } from '../../types/sykefravaerTypes';
@@ -82,6 +85,9 @@ const DokumentOversikt = () => {
     // TODO: Sett opp logikk for visning av veileder
     const veileder = getVeileder(sykefravaer);
 
+    // TODO: Sett opp hvilken tekst som skal vises i utvidbar
+    const utvidbarTittel = 'Sykmeldinger må bekreftes og sendes til arbeidsgivere';
+
     return (
         <>
             <Header location={SIDETITTEL} />
@@ -92,7 +98,15 @@ const DokumentOversikt = () => {
                     fra {new Date().toDateString()} til {new Date().toDateString()}
                 </Undertittel>
 
-                {veileder}
+                <Utvidbar
+                    tittel={utvidbarTittel}
+                    nedtrekksTekst="Historikk"
+                    ikon={information}
+                    ikonHover={informationHover}
+                    ikonAltTekst="Historikk"
+                >
+                    <div>Kommer snart</div>
+                </Utvidbar>
 
                 {kreverHandling.length > 0 && (
                     <Kategori tittel={'Nye varsler'}>
