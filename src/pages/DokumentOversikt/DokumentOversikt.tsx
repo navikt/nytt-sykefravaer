@@ -9,6 +9,9 @@ import Header from '../../components/Header/Header';
 import Kategori from '../../components/Kategori';
 import SoknadPanel from './components/SoknadPanel';
 import SykmeldingPanel from './components/SykmeldingPanel';
+import Utvidbar from './components/Utvidbar/Utvidbar';
+import information from '../../svg/information.svg';
+import informationHover from '../../svg/informationHover.svg';
 import setDocumentTittel from '../../utils/setDocumentTittel';
 import {
     useAktiveSoknaderFraSykefravaer,
@@ -77,7 +80,9 @@ const DokumentOversikt = () => {
     // TODO: Sett opp logikk for visning av veileder
     // const veileder = getVeileder(sykefravaer);
 
-    // TODO: Hent dato fra sykefravær
+    // TODO: Sett opp hvilken tekst som skal vises i utvidbar
+    const utvidbarTittel = 'Sykmeldinger må bekreftes og sendes til arbeidsgivere';
+
     return (
         <>
             <Header location={SIDETITTEL} />
@@ -87,6 +92,16 @@ const DokumentOversikt = () => {
                 <Undertittel style={{ textAlign: 'center', marginBottom: '3rem' }}>
                     fra {new Date().toDateString()} til {new Date().toDateString()}
                 </Undertittel>
+
+                <Utvidbar
+                    tittel={utvidbarTittel}
+                    nedtrekksTekst="Historikk"
+                    ikon={information}
+                    ikonHover={informationHover}
+                    ikonAltTekst="Historikk"
+                >
+                    <div>Kommer snart</div>
+                </Utvidbar>
 
                 {nyeSykmeldinger.length > 0 && (
                     <Kategori tittel={'Nye varslinger'}>
