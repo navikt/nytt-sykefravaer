@@ -32,7 +32,7 @@ const DataFetcher = (props: { children: any }) => {
     useEffect(() => {
         if (isNotStarted(sykmeldingerFetcher)) {
             sykmeldingerFetcher.fetch(
-                '/syforest/sykmeldinger/',
+                `${process.env.REACT_APP_API_URL}/sykmeldinger/`,
                 undefined,
                 (fetchState: FetchState<SykmeldingData[]>) => {
                     if (hasData(fetchState)) {
@@ -54,18 +54,22 @@ const DataFetcher = (props: { children: any }) => {
 
     useEffect(() => {
         if (isNotStarted(sykefravaerFetcher)) {
-            sykefravaerFetcher.fetch('/syforest/sykefravaer/', undefined, (fetchState: FetchState<Sykefravaer[]>) => {
-                if (hasData(fetchState)) {
-                    const { data } = fetchState;
-                    const sykefravaer = data.map(fravaer => ({
-                        id: fravaer.id,
-                        sykmeldinger: fravaer.sykmeldinger.map(sykmelding => new SykmeldingData(sykmelding)),
-                        soknader: fravaer.soknader.map(soknad => new Soknad(soknad)),
-                    }));
-                    console.log(sykefravaer);
-                    setSykefravaer(sykefravaer);
-                }
-            });
+            sykefravaerFetcher.fetch(
+                `${process.env.REACT_APP_API_URL}/sykefravaer/`,
+                undefined,
+                (fetchState: FetchState<Sykefravaer[]>) => {
+                    if (hasData(fetchState)) {
+                        const { data } = fetchState;
+                        const sykefravaer = data.map(fravaer => ({
+                            id: fravaer.id,
+                            sykmeldinger: fravaer.sykmeldinger.map(sykmelding => new SykmeldingData(sykmelding)),
+                            soknader: fravaer.soknader.map(soknad => new Soknad(soknad)),
+                        }));
+                        console.log(sykefravaer);
+                        setSykefravaer(sykefravaer);
+                    }
+                },
+            );
         }
     }, [setSykefravaer, sykefravaerFetcher]);
 
