@@ -10,9 +10,10 @@ Denne komponenten vises kun i dev-modus, og lar deg skifte mellom ulike brukere 
 
 const DemoWrapper = () => {
     const { brukerId, setBrukerId } = useMockAppStore();
-    const [brukere, setBrukere] = useState<{ value: string; label: string }[]>([]);
+    const [brukere, setBrukere] = useState<{ id: string; label: string }[]>([]);
     const brukerIdFetcher = useFetch<string>();
-    const brukereFetcher = useFetch<{ value: string; label: string }[]>();
+    const brukereFetcher = useFetch<{ id: string; label: string }[]>();
+    const brukerIdPoster = useFetch<string>();
 
     if (isNotStarted(brukerIdFetcher)) {
         brukerIdFetcher.fetch(
@@ -31,7 +32,7 @@ const DemoWrapper = () => {
         brukereFetcher.fetch(
             `${process.env.REACT_APP_API_URL}/brukere/`,
             undefined,
-            (fetchState: FetchState<{ value: string; label: string }[]>) => {
+            (fetchState: FetchState<{ id: string; label: string }[]>) => {
                 if (hasData(fetchState)) {
                     const { data } = fetchState;
                     setBrukere(data);
@@ -39,6 +40,8 @@ const DemoWrapper = () => {
             },
         );
     }
+
+    console.log(brukere);
 
     return (
         <>
@@ -48,14 +51,18 @@ const DemoWrapper = () => {
                 id="bruker-select"
                 onChange={event => {
                     setBrukerId(event.target.value);
+
+                    brukerIdPoster.fetch(`${process.env.REACT_APP_API_URL}/bruker/${event.target.value}`, {
+                        method: 'POST',
+                    });
                 }}
                 value={brukerId}
             >
                 <option key="init" value="">
                     -- Bytt bruker --
                 </option>
-                {brukere.map(({ value, label }) => (
-                    <option key={value} value={value}>
+                {brukere.map(({ id, label }) => (
+                    <option key={id} value={id}>
                         {label}
                     </option>
                 ))}
