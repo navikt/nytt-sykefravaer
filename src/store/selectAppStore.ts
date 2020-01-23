@@ -3,19 +3,6 @@ import { Beslutning } from '../types/soknadTypes';
 import { StatusTyper } from '../types/sykmeldingTypes';
 import { Sykefravaer } from '../types/sykefravaerTypes';
 
-export const useSelectSykmeldinger = () => {
-    const { sykmeldinger } = useAppStore();
-
-    if (!sykmeldinger) {
-        return { nyeSykmeldinger: null, tidligereSykmelding: null };
-    }
-
-    const nyeSykmeldinger = sykmeldinger.filter(({ status }) => status.status === StatusTyper.NY);
-    const tidligereSykmeldinger = sykmeldinger.filter(({ status }) => status.status !== StatusTyper.NY);
-
-    return { nyeSykmeldinger, tidligereSykmeldinger };
-};
-
 // Sykefravær som inneholder nye sykmeldinger
 export const useSykefravaerNyeSykmeldinger = () => {
     const { sykefravaer } = useAppStore();
