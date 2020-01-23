@@ -5,7 +5,6 @@ import React from 'react';
 import ScrollMemory from 'react-router-scroll-memory';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import BeslutningFraNav from './pages/BeslutningerFraNav/BeslutningFraNav';
 import DataFetcher from './components/DataFetcher';
 import DittSykefravaer from './pages/DittSykefravaer/DittSykefravaer';
 import DokumentOversikt from './pages/DokumentOversikt/DokumentOversikt';
@@ -33,12 +32,6 @@ const App = () => {
                             component={Inntektsmelding}
                         />
                         <Route exact path="/fravaer/:fravaerId/:sykmeldingId/soknad/" component={Soknad} />
-                        <Route
-                            exact
-                            path="/fravaer/:fravaerId/:sykmeldingId/beslutning/"
-                            component={BeslutningFraNav}
-                        />
-
                         <Route exact path="/tidslinjen/" component={TidslinjeSide} />
                     </Switch>
                 </BrowserRouter>
