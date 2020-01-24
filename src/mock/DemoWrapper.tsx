@@ -41,10 +41,17 @@ const DemoWrapper = () => {
         );
     }
 
-    console.log(brukere);
-
     return (
         <>
+            <button
+                style={{ position: 'absolute' }}
+                onClick={() => {
+                    fetch(`${process.env.REACT_APP_API_URL}/reset`);
+                    window.location.reload();
+                }}
+            >
+                Reset
+            </button>
             <select
                 style={{ position: 'absolute', right: 0, zIndex: 1, width: 20, background: 'white' }}
                 name="brukere"
