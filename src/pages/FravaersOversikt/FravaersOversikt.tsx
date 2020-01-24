@@ -5,10 +5,15 @@ import { useLocation } from 'react-router-dom';
 import BehandledeFravaerPanel from './components/BehandledeFravaerPanel';
 import Header from '../../components/Header/Header';
 import Kategori from '../../components/Kategori';
-import SykmeldingPanel from './components/SykefravaerPanel';
+import PagaendeFravaerPanel from './components/PagaendeFravaerPanel';
+import SykefravaerPanel from './components/SykefravaerPanel';
 import setDocumentTittel from '../../utils/setDocumentTittel';
-import useAppStore from '../../store/useAppStore';
 import Brodsmuler, { Brodsmule } from '../../components/Brodsmuler/Brodsmuler';
+import {
+    useSykefravaerFerdigBehandlet,
+    useSykefravaerMedNyeSykmeldingerEllerAktiveSoknader,
+    useSykefravaerPagaende,
+} from '../../store/selectAppStore';
 
 const SIDETITTEL = 'Fraværsoversikt';
 
@@ -28,13 +33,13 @@ const brodsmuler: Brodsmule[] = [
 const FravaersOversikt = () => {
     setDocumentTittel(SIDETITTEL);
 
-    const { sykefravaer } = useAppStore();
+    const nyeSykefravaer = useSykefravaerMedNyeSykmeldingerEllerAktiveSoknader();
+    const pagaendeSykefravaer = useSykefravaerPagaende();
+    const ferdigeSykefravaer = useSykefravaerFerdigBehandlet();
     const { pathname } = useLocation();
 
-    console.log(sykefravaer);
-
     // TODO: Erstatt dette med en fornuftig visning for ingen sykefravaer
-    if (!sykefravaer) {
+    if (!nyeSykefravaer) {
         return <div>Ingen sykefravaer</div>;
     }
 
@@ -47,32 +52,35 @@ const FravaersOversikt = () => {
                     Dine sykefravær
                 </Sidetittel>
                 <Undertittel style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                    Oversikt over aktive- og tidligere sykefravær
+                    Oversikt over pågående- og tidligere sykefravær
                 </Undertittel>
-                <Kategori tittel={'Nye varsler'}>
-                    {sykefravaer.map(fravaer => (
-                        <SykmeldingPanel
-                            key={fravaer.id}
-                            lenke={`${pathname}/${fravaer.id}`}
-                            antallNyeSykmeldinger={fravaer.sykmeldinger.length}
-                            periodeFra={new Date()}
-                            periodeTil={new Date()}
-                        />
+                <Kategori tittel={'Nye varslinger'}>
+                    {nyeSykefravaer.map(fravaer => (
+                        <SykefravaerPanel key={fravaer.id} lenke={`${pathname}/${fravaer.id}`} sykefravaer={fravaer} />
                     ))}
                 </Kategori>
                 <Kategori tittel={'Pågående sykefravær'}>
-                    {sykefravaer.map(fravaer => (
-                        <SykmeldingPanel
+                    {pagaendeSykefravaer.map(fravaer => (
+                        <PagaendeFravaerPanel
                             key={fravaer.id}
                             lenke={`${pathname}/${fravaer.id}`}
-                            antallNyeSykmeldinger={fravaer.sykmeldinger.length}
-                            periodeFra={new Date()}
-                            periodeTil={new Date()}
+                            sykefravaer={fravaer}
                         />
                     ))}
                 </Kategori>
-                <Kategori tittel="Ferdig behandlet">
-                    <BehandledeFravaerPanel lenke="test" antallSykefravær={3} />
+                <Kategori
+                    tittel="Ferdig behandlet"
+                    settSortering={(sortering: string) =>
+                        console.log('TODO: Implementer sortering av ferdig behandlede søknader:', sortering)
+                    }
+                >
+                    {ferdigeSykefravaer.map(fravaer => (
+                        <BehandledeFravaerPanel
+                            key={fravaer.id}
+                            lenke={`${pathname}/${fravaer.id}`}
+                            sykefravaer={fravaer}
+                        />
+                    ))}
                 </Kategori>
             </div>
         </>

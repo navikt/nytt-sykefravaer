@@ -1,9 +1,9 @@
 import './LenkepanelWrapper.less';
 
 import React from 'react';
+import { Element, Undertekst, Undertittel } from 'nav-frontend-typografi';
 import { LenkepanelBase } from 'nav-frontend-lenkepanel';
 import { Link } from 'react-router-dom';
-import { Undertekst, Undertittel } from 'nav-frontend-typografi';
 
 type Ikonbakgrunn = 'gul' | 'bla' | 'gra';
 
@@ -13,7 +13,7 @@ interface LenkepanelProps {
     tekstGra?: string | string[];
     tekstStatus?: string;
     svg: string;
-    ikonbakgrunn: Ikonbakgrunn;
+    ikonbakgrunn?: Ikonbakgrunn;
 }
 
 const LenkepanelWrapper = ({ lenke, tittel, tekstGra, tekstStatus, svg, ikonbakgrunn }: LenkepanelProps) => {
@@ -23,17 +23,17 @@ const LenkepanelWrapper = ({ lenke, tittel, tekstGra, tekstStatus, svg, ikonbakg
                 <img
                     src={svg}
                     width={60}
-                    className={`lenkepanelwrapper-ikon ikon--${ikonbakgrunn}`}
+                    className={`lenkepanelwrapper-ikon ${ikonbakgrunn && `ikon--${ikonbakgrunn}`}`}
                     alt="Lenkepanelillustrasjon"
                 />
                 <div className={`lenkepanelwrapper-tekst ${!tekstStatus && 'lenkepanelwrapper-tekst--sentrer'}`}>
                     <Undertittel className="lenkepanel__heading">{tittel}</Undertittel>
                     {tekstGra instanceof Array ? (
-                        tekstGra.map(tekst => <Undertekst>{tekst}</Undertekst>)
+                        tekstGra.map((tekst, index) => <Undertekst key={index.toString()}>{tekst}</Undertekst>)
                     ) : (
                         <Undertekst>{tekstGra}</Undertekst>
                     )}
-                    {tekstStatus && <Undertekst className="lenkepanel__status">{tekstStatus}</Undertekst>}
+                    {tekstStatus && <Element className="lenkepanel__status">{tekstStatus}</Element>}
                 </div>
             </div>
         </LenkepanelBase>

@@ -1,9 +1,9 @@
 import { bidiagnoseGenerator, diagnoseGenerator, getRandomNumber, statusGenerator } from './mockUtils';
 
-export const nySykmelding = {
+export const nySykmelding = (id: string) => ({
     status: statusGenerator('ny'),
     sykmelding: {
-        id: 'ny123',
+        id,
         msgId: '123124334',
         pasientAktoerId: '41234123',
         medisinskVurdering: {
@@ -27,8 +27,8 @@ export const nySykmelding = {
         },
         perioder: [
             {
-                fom: '2018-10-18',
-                tom: '2018-11-12',
+                fom: '2018-09-01',
+                tom: '2018-10-01',
                 aktivitetIkkeMulig: {
                     medisinskArsak: {
                         beskrivelse: 'dette er en beskrivelse',
@@ -48,8 +48,8 @@ export const nySykmelding = {
                 reisetilskudd: false,
             },
             {
-                fom: '2018-10-18',
-                tom: '2018-11-12',
+                fom: '2018-10-16',
+                tom: '2018-11-01',
                 aktivitetIkkeMulig: {
                     medisinskArsak: {
                         beskrivelse: 'dette er en beskrivelse',
@@ -139,4 +139,4 @@ export const nySykmelding = {
         signaturDato: '2019-04-29T08:34:16.861476',
         navnFastlege: 'Doktor Legesen',
     },
-};
+});

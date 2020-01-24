@@ -5,25 +5,28 @@ import bjorn from '../../../svg/bjorn.svg';
 import { Sykefravaer } from '../../../types/sykefravaerTypes';
 import { hentSykefravaerTilFraDatoStreng, tilLesbarDato } from './panelUtils';
 
-interface BehandledeFravaerPanelProps {
+interface PagaendeFravaerPanelProps {
     lenke: string;
     sykefravaer: Sykefravaer;
 }
 
-const BehandledeFravaerPanel = ({ lenke, sykefravaer }: BehandledeFravaerPanelProps) => {
+const PagaendeFravaerPanel = ({ lenke, sykefravaer }: PagaendeFravaerPanelProps) => {
     const tilFraDatoStreng = hentSykefravaerTilFraDatoStreng(sykefravaer);
 
+    // TODO: Hent dato fra sykmelding
+    const sykmeldingBekreftetDato = tilLesbarDato(new Date());
     // TODO: Hent dato fra søknad
-    const soknadsDato = tilLesbarDato(new Date());
+    const soknadAktiveresDato = tilLesbarDato(new Date());
 
     return (
         <LenkepanelWrapper
             lenke={lenke}
             tittel={tilFraDatoStreng}
-            tekstGra={`Søknad ble behandlet ${soknadsDato}`}
+            tekstGra={`Sykmelding ble sendt til arbeidsgiver ${sykmeldingBekreftetDato}`}
+            tekstStatus={`Søknad om sykepenger aktiveres ${soknadAktiveresDato}.`}
             svg={bjorn}
         />
     );
 };
 
-export default BehandledeFravaerPanel;
+export default PagaendeFravaerPanel;
