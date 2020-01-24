@@ -9,6 +9,7 @@ import { tilLesbarPeriodeMedGraderingOgArbeidsgiver } from '../../../utils/perio
 
 interface SykmeldingPanelProps {
     lenke: string;
+    ekstern?: boolean;
     sykmeldingData: SykmeldingData;
 }
 
@@ -50,7 +51,7 @@ const hentTittel = (status: StatusTyper) => {
     return 'Sykmelding';
 };
 
-const SykmeldingPanel = ({ lenke, sykmeldingData }: SykmeldingPanelProps) => {
+const SykmeldingPanel = ({ lenke, ekstern, sykmeldingData }: SykmeldingPanelProps) => {
     const { status, sykmelding } = sykmeldingData;
 
     const perioderMedGraderingOgLengdeTekst = sykmelding.perioder.map(periode =>
@@ -62,6 +63,7 @@ const SykmeldingPanel = ({ lenke, sykmeldingData }: SykmeldingPanelProps) => {
     return (
         <LenkepanelWrapper
             lenke={lenke}
+            ekstern={ekstern}
             tittel={tittel}
             tekstGra={perioderMedGraderingOgLengdeTekst}
             tekstStatus={statustekst}

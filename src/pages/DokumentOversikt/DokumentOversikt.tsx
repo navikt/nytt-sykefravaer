@@ -105,13 +105,22 @@ const DokumentOversikt = () => {
 
                 {nyeSykmeldinger.length > 0 && (
                     <Kategori tittel={'Nye varslinger'}>
-                        {nyeSykmeldinger.map(sykmeldingData => (
-                            <SykmeldingPanel
-                                key={sykmeldingData.sykmelding.id}
-                                lenke={`${pathname}/${sykmeldingData.sykmelding.id}`}
-                                sykmeldingData={sykmeldingData}
-                            />
-                        ))}
+                        {nyeSykmeldinger.map(sykmeldingData => {
+                            const getLenke = () => {
+                                if (process.env.REACT_APP_SYKMELDINGER_URL) {
+                                    return `${process.env.REACT_APP_SYKMELDINGER_URL}/fravaer/${fravaerId}/${sykmeldingData.sykmelding.id}`;
+                                }
+                                return `${pathname}/${sykmeldingData.sykmelding.id}`;
+                            };
+                            return (
+                                <SykmeldingPanel
+                                    key={sykmeldingData.sykmelding.id}
+                                    lenke={getLenke()}
+                                    ekstern={!!process.env.REACT_APP_SYKMELDINGER_URL}
+                                    sykmeldingData={sykmeldingData}
+                                />
+                            );
+                        })}
                     </Kategori>
                 )}
                 {nyeSykmeldinger.length > 0 && (
@@ -127,13 +136,22 @@ const DokumentOversikt = () => {
                 )}
                 {ferdigeSykmeldinger.length > 0 && (
                     <Kategori tittel={'Ferdig behandlet'}>
-                        {ferdigeSykmeldinger.map(sykmeldingData => (
-                            <SykmeldingPanel
-                                key={sykmeldingData.sykmelding.id}
-                                lenke={`${pathname}/${sykmeldingData.sykmelding.id}`}
-                                sykmeldingData={sykmeldingData}
-                            />
-                        ))}
+                        {ferdigeSykmeldinger.map(sykmeldingData => {
+                            const getLenke = () => {
+                                if (process.env.REACT_APP_SYKMELDINGER_URL) {
+                                    return `${process.env.REACT_APP_SYKMELDINGER_URL}/fravaer/${fravaerId}/${sykmeldingData.sykmelding.id}`;
+                                }
+                                return `${pathname}/${sykmeldingData.sykmelding.id}`;
+                            };
+                            return (
+                                <SykmeldingPanel
+                                    key={sykmeldingData.sykmelding.id}
+                                    lenke={getLenke()}
+                                    ekstern={!!process.env.REACT_APP_SYKMELDINGER_URL}
+                                    sykmeldingData={sykmeldingData}
+                                />
+                            );
+                        })}
                     </Kategori>
                 )}
             </div>
