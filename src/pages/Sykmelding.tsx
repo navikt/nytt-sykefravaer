@@ -1,6 +1,6 @@
 import React from 'react';
 import { Knapp } from 'nav-frontend-knapper';
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import Brodsmuler from '../components/Brodsmuler/Brodsmuler';
 import Header from '../components/Header/Header';
@@ -37,7 +37,6 @@ const getBrodsmuler = (fravaerId?: string) => {
 const Sykmelding = () => {
     const { fravaerId, sykmeldingId } = useParams();
     const sykmelding = useSykmeldingFraId(fravaerId, sykmeldingId);
-    const history = useHistory();
 
     const sendSykmelding = useFetch<any>();
     const bekreftSykmelding = useFetch<any>();
@@ -48,8 +47,6 @@ const Sykmelding = () => {
     }
 
     const brodsmuler = getBrodsmuler(fravaerId);
-
-    console.log(sykmelding);
 
     return (
         <>
