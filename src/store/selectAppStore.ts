@@ -138,3 +138,13 @@ export const useFerdigBehandledeSykmeldingerFraSykefravaer = (id?: string) => {
 
     return sykmeldinger.filter(sykmelding => sykmelding.status.status !== StatusTyper.NY);
 };
+
+export const useSykmeldingFraId = (fravaerId?: string, sykmeldingId?: string) => {
+    const sykefravaer = useSykefravaerFraId(fravaerId);
+
+    if (!sykefravaer) {
+        return null;
+    }
+
+    return sykefravaer.sykmeldinger.find(sykmelding => sykmelding.sykmelding.id === sykmeldingId);
+};
