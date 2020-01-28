@@ -83,6 +83,13 @@ const DokumentOversikt = () => {
     // TODO: Sett opp hvilken tekst som skal vises i utvidbar
     const utvidbarTittel = 'Sykmeldinger må bekreftes og sendes til arbeidsgivere';
 
+    const hentSykmeldingLenke = (sykmeldingId: string) => {
+        if (!process.env.REACT_APP_SOLO) {
+            return `${process.env.REACT_APP_SYKMELDINGER_URL}/fravaer/${fravaerId}/${sykmeldingId}`;
+        }
+        return `${pathname}/${sykmeldingId}`;
+    };
+
     return (
         <>
             <Header location={SIDETITTEL} />
@@ -105,13 +112,17 @@ const DokumentOversikt = () => {
 
                 {nyeSykmeldinger.length > 0 && (
                     <Kategori tittel={'Nye varslinger'}>
-                        {nyeSykmeldinger.map(sykmeldingData => (
-                            <SykmeldingPanel
-                                key={sykmeldingData.sykmelding.id}
-                                lenke={`${pathname}/${sykmeldingData.sykmelding.id}`}
-                                sykmeldingData={sykmeldingData}
-                            />
-                        ))}
+                        {nyeSykmeldinger.map(sykmeldingData => {
+                            const lenke = hentSykmeldingLenke(sykmeldingData.sykmelding.id);
+                            return (
+                                <SykmeldingPanel
+                                    key={sykmeldingData.sykmelding.id}
+                                    lenke={lenke}
+                                    ekstern={!!process.env.REACT_APP_SYKMELDINGER_URL}
+                                    sykmeldingData={sykmeldingData}
+                                />
+                            );
+                        })}
                     </Kategori>
                 )}
                 {nyeSykmeldinger.length > 0 && (
@@ -127,13 +138,17 @@ const DokumentOversikt = () => {
                 )}
                 {ferdigeSykmeldinger.length > 0 && (
                     <Kategori tittel={'Ferdig behandlet'}>
-                        {ferdigeSykmeldinger.map(sykmeldingData => (
-                            <SykmeldingPanel
-                                key={sykmeldingData.sykmelding.id}
-                                lenke={`${pathname}/${sykmeldingData.sykmelding.id}`}
-                                sykmeldingData={sykmeldingData}
-                            />
-                        ))}
+                        {ferdigeSykmeldinger.map(sykmeldingData => {
+                            const lenke = hentSykmeldingLenke(sykmeldingData.sykmelding.id);
+                            return (
+                                <SykmeldingPanel
+                                    key={sykmeldingData.sykmelding.id}
+                                    lenke={lenke}
+                                    ekstern={!!process.env.REACT_APP_SYKMELDINGER_URL}
+                                    sykmeldingData={sykmeldingData}
+                                />
+                            );
+                        })}
                     </Kategori>
                 )}
             </div>

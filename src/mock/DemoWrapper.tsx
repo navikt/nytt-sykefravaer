@@ -1,60 +1,75 @@
-import React from 'react';
-import FetchMock, { MiddlewareUtils } from 'yet-another-fetch-mock';
+import React, { useState } from 'react';
 
 import App from '../App';
 import useMockAppStore from './useMockAppStore';
-import { brukere } from './data/brukere';
+import useFetch, { FetchState, hasData, isNotStarted } from '../hooks/useFetch';
 
 /*
 Denne komponenten vises kun i dev-modus, og lar deg skifte mellom ulike brukere med forskjellig sykmeldingshistorikk.
 */
 
-let mock: FetchMock;
-
-const configureMock = () => {
-    return FetchMock.configure({
-        enableFallback: true,
-        middleware: MiddlewareUtils.combine(MiddlewareUtils.delayMiddleware(200), MiddlewareUtils.loggingMiddleware()),
-    });
-};
-
-const mockRequests = (brukerId: string) => {
-    mock = configureMock();
-
-    const sykefravaer = brukere.find(bruker => bruker.value === brukerId)?.sykefravaer;
-
-    mock.get('/syforest/sykmeldinger', []);
-    if (sykefravaer) {
-        mock.get('/syforest/sykefravaer', sykefravaer);
-    } else {
-        mock.get('/syforest/sykefravaer', []);
-    }
-};
-
 const DemoWrapper = () => {
     const { brukerId, setBrukerId } = useMockAppStore();
+    const [brukere, setBrukere] = useState<{ id: string; label: string }[]>([]);
+    const brukerIdFetcher = useFetch<string>();
+    const brukereFetcher = useFetch<{ id: string; label: string }[]>();
+    const brukerIdPoster = useFetch<string>();
 
-    mockRequests(brukerId);
+    if (isNotStarted(brukerIdFetcher)) {
+        brukerIdFetcher.fetch(
+            `${process.env.REACT_APP_API_URL}/bruker/`,
+            undefined,
+            (fetchState: FetchState<string>) => {
+                if (hasData(fetchState)) {
+                    const { data } = fetchState;
+                    setBrukerId(data);
+                }
+            },
+        );
+    }
+
+    if (isNotStarted(brukereFetcher)) {
+        brukereFetcher.fetch(
+            `${process.env.REACT_APP_API_URL}/brukere/`,
+            undefined,
+            (fetchState: FetchState<{ id: string; label: string }[]>) => {
+                if (hasData(fetchState)) {
+                    const { data } = fetchState;
+                    setBrukere(data);
+                }
+            },
+        );
+    }
 
     return (
         <>
+            <button
+                style={{ position: 'absolute' }}
+                onClick={() => {
+                    fetch(`${process.env.REACT_APP_API_URL}/reset`);
+                    window.location.reload();
+                }}
+            >
+                Reset
+            </button>
             <select
                 style={{ position: 'absolute', right: 0, zIndex: 1, width: 20, background: 'white' }}
                 name="brukere"
                 id="bruker-select"
                 onChange={event => {
-                    mock.restore();
-                    mock = configureMock();
-
                     setBrukerId(event.target.value);
+
+                    brukerIdPoster.fetch(`${process.env.REACT_APP_API_URL}/bruker/${event.target.value}`, {
+                        method: 'POST',
+                    });
                 }}
                 value={brukerId}
             >
                 <option key="init" value="">
                     -- Bytt bruker --
                 </option>
-                {brukere.map(({ value, label }) => (
-                    <option key={value} value={value}>
+                {brukere.map(({ id, label }) => (
+                    <option key={id} value={id}>
                         {label}
                     </option>
                 ))}
