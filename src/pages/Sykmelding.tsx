@@ -7,22 +7,22 @@ import Header from '../components/Header/Header';
 import useFetch, { FetchState, hasFinished, isNotStarted } from '../hooks/useFetch';
 import { useSykmeldingFraId } from '../store/selectAppStore';
 
-const SIDETITTEL = 'Vis sykmelding';
+const SIDETITTEL = 'Sykmelding';
 
 const getBrodsmuler = (fravaerId?: string) => {
     return [
         {
-            tittel: 'Ditt sykefravaer',
+            tittel: 'Sykefravær',
             sti: '/',
             erKlikkbar: true,
         },
         {
-            tittel: 'Fraværsoversikt',
-            sti: '/fravaer',
+            tittel: 'Oversikt',
+            sti: '/',
             erKlikkbar: true,
         },
         {
-            tittel: 'Status i sykefravær',
+            tittel: 'Status',
             sti: `/fravaer/${fravaerId}`,
             erKlikkbar: true,
         },
