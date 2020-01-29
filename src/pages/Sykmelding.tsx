@@ -41,6 +41,7 @@ const Sykmelding = () => {
     const sendSykmelding = useFetch<any>();
     const bekreftSykmelding = useFetch<any>();
     const avbrytSykmelding = useFetch<any>();
+    const brukSykmelding = useFetch<any>();
 
     if (!sykmeldingId) {
         return null;
@@ -54,7 +55,7 @@ const Sykmelding = () => {
             <div className="limit">
                 <Brodsmuler brodsmuler={brodsmuler} />
                 sykmelding
-                <div style={{ display: 'flex' }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                     <Knapp
                         onClick={() => {
                             if (isNotStarted(sendSykmelding)) {
@@ -119,6 +120,25 @@ const Sykmelding = () => {
                         }}
                     >
                         Avbryt sykmelding
+                    </Knapp>
+                    <Knapp
+                        onClick={() => {
+                            if (isNotStarted(brukSykmelding)) {
+                                brukSykmelding.fetch(
+                                    `${process.env.REACT_APP_API_URL}/sykmelding/bruk/${sykmeldingId}`,
+                                    {
+                                        method: 'POST',
+                                    },
+                                    (fetchState: FetchState<any>) => {
+                                        if (hasFinished(fetchState)) {
+                                            window.location.reload();
+                                        }
+                                    },
+                                );
+                            }
+                        }}
+                    >
+                        Bruk avbrutt sykmelding
                     </Knapp>
                 </div>
                 <div>
