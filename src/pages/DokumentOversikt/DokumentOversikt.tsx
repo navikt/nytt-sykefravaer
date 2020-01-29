@@ -1,7 +1,6 @@
 import './dokumentOversikt.less';
 
 import React from 'react';
-import { Sidetittel, Undertittel } from 'nav-frontend-typografi';
 import { useLocation, useParams } from 'react-router-dom';
 
 import Brodsmuler from '../../components/Brodsmuler/Brodsmuler';
@@ -9,6 +8,7 @@ import Header from '../../components/Header/Header';
 import Kategori from '../../components/Kategori';
 import SoknadPanel from './components/SoknadPanel';
 import SykmeldingPanel from './components/SykmeldingPanel';
+import Tittel from '../../components/Tittel/Tittel';
 import Utvidbar from './components/Utvidbar/Utvidbar';
 import information from '../../svg/information.svg';
 import informationHover from '../../svg/informationHover.svg';
@@ -43,17 +43,17 @@ const getVeileder = (sykefravaer: Sykefravaer) => {
 const getBrodsmuler = (id: string) => {
     return [
         {
-            tittel: 'Ditt sykefravaer',
+            tittel: 'Sykefravær',
             sti: '/',
             erKlikkbar: true,
         },
         {
-            tittel: 'Fraværsoversikt',
+            tittel: 'Oversikt',
             sti: '/fravaer',
             erKlikkbar: true,
         },
         {
-            tittel: SIDETITTEL,
+            tittel: 'Status',
             sti: `/${id}`,
             erKlikkbar: true,
         },
@@ -95,10 +95,10 @@ const DokumentOversikt = () => {
             <Header location={SIDETITTEL} />
             <div className="limit">
                 <Brodsmuler brodsmuler={brodsmuler} />
-                <Sidetittel style={{ textAlign: 'center', marginBottom: '1rem' }}>Sykefravær</Sidetittel>
-                <Undertittel style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                    fra {new Date().toDateString()} til {new Date().toDateString()}
-                </Undertittel>
+                <Tittel
+                    tittel="Sykefravær"
+                    undertittel={`fra ${new Date().toDateString()} til ${new Date().toDateString()}`}
+                />
 
                 <Utvidbar
                     tittel={utvidbarTittel}

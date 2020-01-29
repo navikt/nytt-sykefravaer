@@ -4,11 +4,11 @@ import Hjelpetekst from 'nav-frontend-hjelpetekst';
 import Tekstomrade from 'nav-frontend-tekstomrade';
 import React, { useState } from 'react';
 import { Radio } from 'nav-frontend-skjema';
-import { Sidetittel } from 'nav-frontend-typografi';
 
 import Header from '../../components/Header/Header';
 import TidslinjeMedArbeidsgiver from './TidslinjeMedArbeidsgiver';
 import TidslinjeUtenArbeidsgiver from './TidslinjeUtenArbeidsgiver';
+import Tittel from '../../components/Tittel/Tittel';
 import setDocumentTittel from '../../utils/setDocumentTittel';
 import Brodsmuler, { Brodsmule } from '../../components/Brodsmuler/Brodsmuler';
 
@@ -16,12 +16,12 @@ const SIDETITTEL = 'Hva skjer under sykefraværet?';
 
 const brodsmuler: Brodsmule[] = [
     {
-        tittel: 'Ditt sykefravaer',
+        tittel: 'Sykefravær',
         sti: '/',
         erKlikkbar: true,
     },
     {
-        tittel: SIDETITTEL,
+        tittel: 'Tidslinje',
         sti: '/tidslinje',
         erKlikkbar: false,
     },
@@ -45,7 +45,9 @@ const TidslinjeSide = () => {
             <Header location={SIDETITTEL} />
             <div className="limit">
                 <Brodsmuler brodsmuler={brodsmuler}></Brodsmuler>
-                <Sidetittel className="sidetittel">Hva skjer under sykefraværet?</Sidetittel>
+
+                <Tittel tittel="Hva skjer under sykefraværet?" />
+
                 <Tekstomrade className="infoheader">
                     På tidslinjen ser du hva som forventes av deg i løpet av sykefraværet. Oppgavene kan gjøres på andre
                     tidspunkter hvis det er behov for det. Hvis du er for syk til å delta i jobb eller aktivitet, kan du
