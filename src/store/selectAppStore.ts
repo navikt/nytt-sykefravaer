@@ -11,9 +11,7 @@ export const useSykefravaerNyeSykmeldinger = () => {
         return [];
     }
 
-    return sykefravaer.filter(fravaer =>
-        fravaer.sykmeldinger.some(sykmelding => sykmelding.status.status === StatusTyper.NY),
-    );
+    return sykefravaer.filter(fravaer => hentNyeSykmeldingerFraSykefravaer(fravaer).length > 0);
 };
 
 // Sykefravær som inneholder aktive søknader
@@ -24,7 +22,7 @@ export const useSykefravaerAktiveSoknader = () => {
         return [];
     }
 
-    return sykefravaer.filter(fravaer => fravaer.soknader.some(soknad => soknad.beslutning === Beslutning.INAKTIV));
+    return sykefravaer.filter(fravaer => hentAktiveSoknaderFraSykefravaer(fravaer).length > 0);
 };
 
 // Sykefravær med bekreftede/sendte sykmeldinger og inaktive søknader
@@ -35,13 +33,14 @@ export const useSykefravaerPagaende = () => {
         return [];
     }
 
-    const ikkeNyeSykefravaer = sykefravaer.filter(fravaer =>
-        fravaer.sykmeldinger.some(sykmelding => sykmelding.status.status !== StatusTyper.NY),
-    );
+    const harAktiveEllerFremtidigeSoknader = sykefravaer.filter(fravaer => {
+        const harAktiveSoknader = hentAktiveSoknaderFraSykefravaer(fravaer).length > 0;
+        const harFremtidigeSoknader = hentFremtidigeSoknaderFraSykefravaer(fravaer).length > 0;
 
-    return ikkeNyeSykefravaer.filter(fravaer =>
-        fravaer.soknader.some(soknad => soknad.beslutning === Beslutning.INAKTIV),
-    );
+        return harAktiveSoknader || harFremtidigeSoknader;
+    });
+
+    return harAktiveEllerFremtidigeSoknader;
 };
 
 const fjernDuplikateSykefravaer = (sykefravaer1: Sykefravaer[], sykefravaer2: Sykefravaer[]) => {
@@ -72,13 +71,15 @@ export const useSykefravaerFerdigBehandlet = () => {
         return [];
     }
 
-    const fravaerMedFerdigeSykmeldinger = sykefravaer.filter(fravaer =>
-        fravaer.sykmeldinger.some(sykmelding => sykmelding.status.status !== StatusTyper.NY),
+    const utenNyeSykmeldinger = sykefravaer.filter(fravaer => hentNyeSykmeldingerFraSykefravaer(fravaer).length === 0);
+    const utenAktiveSoknader = utenNyeSykmeldinger.filter(
+        fravaer => hentAktiveSoknaderFraSykefravaer(fravaer).length === 0,
+    );
+    const utenFremtidigeSoknader = utenAktiveSoknader.filter(
+        fravaer => hentFremtidigeSoknaderFraSykefravaer(fravaer).length === 0,
     );
 
-    return fravaerMedFerdigeSykmeldinger.filter(fravaer =>
-        fravaer.soknader.some(soknad => soknad.beslutning === Beslutning.GODKJENT),
-    );
+    return utenFremtidigeSoknader;
 };
 
 export const useSykefravaerFraId = (id?: string) => {
