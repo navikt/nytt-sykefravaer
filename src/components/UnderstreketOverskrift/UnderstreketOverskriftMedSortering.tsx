@@ -1,8 +1,8 @@
 import './UnderstreketOverskrift.less';
 
 import React from 'react';
-import { Element } from 'nav-frontend-typografi';
 import { Select } from 'nav-frontend-skjema';
+import { Undertittel } from 'nav-frontend-typografi';
 
 const UnderstreketOverskriftMedSortering = ({
     tittel,
@@ -14,7 +14,7 @@ const UnderstreketOverskriftMedSortering = ({
     return (
         <>
             <div className="understreket__container">
-                <Element className="understreket__tittel">{tittel}</Element>
+                <Undertittel className="understreket__tittel">{tittel}</Undertittel>
                 <Select label="Sortér etter:" onChange={event => settSortering(event.target.value)}>
                     <option value="dato">Dato</option>
                     <option value="annet">Annet sorteringsvalg</option>

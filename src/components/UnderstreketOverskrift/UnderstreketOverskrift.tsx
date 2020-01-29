@@ -1,12 +1,12 @@
 import './UnderstreketOverskrift.less';
 
 import React from 'react';
-import { Element } from 'nav-frontend-typografi';
+import { Undertittel } from 'nav-frontend-typografi';
 
 const UnderstreketOverskrift = ({ tittel }: { tittel: string }) => {
     return (
         <>
-            <Element>{tittel}</Element>
+            <Undertittel>{tittel}</Undertittel>
             <hr className="understreket__hr" />
         </>
     );
