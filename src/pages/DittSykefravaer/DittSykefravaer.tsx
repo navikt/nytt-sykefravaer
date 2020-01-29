@@ -70,6 +70,16 @@ const DittSykefravaer = () => {
                 <Seksjon>
                     <OverskriftSkille tekst="Informasjon og veiledning" />
 
+                    <LenkepanelWrapper
+                        lenke="/forklart"
+                        tittel="Digital sykmelding forklart"
+                        tekstGra={[
+                            'Tradisjonelt har sykmeldingen blitt skrevet ut på papir.',
+                            'Her viser vi deg hvordan den digitale sykmeldingen fungerer.',
+                        ]}
+                        svg={bjorn}
+                    />
+
                     <CardContainer>
                         <Card
                             tittel="Sykefravær forklart"
@@ -87,15 +97,6 @@ const DittSykefravaer = () => {
                             lenke="www.nav.no"
                         />
                     </CardContainer>
-                    <LenkepanelWrapper
-                        lenke="/forklart"
-                        tittel="Digital sykmelding forklart"
-                        tekstGra={[
-                            'Tradisjonelt har sykmeldingen blitt skrevet ut på papir.',
-                            'Her viser vi deg hvordan den digitale sykmeldingen fungerer.',
-                        ]}
-                        svg={bjorn}
-                    />
                 </Seksjon>
 
                 <Seksjon>
