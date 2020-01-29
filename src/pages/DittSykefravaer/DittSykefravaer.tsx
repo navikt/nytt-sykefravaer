@@ -3,6 +3,7 @@ import { Systemtittel } from 'nav-frontend-typografi';
 
 import Card from './components/Card/Card';
 import CardContainer from './components/Card/CardContainer';
+import Lenkeelement from './components/Lenkesamling/Lenkeelement';
 import LenkepanelWrapper from '../../components/Lenkepanel/LenkepanelWrapper';
 import Lenkesamling from './components/Lenkesamling/Lenkesamling';
 import OverskriftSkille from '../../components/OverskriftSkille/OverskriftSkille';
@@ -98,7 +99,17 @@ const DittSykefravaer = () => {
                 </Seksjon>
 
                 <Seksjon>
-                    <Lenkesamling />
+                    <Lenkesamling>
+                        <Lenkeelement tekst="Digital sykmelding" lenke="https://www.nrk.no/" ekstern />
+                        <Lenkeelement tekst="Ofte stilte spørsmål" lenke="https://www.nrk.no/" ekstern />
+                        <Lenkeelement tekst="Opphold i utlandet" lenke="opphold" />
+                        <Lenkeelement tekst="Begrepsforklaring" lenke="begrep" />
+                        <Lenkeelement tekst="Syk i svangerskapsperioden" lenke="syk" />
+                        <Lenkeelement tekst="Regelverk" lenke="regelverk" />
+                        <Lenkeelement tekst="Annen informasjon" lenke="https://www.nrk.no/" ekstern />
+                        <Lenkeelement tekst="Overgang til AAP" lenke="overgang" />
+                        <Lenkeelement tekst="Slik klager du" lenke="https://www.nrk.no/" ekstern />
+                    </Lenkesamling>
                 </Seksjon>
             </div>
         </>
