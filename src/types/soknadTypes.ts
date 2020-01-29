@@ -1,6 +1,7 @@
 export enum Beslutning {
     SENDT = 'SENDT',
     AKTIV = 'AKTIV',
+    FREMTIDIG = 'FREMTIDIG',
     INAKTIV = 'INAKTIV',
     AVVIST = 'AVVIST',
     GODKJENT = 'GODKJENT',

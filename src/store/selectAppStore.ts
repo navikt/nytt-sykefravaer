@@ -127,12 +127,6 @@ export const useAktiveSoknaderFraSykefravaer = (id?: string) => {
     return soknader.filter(soknader => soknader.beslutning === Beslutning.AKTIV);
 };
 
-export const useInaktiveSoknaderFraSykefravaer = (id?: string) => {
-    const soknader = useSoknaderFraSykefravaer(id);
-
-    return soknader.filter(soknader => soknader.beslutning === Beslutning.INAKTIV);
-};
-
 export const useFerdigBehandledeSykmeldingerFraSykefravaer = (id?: string) => {
     const sykmeldinger = useSykmeldingerFraSykefravaer(id);
 
@@ -147,4 +141,64 @@ export const useSykmeldingFraId = (fravaerId?: string, sykmeldingId?: string) =>
     }
 
     return sykefravaer.sykmeldinger.find(sykmelding => sykmelding.sykmelding.id === sykmeldingId);
+};
+
+export const useSykefravaerMedNyeVarsler = () => {
+    const { sykefravaer } = useAppStore();
+
+    if (!sykefravaer) {
+        return [];
+    }
+
+    // TODO: Gjennomgå kriteriene for hva som regnes som et "nytt varsel"
+    // Hittil regnes følgende kriterier:
+    const nyeVarsler = sykefravaer.filter(fravaer => {
+        if (hentNyeSykmeldingerFraSykefravaer(fravaer).length > 0) {
+            return true;
+        }
+
+        if (hentAktiveSoknaderFraSykefravaer(fravaer).length > 0) {
+            return true;
+        }
+
+        if (hentFremtidigeSoknaderFraSykefravaer(fravaer).length > 0) {
+            return true;
+        }
+
+        if (hentGodkjenteSoknaderFraSykefravaer(fravaer).length > 0) {
+            return true;
+        }
+
+        return false;
+    });
+
+    return nyeVarsler;
+};
+
+const hentSykmeldingerFraSykefravaer = (fravaer: Sykefravaer) => {
+    return fravaer.sykmeldinger;
+};
+
+const hentSoknaderFraSykefravaer = (fravaer: Sykefravaer) => {
+    return fravaer.soknader;
+};
+
+const hentNyeSykmeldingerFraSykefravaer = (fravaer: Sykefravaer) => {
+    const sykmeldinger = hentSykmeldingerFraSykefravaer(fravaer);
+    return sykmeldinger.filter(sykmeldinger => sykmeldinger.status.status === StatusTyper.NY);
+};
+
+const hentAktiveSoknaderFraSykefravaer = (fravaer: Sykefravaer) => {
+    const soknader = hentSoknaderFraSykefravaer(fravaer);
+    return soknader.filter(soknad => soknad.beslutning === Beslutning.AKTIV);
+};
+
+const hentFremtidigeSoknaderFraSykefravaer = (fravaer: Sykefravaer) => {
+    const soknader = hentSoknaderFraSykefravaer(fravaer);
+    return soknader.filter(soknad => soknad.beslutning === Beslutning.FREMTIDIG);
+};
+
+const hentGodkjenteSoknaderFraSykefravaer = (fravaer: Sykefravaer) => {
+    const soknader = hentSoknaderFraSykefravaer(fravaer);
+    return soknader.filter(soknad => soknad.beslutning === Beslutning.GODKJENT);
 };

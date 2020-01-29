@@ -68,7 +68,6 @@ const DokumentOversikt = () => {
 
     const nyeSykmeldinger = useNyeSykmeldingerFraSykefravaer(fravaerId);
     const ferdigeSykmeldinger = useFerdigBehandledeSykmeldingerFraSykefravaer(fravaerId);
-    // const inaktiveSoknader = useInaktiveSoknaderFraSykefravaer(fravaerId);
     const aktiveSoknader = useAktiveSoknaderFraSykefravaer(fravaerId);
 
     if (!fravaerId) {
