@@ -101,14 +101,14 @@ const DittSykefravaer = () => {
 
                 <Seksjon>
                     <Lenkesamling>
-                        <Lenkeelement tekst="Digital sykmelding" lenke="https://www.nrk.no/" ekstern />
-                        <Lenkeelement tekst="Ofte stilte spørsmål" lenke="https://www.nrk.no/" ekstern />
-                        <Lenkeelement tekst="Opphold i utlandet" lenke="opphold" />
-                        <Lenkeelement tekst="Begrepsforklaring" lenke="begrep" />
-                        <Lenkeelement tekst="Syk i svangerskapsperioden" lenke="syk" />
-                        <Lenkeelement tekst="Regelverk" lenke="regelverk" />
-                        <Lenkeelement tekst="Annen informasjon" lenke="https://www.nrk.no/" ekstern />
-                        <Lenkeelement tekst="Overgang til AAP" lenke="overgang" />
+                        <Lenkeelement tekst="Digital sykmelding" lenke="" />
+                        <Lenkeelement tekst="Begrepsforklaring" lenke="" />
+                        <Lenkeelement tekst="Personvern" lenke="" />
+                        <Lenkeelement tekst="Ofte stilte spørsmål" lenke="" />
+                        <Lenkeelement tekst="Syk i svangerskapsperioden" lenke="" />
+                        <Lenkeelement tekst="Overgang til AAP" lenke="https://www.nrk.no/" ekstern />
+                        <Lenkeelement tekst="Opphold i utlandet" lenke="https://www.nrk.no/" ekstern />
+                        <Lenkeelement tekst="Regelverk" lenke="https://www.nrk.no" ekstern />
                         <Lenkeelement tekst="Slik klager du" lenke="https://www.nrk.no/" ekstern />
                     </Lenkesamling>
                 </Seksjon>
