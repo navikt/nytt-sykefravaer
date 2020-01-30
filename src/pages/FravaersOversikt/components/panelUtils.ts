@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 
 import { Beslutning } from '../../../types/soknadTypes';
-import { Periode, StatusTyper, Sykmelding } from '../../../types/sykmeldingTypes';
+import { Periode, StatusTyper } from '../../../types/sykmeldingTypes';
 import { Sykefravaer } from '../../../types/sykefravaerTypes';
 import { SykmeldingData } from '../../../types/sykmeldingDataTypes';
 
