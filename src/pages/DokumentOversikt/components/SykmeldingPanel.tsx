@@ -63,7 +63,7 @@ const SykmeldingPanel = ({ lenke, ekstern, sykmeldingData }: SykmeldingPanelProp
     return (
         <LenkepanelWrapper
             lenke={lenke}
-            ekstern={ekstern}
+            ekstern={false}
             tittel={tittel}
             tekstGra={perioderMedGraderingOgLengdeTekst}
             tekstStatus={statustekst}
