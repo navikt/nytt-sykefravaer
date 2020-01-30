@@ -12,7 +12,7 @@ import Veileder from '../../components/Veileder/Veileder';
 import bjorn from '../../svg/bjorn.svg';
 import setDocumentTittel from '../../utils/setDocumentTittel';
 import { Brodsmule } from '../../components/Brodsmuler/Brodsmuler';
-import { useSykefravaerMedNyeSykmeldingerEllerAktiveSoknader } from '../../store/selectAppStore';
+import { useSykefravaerMedNyeVarsler } from '../../store/selectAppStore';
 
 // TODO: Sett opp logikk for henting av veileder basert på tilgjengelige sykefravær
 
@@ -33,7 +33,7 @@ const Seksjon = ({ children }: { children: any }) => {
 const DittSykefravaer = () => {
     setDocumentTittel(SIDETITTEL);
 
-    const sykefravaer = useSykefravaerMedNyeSykmeldingerEllerAktiveSoknader();
+    const nyeVarsler = useSykefravaerMedNyeVarsler();
 
     return (
         <>
@@ -55,7 +55,7 @@ const DittSykefravaer = () => {
 
                 <Seksjon>
                     <OverskriftSkille tekst="Nye varsler" />
-                    {sykefravaer.map(fravaer => (
+                    {nyeVarsler.map(fravaer => (
                         <SykefravaerPanel key={fravaer.id} lenke={`/fravaer/${fravaer.id}`} sykefravaer={fravaer} />
                     ))}
                     <LenkepanelWrapper
