@@ -1,12 +1,12 @@
 import dayjs from 'dayjs';
 
 import { Beslutning } from '../../../types/soknadTypes';
-import { Periode, StatusTyper } from '../../../types/sykmeldingTypes';
+import { Periode, StatusTyper, Sykmelding } from '../../../types/sykmeldingTypes';
 import { Sykefravaer } from '../../../types/sykefravaerTypes';
 import { SykmeldingData } from '../../../types/sykmeldingDataTypes';
 
 const hentForsteFomIPerioder = (perioder: Periode[]) => {
-    const forstePeriode = perioder.reduce((lavesteFom, periode) => {
+    const forstePeriode = perioder.reduce((lavesteFom: Periode | undefined, periode) => {
         if (!lavesteFom) {
             return periode;
         }
@@ -15,14 +15,23 @@ const hentForsteFomIPerioder = (perioder: Periode[]) => {
             return periode;
         }
         return lavesteFom;
-    });
+    }, undefined);
 
-    return forstePeriode.fom;
+    return forstePeriode?.fom;
 };
 
 const hentSykmeldingMedEldstePeriode = (sykmeldinger: SykmeldingData[]) => {
-    return sykmeldinger.reduce((laveste, curr) => {
+    return sykmeldinger.reduce((laveste: SykmeldingData | undefined, curr) => {
+        if (!laveste) {
+            return curr;
+        }
+
         const lavesteFom = hentForsteFomIPerioder(laveste.sykmelding.perioder);
+
+        if (!lavesteFom) {
+            return curr;
+        }
+
         const currentFom = hentForsteFomIPerioder(curr.sykmelding.perioder);
 
         if (dayjs(currentFom).isBefore(lavesteFom)) {
@@ -30,11 +39,11 @@ const hentSykmeldingMedEldstePeriode = (sykmeldinger: SykmeldingData[]) => {
         }
 
         return laveste;
-    });
+    }, undefined);
 };
 
 const hentSisteTomIPerioder = (perioder: Periode[]) => {
-    const nyestePeriode = perioder.reduce((nyesteTom, periode) => {
+    const nyestePeriode = perioder.reduce((nyesteTom: Periode | undefined, periode) => {
         if (!nyesteTom) {
             return periode;
         }
@@ -43,14 +52,23 @@ const hentSisteTomIPerioder = (perioder: Periode[]) => {
             return periode;
         }
         return nyesteTom;
-    });
+    }, undefined);
 
-    return nyestePeriode.tom;
+    return nyestePeriode?.tom;
 };
 
 const hentSykmeldingMedNyestePeriode = (sykmeldinger: SykmeldingData[]) => {
-    return sykmeldinger.reduce((laveste, curr) => {
+    return sykmeldinger.reduce((laveste: SykmeldingData | undefined, curr) => {
+        if (!laveste) {
+            return curr;
+        }
+
         const lavesteFom = hentSisteTomIPerioder(laveste.sykmelding.perioder);
+
+        if (!lavesteFom) {
+            return curr;
+        }
+
         const currentFom = hentSisteTomIPerioder(curr.sykmelding.perioder);
 
         if (dayjs(currentFom).isAfter(lavesteFom)) {
@@ -58,7 +76,7 @@ const hentSykmeldingMedNyestePeriode = (sykmeldinger: SykmeldingData[]) => {
         }
 
         return laveste;
-    });
+    }, undefined);
 };
 
 export const hentSykefravaerTilFraDatoStreng = (sykefravaer: Sykefravaer) => {
@@ -67,8 +85,16 @@ export const hentSykefravaerTilFraDatoStreng = (sykefravaer: Sykefravaer) => {
     const sykmeldingMedEldstePeriode = hentSykmeldingMedEldstePeriode(sykefravaer.sykmeldinger);
     const sykmeldingMedNyestePeriode = hentSykmeldingMedNyestePeriode(sykefravaer.sykmeldinger);
 
+    if (!sykmeldingMedEldstePeriode || !sykmeldingMedNyestePeriode) {
+        return '';
+    }
+
     const start = hentForsteFomIPerioder(sykmeldingMedEldstePeriode.sykmelding.perioder);
     const end = hentSisteTomIPerioder(sykmeldingMedNyestePeriode.sykmelding.perioder);
+
+    if (!start || !end) {
+        return '';
+    }
 
     const lesbarDatoStreng = tilLesbarDatoStreng(start, end);
 
