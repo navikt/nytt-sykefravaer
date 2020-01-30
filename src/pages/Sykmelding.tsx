@@ -68,10 +68,8 @@ const Sykmelding = () => {
                                         },
                                         body: JSON.stringify({ id: sykmeldingId, skjemaData: {} }),
                                     },
-                                    (fetchState: FetchState<any>) => {
-                                        if (hasFinished(fetchState)) {
-                                            window.location.reload();
-                                        }
+                                    () => {
+                                        window.location.reload();
                                     },
                                 );
                             }
@@ -91,10 +89,8 @@ const Sykmelding = () => {
                                         },
                                         body: JSON.stringify({ id: sykmeldingId, skjemaData: {} }),
                                     },
-                                    (fetchState: FetchState<any>) => {
-                                        if (hasFinished(fetchState)) {
-                                            window.location.reload();
-                                        }
+                                    () => {
+                                        window.location.reload();
                                     },
                                 );
                             }
@@ -110,10 +106,8 @@ const Sykmelding = () => {
                                     {
                                         method: 'POST',
                                     },
-                                    (fetchState: FetchState<any>) => {
-                                        if (hasFinished(fetchState)) {
-                                            window.location.reload();
-                                        }
+                                    () => {
+                                        window.location.reload();
                                     },
                                 );
                             }
@@ -129,10 +123,8 @@ const Sykmelding = () => {
                                     {
                                         method: 'POST',
                                     },
-                                    (fetchState: FetchState<any>) => {
-                                        if (hasFinished(fetchState)) {
-                                            window.location.reload();
-                                        }
+                                    () => {
+                                        window.location.reload();
                                     },
                                 );
                             }
