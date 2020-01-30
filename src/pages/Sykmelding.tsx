@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 
 import Brodsmuler from '../components/Brodsmuler/Brodsmuler';
 import Header from '../components/Header/Header';
-import useFetch, { FetchState, hasFinished, isNotStarted } from '../hooks/useFetch';
+import useFetch, { isNotStarted } from '../hooks/useFetch';
 import { useSykmeldingFraId } from '../store/selectAppStore';
 
 const SIDETITTEL = 'Vis sykmelding';
