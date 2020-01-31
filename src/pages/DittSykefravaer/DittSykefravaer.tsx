@@ -3,6 +3,7 @@ import { Systemtittel } from 'nav-frontend-typografi';
 
 import Card from './components/Card/Card';
 import CardContainer from './components/Card/CardContainer';
+import Lenkeelement from './components/Lenkesamling/Lenkeelement';
 import LenkepanelWrapper from '../../components/Lenkepanel/LenkepanelWrapper';
 import Lenkesamling from './components/Lenkesamling/Lenkesamling';
 import OverskriftSkille from '../../components/OverskriftSkille/OverskriftSkille';
@@ -69,6 +70,16 @@ const DittSykefravaer = () => {
                 <Seksjon>
                     <OverskriftSkille tekst="Informasjon og veiledning" />
 
+                    <LenkepanelWrapper
+                        lenke="/forklart"
+                        tittel="Digital sykmelding forklart"
+                        tekstGra={[
+                            'Tradisjonelt har sykmeldingen blitt skrevet ut på papir.',
+                            'Her viser vi deg hvordan den digitale sykmeldingen fungerer.',
+                        ]}
+                        svg={bjorn}
+                    />
+
                     <CardContainer>
                         <Card
                             tittel="Sykefravær forklart"
@@ -86,19 +97,20 @@ const DittSykefravaer = () => {
                             lenke="www.nav.no"
                         />
                     </CardContainer>
-                    <LenkepanelWrapper
-                        lenke="/forklart"
-                        tittel="Digital sykmelding forklart"
-                        tekstGra={[
-                            'Tradisjonelt har sykmeldingen blitt skrevet ut på papir.',
-                            'Her viser vi deg hvordan den digitale sykmeldingen fungerer.',
-                        ]}
-                        svg={bjorn}
-                    />
                 </Seksjon>
 
                 <Seksjon>
-                    <Lenkesamling />
+                    <Lenkesamling>
+                        <Lenkeelement tekst="Digital sykmelding" lenke="" />
+                        <Lenkeelement tekst="Begrepsforklaring" lenke="" />
+                        <Lenkeelement tekst="Personvern" lenke="" />
+                        <Lenkeelement tekst="Ofte stilte spørsmål" lenke="" />
+                        <Lenkeelement tekst="Syk i svangerskapsperioden" lenke="" />
+                        <Lenkeelement tekst="Overgang til AAP" lenke="https://www.nrk.no/" ekstern />
+                        <Lenkeelement tekst="Opphold i utlandet" lenke="https://www.nrk.no/" ekstern />
+                        <Lenkeelement tekst="Regelverk" lenke="https://www.nrk.no" ekstern />
+                        <Lenkeelement tekst="Slik klager du" lenke="https://www.nrk.no/" ekstern />
+                    </Lenkesamling>
                 </Seksjon>
             </div>
         </>

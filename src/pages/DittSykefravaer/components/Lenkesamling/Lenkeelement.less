@@ -1,15 +1,16 @@
 @import '../../../../basic.less';
 
 .lenkesamling__lenkeelement {
-    margin-bottom: 1.5rem;
+    margin-bottom: 3rem;
     text-align: center;
 }
 
 .lenkesamling__lenke {
-    // Kommenter ut denne for å få standard blåfarge.
-    color: inherit;
+    // TODO: Overskriver designbibliotek-css
+    color: inherit !important;
     border-bottom: 1px solid lightgray;
-    text-decoration: none;
+    // TODO: Overskriver designbibliotek-css
+    text-decoration: none !important;
 }
 
 .lenkesamling__lenke:hover {
@@ -18,7 +19,7 @@
 
 .lenkesamling {
     column-count: 3;
-    margin: 1.5rem;
+    margin: 2.5rem;
 }
 
 .lenkesamling {
@@ -29,6 +30,7 @@
     .lenkesamling {
         column-count: 2;
         margin: 1.5rem;
+        margin-top: 2.5rem;
     }
 }
 
@@ -36,5 +38,6 @@
     .lenkesamling {
         column-count: 3;
         margin: 1.5rem;
+        margin-top: 2.5rem;
     }
 }

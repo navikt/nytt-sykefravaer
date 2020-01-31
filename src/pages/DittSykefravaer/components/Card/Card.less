@@ -6,7 +6,6 @@
     background-color: white;
     margin-left: @cardMargin;
     margin-right: @cardMargin;
-    margin-bottom: 1rem;
     border: 1px solid #cbcbcb;
     border-radius: 4px;
     overflow: hidden;
@@ -76,6 +75,10 @@
 }
 
 @media (max-width: @screen-desktop) {
+    .card {
+        margin-bottom: 1rem;
+    }
+
     .card-container {
         flex-direction: column;
     }
