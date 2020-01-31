@@ -1,5 +1,4 @@
 import React from 'react';
-import { Sidetittel, Undertittel } from 'nav-frontend-typografi';
 import { useLocation } from 'react-router-dom';
 
 import BehandledeFravaerPanel from './components/BehandledeFravaerPanel';
@@ -7,6 +6,7 @@ import Header from '../../components/Header/Header';
 import Kategori from '../../components/Kategori';
 import PagaendeFravaerPanel from './components/PagaendeFravaerPanel';
 import SykefravaerPanel from './components/SykefravaerPanel';
+import Tittel from '../../components/Tittel/Tittel';
 import setDocumentTittel from '../../utils/setDocumentTittel';
 import Brodsmuler, { Brodsmule } from '../../components/Brodsmuler/Brodsmuler';
 import {
@@ -19,12 +19,12 @@ const SIDETITTEL = 'Fraværsoversikt';
 
 const brodsmuler: Brodsmule[] = [
     {
-        tittel: 'Ditt sykefravaer',
+        tittel: 'Sykefravær',
         sti: '/',
         erKlikkbar: true,
     },
     {
-        tittel: SIDETITTEL,
+        tittel: 'Oversikt',
         sti: '/',
         erKlikkbar: true,
     },
@@ -48,12 +48,9 @@ const FravaersOversikt = () => {
             <Header location={SIDETITTEL} />
             <div className="limit">
                 <Brodsmuler brodsmuler={brodsmuler} />
-                <Sidetittel style={{ textAlign: 'center', marginBottom: '1rem', marginTop: '2rem' }}>
-                    Dine sykefravær
-                </Sidetittel>
-                <Undertittel style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                    Oversikt over pågående- og tidligere sykefravær
-                </Undertittel>
+
+                <Tittel tittel="Dine sykefravær" undertittel="Oversikt over pågående- og tidligere sykefravær" />
+
                 <Kategori tittel={'Nye varslinger'}>
                     {nyeSykefravaer.map(fravaer => (
                         <SykefravaerPanel key={fravaer.id} lenke={`${pathname}/${fravaer.id}`} sykefravaer={fravaer} />
