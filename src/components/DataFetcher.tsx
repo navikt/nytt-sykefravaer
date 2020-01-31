@@ -6,7 +6,7 @@ import env from '../utils/environment';
 import useAppStore from '../store/useAppStore';
 import useMockAppStore from '../mock/useMockAppStore';
 import useFetch, { FetchState, hasAnyFailed, hasData, isAnyNotStartedOrPending, isNotStarted } from '../hooks/useFetch';
-import { Soknad } from '../types/soknadTypes';
+import { Soknad } from '../types/soknadTypes/soknadTypes';
 import { Sykefravaer } from '../types/sykefravaerTypes';
 import { SykmeldingData } from '../types/sykmeldingDataTypes';
 

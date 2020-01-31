@@ -1,5 +1,5 @@
+import { Soknad } from './soknadTypes/soknadTypes';
 import { SykmeldingData } from './sykmeldingDataTypes';
-import { Soknad } from './soknadTypes';
 
 export class Sykefravaer {
     id: string;

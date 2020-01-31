@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 
-import { Beslutning } from '../../../types/soknadTypes';
 import { Periode, StatusTyper } from '../../../types/sykmeldingTypes';
+import { RSSoknadstatus } from '../../../types/soknadTypes/rs-types/rs-soknadstatus';
 import { Sykefravaer } from '../../../types/sykefravaerTypes';
 import { SykmeldingData } from '../../../types/sykmeldingDataTypes';
 
@@ -124,7 +124,7 @@ export const fravaerHarNySykmelding = (sykefravaer: Sykefravaer) => {
 };
 
 export const fravaerHarAktivSoknad = (sykefravaer: Sykefravaer) => {
-    return sykefravaer.soknader.some(soknad => soknad.beslutning === Beslutning.AKTIV);
+    return sykefravaer.soknader.some(soknad => soknad.status === RSSoknadstatus.NY);
 };
 
 export const hentAntallNyeSykmeldinger = (sykefravaer: Sykefravaer) => {
@@ -132,5 +132,5 @@ export const hentAntallNyeSykmeldinger = (sykefravaer: Sykefravaer) => {
 };
 
 export const hentAntallAktiveSoknader = (sykefravaer: Sykefravaer) => {
-    return sykefravaer.soknader.filter(soknad => soknad.beslutning === Beslutning.AKTIV).length;
+    return sykefravaer.soknader.filter(soknad => soknad.status === RSSoknadstatus.NY).length;
 };

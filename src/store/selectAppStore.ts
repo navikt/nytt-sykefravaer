@@ -1,5 +1,5 @@
 import useAppStore from './useAppStore';
-import { Beslutning } from '../types/soknadTypes';
+import { RSSoknadstatus } from '../types/soknadTypes/rs-types/rs-soknadstatus';
 import { StatusTyper } from '../types/sykmeldingTypes';
 import { Sykefravaer } from '../types/sykefravaerTypes';
 
@@ -125,7 +125,7 @@ export const useNyeSykmeldingerFraSykefravaer = (id?: string) => {
 export const useAktiveSoknaderFraSykefravaer = (id?: string) => {
     const soknader = useSoknaderFraSykefravaer(id);
 
-    return soknader.filter(soknader => soknader.beslutning === Beslutning.AKTIV);
+    return soknader.filter(soknader => soknader.status === RSSoknadstatus.NY);
 };
 
 export const useFerdigBehandledeSykmeldingerFraSykefravaer = (id?: string) => {
@@ -191,15 +191,15 @@ const hentNyeSykmeldingerFraSykefravaer = (fravaer: Sykefravaer) => {
 
 const hentAktiveSoknaderFraSykefravaer = (fravaer: Sykefravaer) => {
     const soknader = hentSoknaderFraSykefravaer(fravaer);
-    return soknader.filter(soknad => soknad.beslutning === Beslutning.AKTIV);
+    return soknader.filter(soknad => soknad.status === RSSoknadstatus.NY);
 };
 
 const hentFremtidigeSoknaderFraSykefravaer = (fravaer: Sykefravaer) => {
     const soknader = hentSoknaderFraSykefravaer(fravaer);
-    return soknader.filter(soknad => soknad.beslutning === Beslutning.FREMTIDIG);
+    return soknader.filter(soknad => soknad.status === RSSoknadstatus.FREMTIDIG);
 };
 
 const hentGodkjenteSoknaderFraSykefravaer = (fravaer: Sykefravaer) => {
-    const soknader = hentSoknaderFraSykefravaer(fravaer);
-    return soknader.filter(soknad => soknad.beslutning === Beslutning.GODKJENT);
+    // TODO: Basert på vedtak
+    return [];
 };
