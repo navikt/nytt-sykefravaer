@@ -119,18 +119,14 @@ const tilLesbarDatoStreng = (start: Date, end: Date) => {
     return `${lesbarFra} - ${lesbarTil}`;
 };
 
-export const fravaerHarNySykmelding = (sykefravaer: Sykefravaer) => {
-    return sykefravaer.sykmeldinger.some(sykmelding => sykmelding.status.status === StatusTyper.NY);
-};
-
-export const fravaerHarAktivSoknad = (sykefravaer: Sykefravaer) => {
-    return sykefravaer.soknader.some(soknad => soknad.status === RSSoknadstatus.NY);
-};
-
 export const hentAntallNyeSykmeldinger = (sykefravaer: Sykefravaer) => {
     return sykefravaer.sykmeldinger.filter(sykmelding => sykmelding.status.status === StatusTyper.NY).length;
 };
 
-export const hentAntallAktiveSoknader = (sykefravaer: Sykefravaer) => {
+export const hentAntallNyeSoknader = (sykefravaer: Sykefravaer) => {
     return sykefravaer.soknader.filter(soknad => soknad.status === RSSoknadstatus.NY).length;
+};
+
+export const hentAntallFremtidigeSoknader = (sykefravaer: Sykefravaer) => {
+    return sykefravaer.soknader.filter(soknad => soknad.status === RSSoknadstatus.FREMTIDIG).length;
 };

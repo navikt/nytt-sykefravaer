@@ -122,10 +122,16 @@ export const useNyeSykmeldingerFraSykefravaer = (id?: string) => {
     return sykmeldinger.filter(sykmelding => sykmelding.status.status === StatusTyper.NY);
 };
 
-export const useAktiveSoknaderFraSykefravaer = (id?: string) => {
+export const useNyeSoknaderFraSykefravaer = (id?: string) => {
     const soknader = useSoknaderFraSykefravaer(id);
 
     return soknader.filter(soknader => soknader.status === RSSoknadstatus.NY);
+};
+
+export const useFremtidgeSoknaderFraSykefravaer = (id?: string) => {
+    const soknader = useSoknaderFraSykefravaer(id);
+
+    return soknader.filter(soknader => soknader.status === RSSoknadstatus.FREMTIDIG);
 };
 
 export const useFerdigBehandledeSykmeldingerFraSykefravaer = (id?: string) => {

@@ -14,8 +14,9 @@ import information from '../../svg/information.svg';
 import informationHover from '../../svg/informationHover.svg';
 import setDocumentTittel from '../../utils/setDocumentTittel';
 import {
-    useAktiveSoknaderFraSykefravaer,
     useFerdigBehandledeSykmeldingerFraSykefravaer,
+    useFremtidgeSoknaderFraSykefravaer,
+    useNyeSoknaderFraSykefravaer,
     useNyeSykmeldingerFraSykefravaer,
 } from '../../store/selectAppStore';
 
@@ -68,7 +69,8 @@ const DokumentOversikt = () => {
 
     const nyeSykmeldinger = useNyeSykmeldingerFraSykefravaer(fravaerId);
     const ferdigeSykmeldinger = useFerdigBehandledeSykmeldingerFraSykefravaer(fravaerId);
-    const aktiveSoknader = useAktiveSoknaderFraSykefravaer(fravaerId);
+    const nyeSoknader = useNyeSoknaderFraSykefravaer(fravaerId);
+    const fremtidigeSoknader = useFremtidgeSoknaderFraSykefravaer(fravaerId);
 
     if (!fravaerId) {
         return null;
@@ -124,9 +126,20 @@ const DokumentOversikt = () => {
                         })}
                     </Kategori>
                 )}
-                {nyeSykmeldinger.length > 0 && (
+                {nyeSoknader.length > 0 && (
                     <Kategori tittel={'Nye varslinger'}>
-                        {aktiveSoknader.map(soknad => (
+                        {nyeSoknader.map(soknad => (
+                            <SoknadPanel
+                                key={soknad.id}
+                                lenke={`${pathname}/${soknad.sykmeldingId}/soknad`}
+                                soknad={soknad}
+                            />
+                        ))}
+                    </Kategori>
+                )}
+                {fremtidigeSoknader.length > 0 && (
+                    <Kategori tittel={'Nye varslinger'}>
+                        {fremtidigeSoknader.map(soknad => (
                             <SoknadPanel
                                 key={soknad.id}
                                 lenke={`${pathname}/${soknad.sykmeldingId}/soknad`}

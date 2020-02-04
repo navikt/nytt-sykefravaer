@@ -4,11 +4,11 @@ import LenkepanelWrapper from '../../../components/Lenkepanel/LenkepanelWrapper'
 import bjorn from '../../../svg/bjorn.svg';
 import { Sykefravaer } from '../../../types/sykefravaerTypes';
 import {
-    fravaerHarAktivSoknad,
-    fravaerHarNySykmelding,
-    hentAntallAktiveSoknader,
+    hentAntallFremtidigeSoknader,
+    hentAntallNyeSoknader,
     hentAntallNyeSykmeldinger,
     hentSykefravaerTilFraDatoStreng,
+    tilLesbarDato,
 } from './panelUtils';
 
 interface SykefravaerPanelProps {
@@ -16,49 +16,55 @@ interface SykefravaerPanelProps {
     sykefravaer: Sykefravaer;
 }
 
-const hentTekstInnhold = (
-    harNySykmelding: boolean,
-    harAktivSoknad: boolean,
-    antallUbehandledeSykmeldinger: number,
-    antallUbehandledeSoknader: number,
-) => {
-    if (harNySykmelding && harAktivSoknad) {
-        return `${antallUbehandledeSykmeldinger} ${
-            antallUbehandledeSykmeldinger > 1 ? 'nye sykmeldinger' : 'ny sykmelding'
-        } og ${antallUbehandledeSoknader} ${
-            antallUbehandledeSoknader > 1 ? 'nye søknader' : 'ny søknad'
-        } er klare til utfylling`;
+const hentTekstInnhold = (antallNyeSykmeldinger: number, antallNyeSoknader: number) => {
+    if (antallNyeSykmeldinger > 0 && antallNyeSoknader > 0) {
+        return `${antallNyeSykmeldinger} ${
+            antallNyeSykmeldinger > 1 ? 'sykmeldinger' : 'sykmelding'
+        } og ${antallNyeSoknader} ${antallNyeSoknader > 1 ? 'søknader' : 'søknad'} er klare til utfylling`;
     }
 
-    if (harNySykmelding) {
-        return `${antallUbehandledeSykmeldinger} ${
-            antallUbehandledeSykmeldinger > 1 ? 'nye sykmeldinger' : 'ny sykmelding'
+    if (antallNyeSykmeldinger > 0) {
+        return `${antallNyeSykmeldinger} ${
+            antallNyeSykmeldinger > 1 ? 'sykmeldinger' : 'sykmelding'
         } må bekreftes og sendes til arbeidsgiver/NAV`;
     }
 
-    return `${antallUbehandledeSoknader} ${
-        antallUbehandledeSoknader > 1 ? 'nye søknader' : 'ny søknad'
-    } er klar${antallUbehandledeSoknader > 1 && 'e'} til utfylling`;
+    if (antallNyeSoknader > 0) {
+        return `${antallNyeSoknader} ${antallNyeSoknader > 1 ? 'søknader' : 'søknad'} er klar${antallNyeSoknader > 1 &&
+            'e'} til utfylling`;
+    }
+
+    // TODO: Default melding for sykefravær
+    return `Sykmelding ble sendt til arbeidsgiver ${tilLesbarDato(new Date())}`;
+};
+
+const hentStatusInnhold = (antallFremtidigeSoknader: number) => {
+    if (antallFremtidigeSoknader > 0) {
+        return `Søknad om sykepenger aktiveres ${tilLesbarDato(new Date())}`;
+    }
+
+    return '';
 };
 
 const SykefravaerPanel = ({ lenke, sykefravaer }: SykefravaerPanelProps) => {
     const tilFraDatoStreng = hentSykefravaerTilFraDatoStreng(sykefravaer);
 
-    const harNySykmelding = fravaerHarNySykmelding(sykefravaer);
-    const harAktivSoknad = fravaerHarAktivSoknad(sykefravaer);
+    const antallNyeSykmeldinger = hentAntallNyeSykmeldinger(sykefravaer);
+    const antallNyeSoknader = hentAntallNyeSoknader(sykefravaer);
+    const antallFremtidigeSoknader = hentAntallFremtidigeSoknader(sykefravaer);
 
-    const antallUbehandledeSykmeldinger = hentAntallNyeSykmeldinger(sykefravaer);
-    const antallUbehandledeSoknader = hentAntallAktiveSoknader(sykefravaer);
-
-    const tekst = hentTekstInnhold(
-        harNySykmelding,
-        harAktivSoknad,
-        antallUbehandledeSykmeldinger,
-        antallUbehandledeSoknader,
-    );
+    const tekst = hentTekstInnhold(antallNyeSykmeldinger, antallNyeSoknader);
+    const status = hentStatusInnhold(antallFremtidigeSoknader);
 
     return (
-        <LenkepanelWrapper lenke={lenke} tittel={tilFraDatoStreng} tekstGra={tekst} ikonbakgrunn="gul" svg={bjorn} />
+        <LenkepanelWrapper
+            lenke={lenke}
+            tittel={tilFraDatoStreng}
+            tekstGra={tekst}
+            tekstStatus={status}
+            ikonbakgrunn="gul"
+            svg={bjorn}
+        />
     );
 };
 
