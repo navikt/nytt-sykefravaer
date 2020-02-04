@@ -61,14 +61,31 @@ const DittSykefravaer = () => {
                     ))}
                     <LenkepanelWrapper
                         lenke="/fravaer"
-                        tittel="Oversikt over dine sykefravær"
-                        tekstGra="Her finner du pågående- og tidligere sykefravær med tilhørende dokumenter: Sykmeldinger, søknader, svar fra NAV og utbetalingsdetaljer."
+                        tittel="Dine sykefravær"
+                        tekstGra="Sykmeldinger, søknader, svar fra NAV og utbetalingsdetaljer."
                         svg={bjorn}
-                        ikonbakgrunn="gul"
                     />
                 </Seksjon>
                 <Seksjon>
                     <OverskriftSkille tekst="Informasjon og veiledning" />
+
+                    <CardContainer>
+                        <Card
+                            tittel="Sykefravær forklart"
+                            tekst="Vi har laget en tidslinje som viser deg hva som skjer under sykefraværet ved sykmelding over lengre tid."
+                            lenke="/tidslinjen/"
+                        />
+                        <Card
+                            tittel="Behov for veiledning"
+                            tekst="Har du spørsmål vedrørende sykefravær eller trenger du informasjon fra en av våre veiledere?"
+                            lenke="/oppfolgingsplan/oppfolgingsplaner"
+                        />
+                        <Card
+                            tittel="Personinfo"
+                            tekst="Informasjonen vi innhenter for å vurdere dine søknader. Her kan du se og endre informasjonen."
+                            lenke="www.nav.no"
+                        />
+                    </CardContainer>
 
                     <LenkepanelWrapper
                         lenke="/forklart"
@@ -79,24 +96,6 @@ const DittSykefravaer = () => {
                         ]}
                         svg={bjorn}
                     />
-
-                    <CardContainer>
-                        <Card
-                            tittel="Sykefravær forklart"
-                            tekst="Vi har laget en tidslinje som viser deg hva som skjer under sykefraværet ved sykmelding over lengre tid."
-                            lenke="/tidslinjen/"
-                        />
-                        <Card
-                            tittel="Kontakt en veileder"
-                            tekst="Har du spørsmål vedrørende sykefravær eller trenger du informasjon fra en av våre veiledere?"
-                            lenke="/oppfolgingsplan/oppfolgingsplaner"
-                        />
-                        <Card
-                            tittel="Personinfo"
-                            tekst="Informasjonen vi innhenter for å vurdere dine søknader. Her kan du se og endre informasjonen."
-                            lenke="www.nav.no"
-                        />
-                    </CardContainer>
                 </Seksjon>
 
                 <Seksjon>

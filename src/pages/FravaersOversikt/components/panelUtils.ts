@@ -98,7 +98,7 @@ export const hentSykefravaerTilFraDatoStreng = (sykefravaer: Sykefravaer) => {
 
     const lesbarDatoStreng = tilLesbarDatoStreng(start, end);
 
-    return `Sykefravær fra ${lesbarDatoStreng}`;
+    return `Sykmeldt fra ${lesbarDatoStreng}`;
 };
 
 const tilLesbarFraDato = (start: Date, end: Date) => {
