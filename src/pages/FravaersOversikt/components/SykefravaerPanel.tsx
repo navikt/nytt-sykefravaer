@@ -1,5 +1,10 @@
 import React from 'react';
 
+import FravaerPanelFerdig from './FravaerPanelFerdig';
+import FravaerPanelFremtidigSoknad from './FravaerPanelFremtidigSoknad';
+import FravaerPanelMulti from './FravaerPanelMulti';
+import FravaerPanelNySoknad from './FravaerPanelNySoknad';
+import FravaerPanelNySykmelding from './FravaerPanelNySykmelding';
 import LenkepanelWrapper from '../../../components/Lenkepanel/LenkepanelWrapper';
 import bjorn from '../../../svg/bjorn.svg';
 import { Sykefravaer } from '../../../types/sykefravaerTypes';
@@ -8,43 +13,12 @@ import {
     hentAntallNyeSoknader,
     hentAntallNyeSykmeldinger,
     hentSykefravaerTilFraDatoStreng,
-    tilLesbarDato,
 } from './panelUtils';
 
 interface SykefravaerPanelProps {
     lenke: string;
     sykefravaer: Sykefravaer;
 }
-
-const hentTekstInnhold = (antallNyeSykmeldinger: number, antallNyeSoknader: number) => {
-    if (antallNyeSykmeldinger > 0 && antallNyeSoknader > 0) {
-        return `${antallNyeSykmeldinger} ${
-            antallNyeSykmeldinger > 1 ? 'sykmeldinger' : 'sykmelding'
-        } og ${antallNyeSoknader} ${antallNyeSoknader > 1 ? 'søknader' : 'søknad'} er klare til utfylling`;
-    }
-
-    if (antallNyeSykmeldinger > 0) {
-        return `${antallNyeSykmeldinger} ${
-            antallNyeSykmeldinger > 1 ? 'sykmeldinger' : 'sykmelding'
-        } må bekreftes og sendes til arbeidsgiver/NAV`;
-    }
-
-    if (antallNyeSoknader > 0) {
-        return `${antallNyeSoknader} ${antallNyeSoknader > 1 ? 'søknader' : 'søknad'} er klar${antallNyeSoknader > 1 &&
-            'e'} til utfylling`;
-    }
-
-    // TODO: Default melding for sykefravær
-    return `Sykmelding ble sendt til arbeidsgiver ${tilLesbarDato(new Date())}`;
-};
-
-const hentStatusInnhold = (antallFremtidigeSoknader: number) => {
-    if (antallFremtidigeSoknader > 0) {
-        return `Søknad om sykepenger aktiveres ${tilLesbarDato(new Date())}`;
-    }
-
-    return '';
-};
 
 const SykefravaerPanel = ({ lenke, sykefravaer }: SykefravaerPanelProps) => {
     const tilFraDatoStreng = hentSykefravaerTilFraDatoStreng(sykefravaer);
@@ -53,8 +27,43 @@ const SykefravaerPanel = ({ lenke, sykefravaer }: SykefravaerPanelProps) => {
     const antallNyeSoknader = hentAntallNyeSoknader(sykefravaer);
     const antallFremtidigeSoknader = hentAntallFremtidigeSoknader(sykefravaer);
 
-    const tekst = hentTekstInnhold(antallNyeSykmeldinger, antallNyeSoknader);
-    const status = hentStatusInnhold(antallFremtidigeSoknader);
+    if (antallNyeSoknader > 0 && antallNyeSoknader > 0) {
+        return <FravaerPanelMulti lenke={lenke} sykefravaer={sykefravaer} tilFraDatoStreng={tilFraDatoStreng} />;
+    }
+
+    if (antallNyeSykmeldinger > 0) {
+        return <FravaerPanelNySykmelding lenke={lenke} sykefravaer={sykefravaer} tilFraDatoStreng={tilFraDatoStreng} />;
+    }
+
+    if (antallNyeSoknader > 0) {
+        return <FravaerPanelNySoknad lenke={lenke} sykefravaer={sykefravaer} tilFraDatoStreng={tilFraDatoStreng} />;
+    }
+
+    if (antallFremtidigeSoknader > 0) {
+        return (
+            <FravaerPanelFremtidigSoknad lenke={lenke} sykefravaer={sykefravaer} tilFraDatoStreng={tilFraDatoStreng} />
+        );
+    }
+
+    if (antallNyeSoknader === 0 && antallNyeSoknader === 0 && antallFremtidigeSoknader === 0) {
+        return <FravaerPanelFerdig lenke={lenke} sykefravaer={sykefravaer} tilFraDatoStreng={tilFraDatoStreng} />;
+    }
+
+    /* // TODO:
+    Refaktorer til å bruke boolean i stedet for antall.
+
+    Kriterier:
+    - har ny sykmelding og ny søknad
+    - har ny sykmelding
+    - har ny søknad
+    - har fremtidig søknad
+    - har godkjent søknad
+    - har utbetalt søknad
+    - default: ?
+    */
+
+    const tekst = 'Default tekst';
+    const status = 'Default tekst';
 
     return (
         <LenkepanelWrapper
