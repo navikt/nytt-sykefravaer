@@ -1,5 +1,4 @@
 import React from 'react';
-import { Systemtittel } from 'nav-frontend-typografi';
 
 import Card from './components/Card/Card';
 import CardContainer from './components/Card/CardContainer';
@@ -40,19 +39,7 @@ const DittSykefravaer = () => {
         <>
             <SykefravaerHeader brodsmuler={brodsmuler} />
             <div className="limit">
-                {/* I hvilke tilfeller veileder skal vises er ikke definert enda. */ false && (
-                    <Veileder
-                        innhold={
-                            <>
-                                <Systemtittel>Velkommen til ditt sykefravær.</Systemtittel>
-                                <p>Denne teksten avhenger av hvilke sykemeldinger brukeren har/ikke har.</p>
-                            </>
-                        }
-                        stemning="glad"
-                        onClick={() => {}}
-                        knappTekst="Demo knapp"
-                    />
-                )}
+                <Veileder />
 
                 <Seksjon>
                     <OverskriftSkille tekst="Nye varsler" />

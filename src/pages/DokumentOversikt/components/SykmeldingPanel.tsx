@@ -17,7 +17,7 @@ const hentStatusTekst = (statusData: Status, arbeidsgiver: Arbeidsgiver) => {
     const { status } = statusData;
 
     if (status === StatusTyper.NY) {
-        return 'Klikk for å sende sykmeldingen nå';
+        return 'Klikk for å sende sykmelding nå';
     }
 
     if (status === StatusTyper.BEKREFTET) {

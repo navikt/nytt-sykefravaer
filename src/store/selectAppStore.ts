@@ -1,7 +1,10 @@
+import dayjs from 'dayjs';
+
 import useAppStore from './useAppStore';
+import { Periode, StatusTyper } from '../types/sykmeldingTypes';
 import { RSSoknadstatus } from '../types/soknadTypes/rs-types/rs-soknadstatus';
-import { StatusTyper } from '../types/sykmeldingTypes';
 import { Sykefravaer } from '../types/sykefravaerTypes';
+import { SykmeldingData } from '../types/sykmeldingDataTypes';
 
 // Sykefravær som inneholder nye sykmeldinger
 export const useSykefravaerNyeSykmeldinger = () => {
@@ -208,4 +211,102 @@ const hentFremtidigeSoknaderFraSykefravaer = (fravaer: Sykefravaer) => {
 const hentGodkjenteSoknaderFraSykefravaer = (fravaer: Sykefravaer) => {
     // TODO: Basert på vedtak
     return [];
+};
+
+const hentNyesteSykefravaer = (fravaer: Sykefravaer[]) => {
+    /*
+
+    */
+
+    if (fravaer.length === 0) {
+        return null;
+    }
+
+    if (fravaer.length === 1) {
+        return fravaer[0];
+    }
+
+    /*
+    gå gjennom hvert fravær
+    for hvert fravær:
+    - hent seneste fom
+    - lagre fravær med seneste fom
+    */
+
+    // TODO: Uferdig
+    return fravaer[0];
+};
+
+export const hentForsteFomIPerioder = (perioder: Periode[]) => {
+    const forstePeriode = perioder.reduce((lavesteFom: Periode | undefined, periode) => {
+        if (!lavesteFom) {
+            return periode;
+        }
+
+        if (dayjs(periode.fom).isBefore(lavesteFom.fom)) {
+            return periode;
+        }
+        return lavesteFom;
+    }, undefined);
+
+    return forstePeriode?.fom;
+};
+
+export const hentSykmeldingMedEldstePeriode = (sykmeldinger: SykmeldingData[]) => {
+    return sykmeldinger.reduce((laveste: SykmeldingData | undefined, curr) => {
+        if (!laveste) {
+            return curr;
+        }
+
+        const lavesteFom = hentForsteFomIPerioder(laveste.sykmelding.perioder);
+
+        if (!lavesteFom) {
+            return curr;
+        }
+
+        const currentFom = hentForsteFomIPerioder(curr.sykmelding.perioder);
+
+        if (dayjs(currentFom).isBefore(lavesteFom)) {
+            return curr;
+        }
+
+        return laveste;
+    }, undefined);
+};
+
+export const hentSisteTomIPerioder = (perioder: Periode[]) => {
+    const nyestePeriode = perioder.reduce((nyesteTom: Periode | undefined, periode) => {
+        if (!nyesteTom) {
+            return periode;
+        }
+
+        if (dayjs(periode.tom).isAfter(nyesteTom.tom)) {
+            return periode;
+        }
+        return nyesteTom;
+    }, undefined);
+
+    return nyestePeriode?.tom;
+};
+
+export const hentSykmeldingMedNyestePeriode = (sykmeldinger: SykmeldingData[]) => {
+    return sykmeldinger.reduce((laveste: SykmeldingData | undefined, curr) => {
+        if (!laveste) {
+            return curr;
+        }
+
+        const lavesteFom = hentSisteTomIPerioder(laveste.sykmelding.perioder);
+
+        if (!lavesteFom) {
+            return curr;
+        }
+
+        const currentFom = hentSisteTomIPerioder(curr.sykmelding.perioder);
+
+        if (dayjs(currentFom).isAfter(lavesteFom)) {
+            return curr;
+        }
+
+        return laveste;
+    }, undefined);
 };

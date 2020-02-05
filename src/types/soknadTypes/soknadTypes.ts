@@ -1,6 +1,5 @@
 import dayjs from 'dayjs';
 
-import { RSSoknad } from './rs-types/rs-soknad';
 import { RSSoknadsperiode } from './rs-types/rs-soknadsperiode';
 import { RSSoknadstatus } from './rs-types/rs-soknadstatus';
 import { RSSoknadstype } from './rs-types/rs-soknadstype';

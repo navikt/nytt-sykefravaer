@@ -1,83 +1,14 @@
 import dayjs from 'dayjs';
 
-import { Periode, StatusTyper } from '../../../types/sykmeldingTypes';
 import { RSSoknadstatus } from '../../../types/soknadTypes/rs-types/rs-soknadstatus';
+import { StatusTyper } from '../../../types/sykmeldingTypes';
 import { Sykefravaer } from '../../../types/sykefravaerTypes';
-import { SykmeldingData } from '../../../types/sykmeldingDataTypes';
-
-const hentForsteFomIPerioder = (perioder: Periode[]) => {
-    const forstePeriode = perioder.reduce((lavesteFom: Periode | undefined, periode) => {
-        if (!lavesteFom) {
-            return periode;
-        }
-
-        if (dayjs(periode.fom).isBefore(lavesteFom.fom)) {
-            return periode;
-        }
-        return lavesteFom;
-    }, undefined);
-
-    return forstePeriode?.fom;
-};
-
-const hentSykmeldingMedEldstePeriode = (sykmeldinger: SykmeldingData[]) => {
-    return sykmeldinger.reduce((laveste: SykmeldingData | undefined, curr) => {
-        if (!laveste) {
-            return curr;
-        }
-
-        const lavesteFom = hentForsteFomIPerioder(laveste.sykmelding.perioder);
-
-        if (!lavesteFom) {
-            return curr;
-        }
-
-        const currentFom = hentForsteFomIPerioder(curr.sykmelding.perioder);
-
-        if (dayjs(currentFom).isBefore(lavesteFom)) {
-            return curr;
-        }
-
-        return laveste;
-    }, undefined);
-};
-
-const hentSisteTomIPerioder = (perioder: Periode[]) => {
-    const nyestePeriode = perioder.reduce((nyesteTom: Periode | undefined, periode) => {
-        if (!nyesteTom) {
-            return periode;
-        }
-
-        if (dayjs(periode.tom).isAfter(nyesteTom.tom)) {
-            return periode;
-        }
-        return nyesteTom;
-    }, undefined);
-
-    return nyestePeriode?.tom;
-};
-
-const hentSykmeldingMedNyestePeriode = (sykmeldinger: SykmeldingData[]) => {
-    return sykmeldinger.reduce((laveste: SykmeldingData | undefined, curr) => {
-        if (!laveste) {
-            return curr;
-        }
-
-        const lavesteFom = hentSisteTomIPerioder(laveste.sykmelding.perioder);
-
-        if (!lavesteFom) {
-            return curr;
-        }
-
-        const currentFom = hentSisteTomIPerioder(curr.sykmelding.perioder);
-
-        if (dayjs(currentFom).isAfter(lavesteFom)) {
-            return curr;
-        }
-
-        return laveste;
-    }, undefined);
-};
+import {
+    hentForsteFomIPerioder,
+    hentSisteTomIPerioder,
+    hentSykmeldingMedEldstePeriode,
+    hentSykmeldingMedNyestePeriode,
+} from '../../../store/selectAppStore';
 
 export const hentSykefravaerTilFraDatoStreng = (sykefravaer: Sykefravaer) => {
     // TODO: Finn start på første sykmelding, og slutt på siste sykmelding.
@@ -96,9 +27,7 @@ export const hentSykefravaerTilFraDatoStreng = (sykefravaer: Sykefravaer) => {
         return '';
     }
 
-    const lesbarDatoStreng = tilLesbarDatoStreng(start, end);
-
-    return `Sykmeldt fra ${lesbarDatoStreng}`;
+    return tilLesbarDatoStreng(start, end);
 };
 
 const tilLesbarFraDato = (start: Date, end: Date) => {
