@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import Brodsmuler from '../components/Brodsmuler/Brodsmuler';
 import Header from '../components/Header/Header';
 import useFetch, { isNotStarted } from '../hooks/useFetch';
-import { useSykmeldingFraId } from '../store/selectAppStore';
+import { useSykmeldinger } from '../store/useSykmeldinger';
 
 const SIDETITTEL = 'Sykmelding';
 
@@ -36,7 +36,7 @@ const getBrodsmuler = (fravaerId?: string) => {
 
 const Sykmelding = () => {
     const { fravaerId, sykmeldingId } = useParams();
-    const sykmelding = useSykmeldingFraId(fravaerId, sykmeldingId);
+    const { sykmeldingFraId } = useSykmeldinger(fravaerId, sykmeldingId);
 
     const sendSykmelding = useFetch<any>();
     const bekreftSykmelding = useFetch<any>();
@@ -135,11 +135,11 @@ const Sykmelding = () => {
                 </div>
                 <div>
                     <h1>Status</h1>
-                    {JSON.stringify(sykmelding?.status)}
+                    {JSON.stringify(sykmeldingFraId?.status)}
                 </div>
                 <div>
                     <h1>Sykmelding</h1>
-                    {JSON.stringify(sykmelding?.sykmelding)}
+                    {JSON.stringify(sykmeldingFraId?.sykmelding)}
                 </div>
             </div>
         </>
