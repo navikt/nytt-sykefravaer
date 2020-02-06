@@ -13,7 +13,7 @@ import Veileder from '../../components/Veileder/Veileder';
 import bjorn from '../../svg/bjorn.svg';
 import setDocumentTittel from '../../utils/setDocumentTittel';
 import { Brodsmule } from '../../components/Brodsmuler/Brodsmuler';
-import { useSykefravaer } from '../../store/useSykefravaer';
+import { useSykefravaer } from '../../hooks/useSykefravaer';
 
 // TODO: Sett opp logikk for henting av veileder basert på tilgjengelige sykefravær
 

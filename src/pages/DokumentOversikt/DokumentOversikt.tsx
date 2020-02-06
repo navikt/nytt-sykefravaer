@@ -13,8 +13,8 @@ import Utvidbar from './components/Utvidbar/Utvidbar';
 import information from '../../svg/information.svg';
 import informationHover from '../../svg/informationHover.svg';
 import setDocumentTittel from '../../utils/setDocumentTittel';
-import { useSoknader } from '../../store/useSoknader';
-import { useSykmeldinger } from '../../store/useSykmeldinger';
+import { useSoknader } from '../../hooks/useSoknader';
+import { useSykmeldinger } from '../../hooks/useSykmeldinger';
 
 const SIDETITTEL = 'Status i sykefravær';
 

@@ -9,7 +9,7 @@ import SykefravaerPanel from './components/SykefravaerPanel';
 import Tittel from '../../components/Tittel/Tittel';
 import setDocumentTittel from '../../utils/setDocumentTittel';
 import Brodsmuler, { Brodsmule } from '../../components/Brodsmuler/Brodsmuler';
-import { useSykefravaer } from '../../store/useSykefravaer';
+import { useSykefravaer } from '../../hooks/useSykefravaer';
 
 const SIDETITTEL = 'Fraværsoversikt';
 
