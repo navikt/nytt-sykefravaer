@@ -13,11 +13,8 @@ import Utvidbar from './components/Utvidbar/Utvidbar';
 import information from '../../svg/information.svg';
 import informationHover from '../../svg/informationHover.svg';
 import setDocumentTittel from '../../utils/setDocumentTittel';
-import {
-    useAktiveSoknaderFraSykefravaer,
-    useFerdigBehandledeSykmeldingerFraSykefravaer,
-    useNyeSykmeldingerFraSykefravaer,
-} from '../../store/selectAppStore';
+import { useSoknader } from '../../hooks/useSoknader';
+import { useSykmeldinger } from '../../hooks/useSykmeldinger';
 
 const SIDETITTEL = 'Status i sykefravær';
 
@@ -66,9 +63,8 @@ const DokumentOversikt = () => {
     const { fravaerId } = useParams();
     const { pathname } = useLocation();
 
-    const nyeSykmeldinger = useNyeSykmeldingerFraSykefravaer(fravaerId);
-    const ferdigeSykmeldinger = useFerdigBehandledeSykmeldingerFraSykefravaer(fravaerId);
-    const aktiveSoknader = useAktiveSoknaderFraSykefravaer(fravaerId);
+    const { nyeSykmeldinger, ferdigBehandledeSykmeldinger } = useSykmeldinger(fravaerId);
+    const { aktiveSoknader } = useSoknader(fravaerId);
 
     if (!fravaerId) {
         return null;
@@ -135,9 +131,9 @@ const DokumentOversikt = () => {
                         ))}
                     </Kategori>
                 )}
-                {ferdigeSykmeldinger.length > 0 && (
+                {ferdigBehandledeSykmeldinger.length > 0 && (
                     <Kategori tittel={'Ferdig behandlet'}>
-                        {ferdigeSykmeldinger.map(sykmeldingData => {
+                        {ferdigBehandledeSykmeldinger.map(sykmeldingData => {
                             const lenke = hentSykmeldingLenke(sykmeldingData.sykmelding.id);
                             return (
                                 <SykmeldingPanel
