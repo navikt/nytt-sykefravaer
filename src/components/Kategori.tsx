@@ -2,11 +2,12 @@ import React from 'react';
 
 import UnderstreketOverskrift from './UnderstreketOverskrift/UnderstreketOverskrift';
 import UnderstreketOverskriftMedSortering from './UnderstreketOverskrift/UnderstreketOverskriftMedSortering';
+import { Sorteringstype } from '../hooks/useSykefravaer';
 
 interface KategoriProps {
     tittel: string;
     children: JSX.Element | JSX.Element[];
-    settSortering?: (sortering: string) => void;
+    settSortering?: (sortering: Sorteringstype) => void;
 }
 
 const Kategori = ({ tittel, children, settSortering }: KategoriProps) => {
