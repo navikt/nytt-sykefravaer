@@ -13,7 +13,7 @@ export class Sykefravaer {
         this.id = data.id;
         this.fom = dayjs(data.fom).toDate();
         this.tom = dayjs(data.tom).toDate();
-        this.sykmeldinger = data.sykmeldinger;
-        this.soknader = data.soknader;
+        this.sykmeldinger = data.sykmeldinger.map((sm: any) => new SykmeldingData(sm));
+        this.soknader = data.soknader.map((sok: any) => new Soknad(sok));
     }
 }
