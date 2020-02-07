@@ -6,9 +6,11 @@ import { Sykefravaer } from '../types/sykefravaerTypes';
 export const sorterSykefravaer = (sykefravaer: Sykefravaer[], sortering: Sorteringstype): Sykefravaer[] => {
     switch (sortering) {
         case 'DATO_NYEST':
+            // TODO: fiks sorteringsfunksjon
             //Avventer til fom og tom er introdusert som del av sykefravaerTypes
             return sykefravaer.sort((sf1, sf2) => -1);
         case 'DATO_ELDST':
+            // TODO: fiks sorteringsfunksjon
             //Avventer til fom og tom er introdusert som del av sykefravaerTypes
             return sykefravaer.sort((sf1, sf2) => 1);
         default:
@@ -16,7 +18,7 @@ export const sorterSykefravaer = (sykefravaer: Sykefravaer[], sortering: Sorteri
     }
 };
 
-const sykefravearUtenDuplikater = (sykefravaer1: Sykefravaer[], sykefravaer2: Sykefravaer[]) => {
+const sykefravearUtenDuplikater = (sykefravaer1: Sykefravaer[], sykefravaer2: Sykefravaer[]): Sykefravaer[] => {
     return sykefravaer2.reduce((utenDuplikat, fravaer) => {
         if (utenDuplikat.length === 0) {
             return [fravaer];
