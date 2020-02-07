@@ -1,8 +1,24 @@
 import { Beslutning } from '../types/soknadTypes';
+import { Sorteringstype } from '../hooks/useSykefravaer';
 import { StatusTyper } from '../types/sykmeldingTypes';
 import { Sykefravaer } from '../types/sykefravaerTypes';
 
-const sykefravearUtenDuplikater = (sykefravaer1: Sykefravaer[], sykefravaer2: Sykefravaer[]) => {
+export const sorterSykefravaer = (sykefravaer: Sykefravaer[], sortering: Sorteringstype): Sykefravaer[] => {
+    switch (sortering) {
+        case 'DATO_NYEST':
+            // TODO: fiks sorteringsfunksjon
+            //Avventer til fom og tom er introdusert som del av sykefravaerTypes
+            return sykefravaer.sort((sf1, sf2) => -1);
+        case 'DATO_ELDST':
+            // TODO: fiks sorteringsfunksjon
+            //Avventer til fom og tom er introdusert som del av sykefravaerTypes
+            return sykefravaer.sort((sf1, sf2) => 1);
+        default:
+            return sykefravaer;
+    }
+};
+
+const sykefravearUtenDuplikater = (sykefravaer1: Sykefravaer[], sykefravaer2: Sykefravaer[]): Sykefravaer[] => {
     return sykefravaer2.reduce((utenDuplikat, fravaer) => {
         if (utenDuplikat.length === 0) {
             return [fravaer];

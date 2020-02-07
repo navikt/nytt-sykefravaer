@@ -4,20 +4,26 @@ import React from 'react';
 import { Select } from 'nav-frontend-skjema';
 import { Undertittel } from 'nav-frontend-typografi';
 
-const UnderstreketOverskriftMedSortering = ({
-    tittel,
-    settSortering,
-}: {
+import { Sorteringstype, useSykefravaer } from '../../hooks/useSykefravaer';
+
+interface UnderstreketOverskriftMedSorteringType {
     tittel: string;
-    settSortering: (sortering: string) => void;
-}) => {
+    settSortering: (sortering: Sorteringstype) => void;
+}
+
+const UnderstreketOverskriftMedSortering = ({ tittel, settSortering }: UnderstreketOverskriftMedSorteringType) => {
+    const { sorteringFerdigBehandletSykefravaer } = useSykefravaer();
     return (
         <>
             <div className="understreket__container">
                 <Undertittel className="understreket__tittel">{tittel}</Undertittel>
-                <Select label="Sortér etter:" onChange={event => settSortering(event.target.value)}>
-                    <option value="dato">Dato</option>
-                    <option value="annet">Annet sorteringsvalg</option>
+                <Select
+                    selected={sorteringFerdigBehandletSykefravaer}
+                    label="Sortér etter:"
+                    onChange={event => settSortering(event.target.value as Sorteringstype)}
+                >
+                    <option value={Sorteringstype.DATO_NYEST}>Dato nyest</option>
+                    <option value={Sorteringstype.DATO_ELDST}>Dato eldst</option>
                 </Select>
             </div>
             <hr className="understreket__hr" />

@@ -33,6 +33,7 @@ const FravaersOversikt = () => {
         sykefravaerMedNyeSykemeldingerEllerAktiveSoknader,
         sykefravaerPagaende,
         sykefravaerFerdigBehandlet,
+        setSorteringForFerdigBehandletSykefravaer,
     } = useSykefravaer();
     const { pathname } = useLocation();
 
@@ -65,9 +66,9 @@ const FravaersOversikt = () => {
                 </Kategori>
                 <Kategori
                     tittel="Ferdig behandlet"
-                    settSortering={(sortering: string) =>
-                        console.log('TODO: Implementer sortering av ferdig behandlede søknader:', sortering)
-                    }
+                    settSortering={sortering => {
+                        setSorteringForFerdigBehandletSykefravaer(sortering);
+                    }}
                 >
                     {sykefravaerFerdigBehandlet.map(fravaer => (
                         <BehandledeFravaerPanel
