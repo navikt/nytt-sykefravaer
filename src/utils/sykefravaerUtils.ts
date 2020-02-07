@@ -12,9 +12,9 @@ export const sorterSykefravaer = (sykefravaer: Sykefravaer[], sortering: Sorteri
             //Avventer til fom og tom er introdusert som del av sykefravaerTypes
             return sykefravaer.sort((sf1, sf2) => {
                 if (dayjs(sf1.fom).isBefore(dayjs(sf2.fom))) {
-                    return -1;
-                } else if (dayjs(sf1.fom).isAfter(dayjs(sf2.fom))) {
                     return 1;
+                } else if (dayjs(sf1.fom).isAfter(dayjs(sf2.fom))) {
+                    return -1;
                 }
                 return 0;
             });
@@ -23,9 +23,9 @@ export const sorterSykefravaer = (sykefravaer: Sykefravaer[], sortering: Sorteri
             //Avventer til fom og tom er introdusert som del av sykefravaerTypes
             return sykefravaer.sort((sf1, sf2) => {
                 if (dayjs(sf1.fom).isBefore(dayjs(sf2.fom))) {
-                    return 1;
-                } else if (dayjs(sf1.fom).isAfter(dayjs(sf2.fom))) {
                     return -1;
+                } else if (dayjs(sf1.fom).isAfter(dayjs(sf2.fom))) {
+                    return 1;
                 }
                 return 0;
             });
