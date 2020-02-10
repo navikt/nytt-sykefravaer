@@ -1,0 +1,148 @@
+@import '../../../../basic.less';
+
+@line-space: calc(50% + 2rem);
+@border: 1px solid #000;
+@top-horisontal: calc(17%);
+
+.circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.circle--checked {
+    background-color: #ccdee6;
+}
+
+.statuslinje {
+    margin-bottom: 2rem;
+}
+
+// ---------
+@media (max-width: @screen-desktop) {
+    .tekst {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    .statuslinje {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .statuslinje__element {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: relative;
+
+        .circle {
+            margin-right: 2rem;
+        }
+    }
+
+    .statuslinje__element:first-child {
+        ::after {
+            content: '';
+            position: absolute;
+            top: calc(50% + 1.5rem);
+            left: 1rem;
+            border-left: @border;
+            height: 30%;
+        }
+    }
+
+    .statuslinje__element:not(:first-child):not(:last-child) {
+        ::before {
+            content: '';
+            position: absolute;
+            bottom: calc(50% + 1.5rem);
+            left: 1rem;
+            border-left: @border;
+            height: 30%;
+        }
+        ::after {
+            content: '';
+            position: absolute;
+            top: calc(50% + 1.5rem);
+            left: 1rem;
+            border-left: @border;
+            height: 30%;
+        }
+    }
+
+    .statuslinje__element:last-child {
+        ::before {
+            content: '';
+            position: absolute;
+            bottom: calc(50% + 1.5rem);
+            left: 1rem;
+            border-left: @border;
+            height: 30%;
+        }
+    }
+}
+
+@media (min-width: @screen-desktop) {
+    .tekst {
+        text-align: center;
+        margin-top: 1rem;
+    }
+    .statuslinje {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .statuslinje__element {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .statuslinje__element:first-child {
+        ::after {
+            content: '';
+            position: absolute;
+            top: @top-horisontal;
+            left: @line-space;
+            border-top: @border;
+            width: 50%;
+        }
+    }
+
+    .statuslinje__element:not(:first-child):not(:last-child) {
+        ::before {
+            content: '';
+            position: absolute;
+            top: @top-horisontal;
+            right: @line-space;
+            border-top: @border;
+            width: 50%;
+        }
+        ::after {
+            content: '';
+            position: absolute;
+            top: @top-horisontal;
+            left: @line-space;
+            border-top: @border;
+            width: 50%;
+        }
+    }
+
+    .statuslinje__element:last-child {
+        ::before {
+            content: '';
+            position: absolute;
+            top: @top-horisontal;
+            right: @line-space;
+            border-top: @border;
+            width: 50%;
+        }
+    }
+}

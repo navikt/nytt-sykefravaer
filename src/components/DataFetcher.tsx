@@ -39,6 +39,8 @@ const DataFetcher = (props: { children: any }) => {
                         const { data } = fetchState;
                         const sykefravaer = data.map(fravaer => ({
                             id: fravaer.id,
+                            fom: new Date(fravaer.fom),
+                            tom: new Date(fravaer.tom),
                             sykmeldinger: fravaer.sykmeldinger.map(sykmelding => new SykmeldingData(sykmelding)),
                             soknader: fravaer.soknader.map(soknad => new Soknad(soknad)),
                         }));

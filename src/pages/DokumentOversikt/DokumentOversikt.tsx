@@ -7,11 +7,9 @@ import Brodsmuler from '../../components/Brodsmuler/Brodsmuler';
 import Header from '../../components/Header/Header';
 import Kategori from '../../components/Kategori';
 import SoknadPanel from './components/SoknadPanel';
+import Statuspanel from './components/statuspanel/Statuspanel';
 import SykmeldingPanel from './components/SykmeldingPanel';
 import Tittel from '../../components/Tittel/Tittel';
-import Utvidbar from './components/Utvidbar/Utvidbar';
-import information from '../../svg/information.svg';
-import informationHover from '../../svg/informationHover.svg';
 import setDocumentTittel from '../../utils/setDocumentTittel';
 import { useSoknader } from '../../hooks/useSoknader';
 import { useSykmeldinger } from '../../hooks/useSykmeldinger';
@@ -76,7 +74,7 @@ const DokumentOversikt = () => {
     // const veileder = getVeileder(sykefravaer);
 
     // TODO: Sett opp hvilken tekst som skal vises i utvidbar
-    const utvidbarTittel = 'Sykmeldinger må bekreftes og sendes til arbeidsgivere';
+
 
     const hentSykmeldingLenke = (sykmeldingId: string) => {
         if (!process.env.REACT_APP_SOLO) {
@@ -94,17 +92,9 @@ const DokumentOversikt = () => {
                     tittel="Sykefravær"
                     undertittel={`fra ${new Date().toDateString()} til ${new Date().toDateString()}`}
                 />
-
-                <Utvidbar
-                    tittel={utvidbarTittel}
-                    nedtrekksTekst="Historikk"
-                    ikon={information}
-                    ikonHover={informationHover}
-                    ikonAltTekst="Historikk"
-                >
-                    <div>Kommer snart</div>
-                </Utvidbar>
-
+            </div>
+            <Statuspanel />
+            <div className="limit">
                 {nyeSykmeldinger.length > 0 && (
                     <Kategori tittel={'Nye varslinger'}>
                         {nyeSykmeldinger.map(sykmeldingData => {
