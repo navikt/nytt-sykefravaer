@@ -34,7 +34,7 @@ const Statuspanel = ({ statusElementer }: StatuspanelProps) => {
                     return (
                         <div className="statuslinje__element">
                             <Circle number={number} checked={checked} />
-                            <div className="tekst">
+                            <div className="tekstfelt">
                                 <Normaltekst>{topptekst}</Normaltekst>
                                 <Normaltekst>{bunntekst}</Normaltekst>
                             </div>
