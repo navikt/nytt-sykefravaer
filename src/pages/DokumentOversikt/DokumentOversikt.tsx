@@ -7,10 +7,10 @@ import Brodsmuler from '../../components/Brodsmuler/Brodsmuler';
 import Header from '../../components/Header/Header';
 import Kategori from '../../components/Kategori';
 import SoknadPanel from './components/SoknadPanel';
+import Statuspanel from './components/statuspanel/Statuspanel';
 import SykmeldingPanel from './components/SykmeldingPanel';
 import Tittel from '../../components/Tittel/Tittel';
 import setDocumentTittel from '../../utils/setDocumentTittel';
-import Statuspanel, { StatuspanelProps } from './components/statuspanel/Statuspanel';
 import { useSoknader } from '../../hooks/useSoknader';
 import { useSykmeldinger } from '../../hooks/useSykmeldinger';
 
