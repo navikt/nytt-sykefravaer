@@ -1,8 +1,12 @@
 @import '../../../../basic.less';
 
-@line-space: calc(50% + 2rem);
+@space-to-line-horisontal: calc(50% + 1.5rem);
+@space-to-line-vertical: calc(50% + 1.5rem);
 @border: 1px solid #000;
 @top-horisontal: calc(17%);
+@left-vertical: 1rem;
+@width-horizontal: 50%;
+@height-vertical: 40%;
 
 .circle {
     display: flex;
@@ -22,22 +26,49 @@
     margin-bottom: 2rem;
 }
 
+.full-width {
+    background-color: white;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
 // ---------
+
+.tekst {
+    margin-top: 1rem;
+}
+
+.statuslinje {
+    display: flex;
+}
+
+.statuslinje__element {
+    display: flex;
+    position: relative;
+}
+
+.statuslinje__element {
+    ::before, ::after {
+        content: '';
+        position: absolute;
+    }
+}
+
 @media (max-width: @screen-desktop) {
     .tekst {
-        margin-top: 1rem;
         margin-bottom: 1rem;
     }
     .statuslinje {
-        display: flex;
         flex-direction: column;
     }
 
     .statuslinje__element {
-        display: flex;
         flex-direction: row;
         align-items: center;
-        position: relative;
 
         .circle {
             margin-right: 2rem;
@@ -46,42 +77,34 @@
 
     .statuslinje__element:first-child {
         ::after {
-            content: '';
-            position: absolute;
-            top: calc(50% + 1.5rem);
-            left: 1rem;
+            top: @space-to-line-vertical;
+            left: @left-vertical;
             border-left: @border;
-            height: 30%;
+            height: @height-vertical;
         }
     }
 
     .statuslinje__element:not(:first-child):not(:last-child) {
         ::before {
-            content: '';
-            position: absolute;
-            bottom: calc(50% + 1.5rem);
-            left: 1rem;
+            bottom: @space-to-line-vertical;
+            left: @left-vertical;
             border-left: @border;
-            height: 30%;
+            height: @height-vertical;
         }
         ::after {
-            content: '';
-            position: absolute;
-            top: calc(50% + 1.5rem);
-            left: 1rem;
+            top: @space-to-line-vertical;
+            left: @left-vertical;
             border-left: @border;
-            height: 30%;
+            height: @height-vertical;
         }
     }
 
     .statuslinje__element:last-child {
         ::before {
-            content: '';
-            position: absolute;
-            bottom: calc(50% + 1.5rem);
-            left: 1rem;
+            bottom: @space-to-line-vertical;
+            left: @left-vertical;
             border-left: @border;
-            height: 30%;
+            height: @height-vertical;
         }
     }
 }
@@ -89,60 +112,48 @@
 @media (min-width: @screen-desktop) {
     .tekst {
         text-align: center;
-        margin-top: 1rem;
     }
     .statuslinje {
-        display: flex;
         justify-content: space-between;
     }
 
     .statuslinje__element {
-        display: flex;
         flex-direction: column;
         flex: 1;
         align-items: center;
         justify-content: center;
-        position: relative;
     }
 
     .statuslinje__element:first-child {
         ::after {
-            content: '';
-            position: absolute;
             top: @top-horisontal;
-            left: @line-space;
+            left: @space-to-line-horisontal;
             border-top: @border;
-            width: 50%;
+            width: @width-horizontal;
         }
     }
 
     .statuslinje__element:not(:first-child):not(:last-child) {
         ::before {
-            content: '';
-            position: absolute;
             top: @top-horisontal;
-            right: @line-space;
+            right: @space-to-line-horisontal;
             border-top: @border;
-            width: 50%;
+            width: @width-horizontal;
         }
         ::after {
-            content: '';
-            position: absolute;
             top: @top-horisontal;
-            left: @line-space;
+            left: @space-to-line-horisontal;
             border-top: @border;
-            width: 50%;
+            width: @width-horizontal;
         }
     }
 
     .statuslinje__element:last-child {
         ::before {
-            content: '';
-            position: absolute;
             top: @top-horisontal;
-            right: @line-space;
+            right: @space-to-line-horisontal;
             border-top: @border;
-            width: 50%;
+            width: @width-horizontal;
         }
     }
 }

@@ -16,31 +16,31 @@ const Circle = ({ number, checked }: CircleProps) => {
     );
 };
 
-const Statuspanel = () => {
+interface Statuselement extends CircleProps {
+    topptekst: string;
+    bunntekst: string;
+}
+
+export interface StatuspanelProps {
+    statusElementer: Statuselement[];
+}
+
+const Statuspanel = ({ statusElementer }: StatuspanelProps) => {
     return (
-        <div style={{ backgroundColor: 'white' }}>
+        <div className="full-width">
             <div className="limit statuslinje">
-                <div className="statuslinje__element">
-                    <Circle number={1} checked />
-                    <div className="tekst">
-                        <Normaltekst>Sykmelding sendt</Normaltekst>
-                        <Normaltekst>10 nov 2019</Normaltekst>
-                    </div>
-                </div>
-                <div className="statuslinje__element">
-                    <Circle number={2} />
-                    <div className="tekst">
-                        <Normaltekst>Søknad om sykepenger</Normaltekst>
-                        <Normaltekst>12 nov 2019</Normaltekst>
-                    </div>
-                </div>
-                <div className="statuslinje__element">
-                    <Circle number={3} />
-                    <div className="tekst">
-                        <Normaltekst>Svar fra nav</Normaltekst>
-                        <Normaltekst>20 nov 2019</Normaltekst>
-                    </div>
-                </div>
+                {statusElementer.map(statuselement => {
+                    const { number, checked = false, topptekst, bunntekst } = statuselement;
+                    return (
+                        <div className="statuslinje__element">
+                            <Circle number={number} checked={checked} />
+                            <div className="tekst">
+                                <Normaltekst>{topptekst}</Normaltekst>
+                                <Normaltekst>{bunntekst}</Normaltekst>
+                            </div>
+                        </div>
+                    );
+                })}
             </div>
         </div>
     );

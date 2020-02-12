@@ -7,10 +7,10 @@ import Brodsmuler from '../../components/Brodsmuler/Brodsmuler';
 import Header from '../../components/Header/Header';
 import Kategori from '../../components/Kategori';
 import SoknadPanel from './components/SoknadPanel';
-import Statuspanel from './components/statuspanel/Statuspanel';
 import SykmeldingPanel from './components/SykmeldingPanel';
 import Tittel from '../../components/Tittel/Tittel';
 import setDocumentTittel from '../../utils/setDocumentTittel';
+import Statuspanel, { StatuspanelProps } from './components/statuspanel/Statuspanel';
 import { useSoknader } from '../../hooks/useSoknader';
 import { useSykmeldinger } from '../../hooks/useSykmeldinger';
 
@@ -64,6 +64,12 @@ const DokumentOversikt = () => {
     const { nyeSykmeldinger, ferdigBehandledeSykmeldinger } = useSykmeldinger(fravaerId);
     const { aktiveSoknader } = useSoknader(fravaerId);
 
+    const statusPanel = [
+        { number: 1, checked: true, topptekst: 'Sykmelding sendt', bunntekst: '10 nov 2019' },
+        { number: 2, topptekst: 'Søknad sendt', bunntekst: '12 nov 2019' },
+        { number: 3, topptekst: 'Svar fra NAV', bunntekst: '25 nov 2019' },
+    ];
+
     if (!fravaerId) {
         return null;
     }
@@ -74,7 +80,6 @@ const DokumentOversikt = () => {
     // const veileder = getVeileder(sykefravaer);
 
     // TODO: Sett opp hvilken tekst som skal vises i utvidbar
-
 
     const hentSykmeldingLenke = (sykmeldingId: string) => {
         if (!process.env.REACT_APP_SOLO) {
@@ -92,9 +97,7 @@ const DokumentOversikt = () => {
                     tittel="Sykefravær"
                     undertittel={`fra ${new Date().toDateString()} til ${new Date().toDateString()}`}
                 />
-            </div>
-            <Statuspanel />
-            <div className="limit">
+                <Statuspanel statusElementer={statusPanel} />
                 {nyeSykmeldinger.length > 0 && (
                     <Kategori tittel={'Nye varslinger'}>
                         {nyeSykmeldinger.map(sykmeldingData => {
