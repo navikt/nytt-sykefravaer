@@ -8,8 +8,6 @@ import { Sykefravaer } from '../types/sykefravaerTypes';
 export const sorterSykefravaer = (sykefravaer: Sykefravaer[], sortering: Sorteringstype): Sykefravaer[] => {
     switch (sortering) {
         case 'DATO_NYEST':
-            // TODO: fiks sorteringsfunksjon
-            //Avventer til fom og tom er introdusert som del av sykefravaerTypes
             return sykefravaer.sort((sf1, sf2) => {
                 if (dayjs(sf1.fom).isBefore(dayjs(sf2.fom))) {
                     return 1;
@@ -19,8 +17,6 @@ export const sorterSykefravaer = (sykefravaer: Sykefravaer[], sortering: Sorteri
                 return 0;
             });
         case 'DATO_ELDST':
-            // TODO: fiks sorteringsfunksjon
-            //Avventer til fom og tom er introdusert som del av sykefravaerTypes
             return sykefravaer.sort((sf1, sf2) => {
                 if (dayjs(sf1.fom).isBefore(dayjs(sf2.fom))) {
                     return -1;
