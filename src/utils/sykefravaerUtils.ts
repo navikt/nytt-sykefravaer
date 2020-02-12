@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+
 import { Beslutning } from '../types/soknadTypes';
 import { Sorteringstype } from '../hooks/useSykefravaer';
 import { StatusTyper } from '../types/sykmeldingTypes';
@@ -6,13 +8,23 @@ import { Sykefravaer } from '../types/sykefravaerTypes';
 export const sorterSykefravaer = (sykefravaer: Sykefravaer[], sortering: Sorteringstype): Sykefravaer[] => {
     switch (sortering) {
         case 'DATO_NYEST':
-            // TODO: fiks sorteringsfunksjon
-            //Avventer til fom og tom er introdusert som del av sykefravaerTypes
-            return sykefravaer.sort((sf1, sf2) => -1);
+            return sykefravaer.sort((sf1, sf2) => {
+                if (dayjs(sf1.fom).isBefore(dayjs(sf2.fom))) {
+                    return 1;
+                } else if (dayjs(sf1.fom).isAfter(dayjs(sf2.fom))) {
+                    return -1;
+                }
+                return 0;
+            });
         case 'DATO_ELDST':
-            // TODO: fiks sorteringsfunksjon
-            //Avventer til fom og tom er introdusert som del av sykefravaerTypes
-            return sykefravaer.sort((sf1, sf2) => 1);
+            return sykefravaer.sort((sf1, sf2) => {
+                if (dayjs(sf1.fom).isBefore(dayjs(sf2.fom))) {
+                    return -1;
+                } else if (dayjs(sf1.fom).isAfter(dayjs(sf2.fom))) {
+                    return 1;
+                }
+                return 0;
+            });
         default:
             return sykefravaer;
     }
