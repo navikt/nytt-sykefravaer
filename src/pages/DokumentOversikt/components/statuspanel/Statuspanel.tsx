@@ -1,7 +1,10 @@
 import './statuspanel.less';
 
+import Lesmerpanel from 'nav-frontend-lesmerpanel';
 import React from 'react';
-import { Normaltekst } from 'nav-frontend-typografi';
+import { Element, Normaltekst, Undertittel } from 'nav-frontend-typografi';
+
+import Person from '../../../../svg/person.svg';
 
 interface CircleProps {
     number: number;
@@ -16,32 +19,57 @@ const Circle = ({ number, checked }: CircleProps) => {
     );
 };
 
-interface Statuselement extends CircleProps {
+interface StatuspanelelementProps extends CircleProps {
     topptekst: string;
     bunntekst: string;
 }
 
+const Statuspanelelement = (
+    { number, checked = false, topptekst, bunntekst }: StatuspanelelementProps,
+    key?: number,
+) => (
+    <div key={key} className="statuslinje__element">
+        <Circle number={number} checked={checked} />
+        <div className="tekstfelt">
+            <Element>{topptekst}</Element>
+            <Normaltekst>{bunntekst}</Normaltekst>
+        </div>
+    </div>
+);
+
 export interface StatuspanelProps {
-    statusElementer: Statuselement[];
+    statusElementer: StatuspanelelementProps[];
 }
 
 const Statuspanel = ({ statusElementer }: StatuspanelProps) => {
     return (
         <div className="full-width">
-            <div className="limit statuslinje">
-                {statusElementer.map(statuselement => {
-                    const { number, checked = false, topptekst, bunntekst } = statuselement;
-                    return (
-                        <div className="statuslinje__element">
-                            <Circle number={number} checked={checked} />
-                            <div className="tekstfelt">
-                                <Normaltekst>{topptekst}</Normaltekst>
-                                <Normaltekst>{bunntekst}</Normaltekst>
-                            </div>
+            <Lesmerpanel
+                intro={
+                    <div className="limit statuspanel">
+                        {/* Placeholder */}
+                        <img src={Person} width={70} className="statuspanel-ikon" alt="statuspanel-ikon" />
+                        <div className="statuspanel-tittel">
+                            <Undertittel>Utbetalingsstatus</Undertittel>
+                            <div className="statuspanel-tittel__understrek" />
                         </div>
-                    );
-                })}
-            </div>
+                        <div className="statuslinje">
+                            {statusElementer.map((statuselement, index) => Statuspanelelement(statuselement, index))}
+                        </div>
+                    </div>
+                }
+                border
+            >
+                <div className="limit">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque sit ipsam aspernatur? Ducimus
+                        sequi perspiciatis iusto ullam id sed accusantium quod magni doloribus provident eligendi illum
+                        magnam autem, enim natus? Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,
+                        amet impedit numquam dignissimos illo obcaecati adipisci aspernatur quae eaque voluptatibus
+                        dolorum tempora fugit cumque nulla doloribus tempore sequi repellendus architecto.
+                    </p>
+                </div>
+            </Lesmerpanel>
         </div>
     );
 };

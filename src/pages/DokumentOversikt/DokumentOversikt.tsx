@@ -64,6 +64,7 @@ const DokumentOversikt = () => {
     const { nyeSykmeldinger, ferdigBehandledeSykmeldinger } = useSykmeldinger(fravaerId);
     const { aktiveSoknader } = useSoknader(fravaerId);
 
+    // TODO: Endre placeholder data til ekte
     const statusPanel = [
         { number: 1, checked: true, topptekst: 'Sykmelding sendt', bunntekst: '10 nov 2019' },
         { number: 2, topptekst: 'Søknad sendt', bunntekst: '12 nov 2019' },

@@ -6,9 +6,9 @@ import env from '../utils/environment';
 import useAppStore from '../store/useAppStore';
 import useMockAppStore from '../mock/useMockAppStore';
 import useFetch, { FetchState, hasAnyFailed, hasData, isAnyNotStartedOrPending, isNotStarted } from '../hooks/useFetch';
+import { Soknad } from '../types/soknadTypes';
 import { Sykefravaer } from '../types/sykefravaerTypes';
 import { SykmeldingData } from '../types/sykmeldingDataTypes';
-import { Soknad } from '../types/soknadTypes';
 
 const DataFetcher = (props: { children: any }) => {
     // Demo
@@ -37,13 +37,7 @@ const DataFetcher = (props: { children: any }) => {
                 (fetchState: FetchState<Sykefravaer[]>) => {
                     if (hasData(fetchState)) {
                         const { data } = fetchState;
-                        const sykefravaer = data.map(fravaer => ({
-                            id: fravaer.id,
-                            fom: new Date(fravaer.fom),
-                            tom: new Date(fravaer.tom),
-                            sykmeldinger: fravaer.sykmeldinger.map(sykmelding => new SykmeldingData(sykmelding)),
-                            soknader: fravaer.soknader.map(soknad => new Soknad(soknad)),
-                        }));
+                        const sykefravaer = data.map(fravaer => new Sykefravaer(fravaer));
                         console.log(sykefravaer);
                         setSykefravaer(sykefravaer);
                     }

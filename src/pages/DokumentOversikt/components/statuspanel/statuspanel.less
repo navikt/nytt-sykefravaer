@@ -2,7 +2,7 @@
 
 @space-to-line-horisontal: calc(50% + 1.5rem);
 @space-to-line-vertical: calc(50% + 1.5rem);
-@border: 1px solid #000;
+@border: 1px solid #979797;
 @top-horisontal: calc(17%);
 @left-vertical: 1rem;
 @width-horizontal: 50%;
@@ -15,25 +15,50 @@
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
-    border: 1px solid black;
+    border: 1px solid #78706a;
 }
 
 .circle--checked {
-    background-color: #ccdee6;
+    background-color: #97d2ae;
+    border-width: 0;
 }
 
-.statuslinje {
+.statuspanel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.statuspanel-ikon {
+    align-self: center;
+    position: absolute;
+    top: -3.2rem;
+}
+
+.statuspanel-tittel {
+    text-align: center;
+    padding-top: 2rem;
     margin-bottom: 2rem;
+
+    .statuspanel-tittel__understrek {
+        content: '';
+        position: relative;
+        width: 6rem;
+        height: auto;
+        border-top: 2px solid #979797;
+        left: calc(50% - $width/2);
+        margin-top: 0.5rem;
+    }
 }
 
 .full-width {
-    background-color: white;
     width: 100vw;
     position: relative;
     left: 50%;
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
+    margin-bottom: 2rem;
 }
 
 // ---------
@@ -52,7 +77,8 @@
 }
 
 .statuslinje__element {
-    ::before, ::after {
+    ::before,
+    ::after {
         content: '';
         position: absolute;
     }
