@@ -29,6 +29,8 @@
         "nav-frontend-lenkepanel-style": "^0.3.27",
         "nav-frontend-lenker": "^1.0.32",
         "nav-frontend-lenker-style": "^0.2.24",
+        "nav-frontend-lesmerpanel": "0.0.34",
+        "nav-frontend-lesmerpanel-style": "0.0.27",
         "nav-frontend-paneler": "^1.0.21",
         "nav-frontend-paneler-style": "^0.3.17",
         "nav-frontend-popover": "0.0.15",
