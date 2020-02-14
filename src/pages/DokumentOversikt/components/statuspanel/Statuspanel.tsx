@@ -48,7 +48,7 @@ const Statuspanel = ({ statusElementer }: StatuspanelProps) => {
                 intro={
                     <div className="limit statuspanel">
                         {/* Placeholder */}
-                        <img src={Person} width={70} className="statuspanel-ikon" alt="statuspanel-ikon" />
+                        <img src={Person} className="statuspanel-ikon" alt="statuspanel-ikon" />
                         <div className="statuspanel-tittel">
                             <Undertittel>Utbetalingsstatus</Undertittel>
                             <div className="statuspanel-tittel__understrek" />
